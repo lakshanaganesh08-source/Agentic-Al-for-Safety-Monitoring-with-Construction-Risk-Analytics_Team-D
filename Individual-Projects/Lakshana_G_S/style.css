@@ -1,0 +1,327 @@
+/* ==========================================
+   ConstructIQ AI Enterprise Theme
+==========================================*/
+
+/* ---------- Global ---------- */
+
+html,
+body,
+.stApp{
+    background:#F8FAFC;
+    color:#0F172A;
+    font-family:"Segoe UI",sans-serif;
+}
+
+.block-container{
+    padding-top:1.5rem;
+    padding-left:2rem;
+    padding-right:2rem;
+}
+
+/* ---------- Titles ---------- */
+
+.main-title{
+    font-size:42px;
+    font-weight:700;
+    color:#0F172A;
+    margin-bottom:0;
+}
+
+.subtitle{
+    font-size:18px;
+    color:#64748B;
+    margin-bottom:28px;
+}
+
+.page-title{
+    font-size:38px;
+    font-weight:700;
+    color:#0F172A;
+}
+
+.page-subtitle{
+    font-size:17px;
+    color:#64748B;
+    margin-bottom:24px;
+}
+
+
+/* ==========================================
+   Sidebar
+==========================================*/
+
+section[data-testid="stSidebar"]{
+
+    background:#0F172A;
+    border-right:1px solid #1E293B;
+
+}
+
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] span{
+    color:#E2E8F0;
+}
+
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3{
+
+    color:white !important;
+
+    font-weight:700;
+
+}
+
+section[data-testid="stSidebar"] hr{
+
+    border-color:#334155;
+
+}
+
+
+/* ==========================================
+   Selectbox
+==========================================*/
+
+.stSelectbox div[data-baseweb="select"]{
+
+    border-radius:10px;
+    border:1px solid #CBD5E1;
+
+}
+
+
+/* ==========================================
+   Buttons
+==========================================*/
+
+.stButton>button{
+
+    background:#2563EB;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-weight:600;
+    height:42px;
+    transition:0.25s;
+    box-shadow:0 3px 8px rgba(37,99,235,.15);
+
+}
+
+.stButton>button:hover{
+
+    background:#1D4ED8;
+    transform:translateY(-1px);
+
+}
+
+.stButton>button:active{
+
+    background:#1E40AF;
+
+}
+
+
+/* ==========================================
+   Metric Cards
+==========================================*/
+
+div[data-testid="metric-container"]{
+
+    background:white;
+    border:1px solid #E2E8F0;
+    border-radius:16px;
+    padding:16px;
+    box-shadow:0 5px 18px rgba(15,23,42,.05);
+
+}
+
+
+/* ==========================================
+   Containers
+==========================================*/
+
+[data-testid="stVerticalBlockBorderWrapper"]{
+
+    border-radius:16px;
+
+}
+
+
+/* ==========================================
+   Cards
+==========================================*/
+
+.info-card{
+
+    background:white;
+
+    border:1px solid #E2E8F0;
+
+    border-radius:16px;
+
+    padding:22px;
+
+    box-shadow:0 4px 12px rgba(15,23,42,.05);
+
+    margin-bottom:18px;
+
+}
+
+.info-card h4{
+
+    color:#0F172A;
+
+    font-weight:600;
+
+}
+
+.info-card p{
+
+    color:#475569;
+
+    line-height:1.8;
+
+}
+
+
+/* ==========================================
+   Tables
+==========================================*/
+
+[data-testid="stDataFrame"]{
+
+    border:1px solid #E2E8F0;
+
+    border-radius:14px;
+
+}
+
+
+/* ==========================================
+   Chat
+==========================================*/
+
+.stChatMessage{
+
+    border-radius:14px;
+
+    border:1px solid #E2E8F0;
+
+}
+
+
+/* ==========================================
+   Inputs
+==========================================*/
+
+.stTextInput input,
+.stNumberInput input,
+textarea{
+
+    border-radius:10px;
+
+    border:1px solid #CBD5E1;
+
+}
+
+.stTextInput input:focus{
+
+    border-color:#2563EB;
+
+}
+
+
+/* ==========================================
+   Progress Bar
+==========================================*/
+
+.stProgress>div>div{
+
+    background:#2563EB;
+
+}
+
+
+/* ==========================================
+   Alerts
+==========================================*/
+
+.stAlert{
+
+    border-radius:12px;
+
+}
+
+
+/* ==========================================
+   Expanders
+==========================================*/
+
+.streamlit-expanderHeader{
+
+    color:#0F172A;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================================
+   Divider
+==========================================*/
+
+hr{
+
+    border-color:#E2E8F0;
+
+}
+
+
+/* ==========================================
+   Scrollbar
+==========================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#94A3B8;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#64748B;
+
+}
+
+
+/* ==========================================
+   Hide Streamlit Branding
+==========================================*/
+
+#MainMenu{
+
+    visibility:hidden;
+
+}
+
+header{
+
+    visibility:hidden;
+
+}
+
+footer{
+
+    visibility:hidden;
+
+}
