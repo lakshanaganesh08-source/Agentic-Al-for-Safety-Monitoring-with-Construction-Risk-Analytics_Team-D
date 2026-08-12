@@ -1,0 +1,106 @@
+Equipment_ID,Equipment_Name,Category,Purchase_Date,Condition,Assigned_Project_ID,Maintenance_Date,Status
+EQP_500,Tower Crane,Lifting Equipment,2024-07-09,Needs Repair,PRJ_101,2026-03-23,Under Maintenance
+EQP_501,Scaffolding Set,Safety & Support,2022-12-22,Good,PRJ_108,2026-05-19,Active
+EQP_502,Concrete Mixer,Mixing Equipment,2024-07-01,Fair,PRJ_113,2026-02-10,Active
+EQP_503,Scaffolding Set,Safety & Support,2023-12-28,Excellent,PRJ_112,2026-04-03,Active
+EQP_504,Backhoe Loader,Heavy Machinery,2022-08-18,Good,PRJ_103,2026-02-05,Active
+EQP_505,Tower Crane,Lifting Equipment,2024-03-20,Needs Repair,PRJ_100,2026-04-03,Under Maintenance
+EQP_506,Backhoe Loader,Heavy Machinery,2023-08-10,Fair,PRJ_107,2026-05-22,Active
+EQP_507,Tower Crane,Lifting Equipment,2023-09-19,Good,PRJ_101,2026-03-21,Active
+EQP_508,Dump Truck,Transport,2024-01-05,Needs Repair,PRJ_108,2026-04-16,Under Maintenance
+EQP_509,Generator 125kVA,Power Systems,2023-02-24,Good,PRJ_102,2026-03-23,Active
+EQP_510,Scaffolding Set,Safety & Support,2022-03-17,Needs Repair,PRJ_107,2026-05-13,Under Maintenance
+EQP_511,Concrete Mixer,Mixing Equipment,2022-05-12,Excellent,PRJ_112,2026-02-03,Active
+EQP_512,Dump Truck,Transport,2023-05-30,Good,PRJ_113,2026-02-01,Active
+EQP_513,Backhoe Loader,Heavy Machinery,2022-06-06,Fair,PRJ_102,2026-02-11,Active
+EQP_514,Concrete Mixer,Mixing Equipment,2024-08-15,Excellent,PRJ_105,2026-05-13,Active
+EQP_515,Concrete Mixer,Mixing Equipment,2024-05-16,Good,PRJ_104,2026-02-20,Active
+EQP_516,Scaffolding Set,Safety & Support,2024-09-06,Fair,PRJ_102,2026-03-19,Active
+EQP_517,Backhoe Loader,Heavy Machinery,2023-07-01,Good,PRJ_108,2026-02-13,Active
+EQP_518,Backhoe Loader,Heavy Machinery,2024-08-22,Excellent,PRJ_102,2026-03-28,Active
+EQP_519,Generator 125kVA,Power Systems,2024-08-04,Good,PRJ_113,2026-01-08,Active
+EQP_520,Excavator,Heavy Machinery,2022-02-16,Fair,PRJ_110,2026-02-23,Active
+EQP_521,Generator 125kVA,Power Systems,2023-08-09,Needs Repair,PRJ_109,2026-01-08,Under Maintenance
+EQP_522,Dump Truck,Transport,2024-06-29,Fair,PRJ_110,2026-03-19,Active
+EQP_523,Dump Truck,Transport,2022-09-08,Needs Repair,PRJ_104,2026-04-27,Under Maintenance
+EQP_524,Excavator,Heavy Machinery,2023-12-07,Good,PRJ_102,2026-04-23,Active
+EQP_525,Dump Truck,Transport,2023-05-11,Needs Repair,PRJ_103,2026-03-29,Under Maintenance
+EQP_526,Backhoe Loader,Heavy Machinery,2022-05-28,Fair,PRJ_113,2026-03-23,Active
+EQP_527,Scaffolding Set,Safety & Support,2024-05-31,Fair,PRJ_106,2026-02-03,Active
+EQP_528,Generator 125kVA,Power Systems,2023-01-15,Good,PRJ_105,2026-03-03,Active
+EQP_529,Dump Truck,Transport,2022-05-06,Fair,PRJ_107,2026-03-05,Active
+EQP_530,Tower Crane,Lifting Equipment,2022-04-10,Good,PRJ_104,2026-04-09,Active
+EQP_531,Generator 125kVA,Power Systems,2023-09-23,Needs Repair,PRJ_103,2026-02-10,Under Maintenance
+EQP_532,Generator 125kVA,Power Systems,2022-12-02,Fair,PRJ_103,2026-02-10,Active
+EQP_533,Dump Truck,Transport,2023-06-12,Needs Repair,PRJ_107,2026-03-20,Under Maintenance
+EQP_534,Dump Truck,Transport,2022-01-24,Good,PRJ_106,2026-05-10,Active
+EQP_535,Dump Truck,Transport,2024-09-16,Excellent,PRJ_103,2026-05-30,Active
+EQP_536,Concrete Mixer,Mixing Equipment,2022-02-19,Good,PRJ_104,2026-05-07,Active
+EQP_537,Backhoe Loader,Heavy Machinery,2024-06-22,Needs Repair,PRJ_104,2026-05-18,Under Maintenance
+EQP_538,Excavator,Heavy Machinery,2024-05-17,Good,PRJ_106,2026-02-04,Active
+EQP_539,Concrete Mixer,Mixing Equipment,2024-01-15,Fair,PRJ_112,2026-04-14,Active
+EQP_540,Concrete Mixer,Mixing Equipment,2022-02-16,Needs Repair,PRJ_100,2026-05-26,Under Maintenance
+EQP_541,Backhoe Loader,Heavy Machinery,2022-07-19,Fair,PRJ_108,2026-03-15,Active
+EQP_542,Excavator,Heavy Machinery,2023-01-31,Needs Repair,PRJ_112,2026-05-21,Under Maintenance
+EQP_543,Concrete Mixer,Mixing Equipment,2024-04-25,Good,PRJ_102,2026-01-25,Active
+EQP_544,Dump Truck,Transport,2023-01-18,Fair,PRJ_108,2026-04-04,Active
+EQP_545,Generator 125kVA,Power Systems,2022-05-28,Excellent,PRJ_109,2026-05-11,Active
+EQP_546,Dump Truck,Transport,2023-05-28,Good,PRJ_100,2026-01-10,Active
+EQP_547,Tower Crane,Lifting Equipment,2024-01-01,Fair,PRJ_112,2026-05-02,Active
+EQP_548,Backhoe Loader,Heavy Machinery,2023-04-13,Excellent,PRJ_109,2026-05-12,Active
+EQP_549,Tower Crane,Lifting Equipment,2022-12-02,Fair,PRJ_102,2026-04-11,Active
+EQP_550,Backhoe Loader,Heavy Machinery,2024-01-28,Fair,PRJ_109,2026-03-28,Active
+EQP_551,Backhoe Loader,Heavy Machinery,2024-04-28,Needs Repair,PRJ_111,2026-05-25,Under Maintenance
+EQP_552,Concrete Mixer,Mixing Equipment,2023-05-02,Good,PRJ_105,2026-03-26,Active
+EQP_553,Scaffolding Set,Safety & Support,2022-04-23,Needs Repair,PRJ_109,2026-03-20,Under Maintenance
+EQP_554,Generator 125kVA,Power Systems,2024-07-09,Good,PRJ_109,2026-05-02,Active
+EQP_555,Concrete Mixer,Mixing Equipment,2024-09-17,Excellent,PRJ_111,2026-01-14,Active
+EQP_556,Backhoe Loader,Heavy Machinery,2023-05-07,Excellent,PRJ_108,2026-04-08,Active
+EQP_557,Tower Crane,Lifting Equipment,2024-04-21,Excellent,PRJ_100,2026-05-27,Active
+EQP_558,Scaffolding Set,Safety & Support,2022-04-23,Excellent,PRJ_100,2026-04-23,Active
+EQP_559,Concrete Mixer,Mixing Equipment,2023-03-05,Excellent,PRJ_106,2026-02-22,Active
+EQP_560,Dump Truck,Transport,2023-05-29,Needs Repair,PRJ_113,2026-01-16,Under Maintenance
+EQP_561,Scaffolding Set,Safety & Support,2022-05-22,Excellent,PRJ_108,2026-03-25,Active
+EQP_562,Scaffolding Set,Safety & Support,2023-05-05,Needs Repair,PRJ_105,2026-02-14,Under Maintenance
+EQP_563,Dump Truck,Transport,2024-07-23,Fair,PRJ_108,2026-04-01,Active
+EQP_564,Scaffolding Set,Safety & Support,2024-03-01,Fair,PRJ_109,2026-05-04,Active
+EQP_565,Tower Crane,Lifting Equipment,2024-09-07,Excellent,PRJ_104,2026-05-23,Active
+EQP_566,Concrete Mixer,Mixing Equipment,2022-08-19,Fair,PRJ_112,2026-03-15,Active
+EQP_567,Scaffolding Set,Safety & Support,2022-08-01,Needs Repair,PRJ_105,2026-05-03,Under Maintenance
+EQP_568,Concrete Mixer,Mixing Equipment,2023-07-28,Fair,PRJ_104,2026-02-01,Active
+EQP_569,Backhoe Loader,Heavy Machinery,2023-11-24,Needs Repair,PRJ_114,2026-04-12,Under Maintenance
+EQP_570,Generator 125kVA,Power Systems,2022-12-20,Excellent,PRJ_104,2026-01-11,Active
+EQP_571,Concrete Mixer,Mixing Equipment,2024-09-05,Good,PRJ_105,2026-04-24,Active
+EQP_572,Scaffolding Set,Safety & Support,2022-09-20,Needs Repair,PRJ_103,2026-02-21,Under Maintenance
+EQP_573,Generator 125kVA,Power Systems,2023-07-06,Fair,PRJ_114,2026-05-24,Active
+EQP_574,Scaffolding Set,Safety & Support,2022-10-06,Excellent,PRJ_101,2026-05-31,Active
+EQP_575,Tower Crane,Lifting Equipment,2022-09-06,Good,PRJ_110,2026-05-16,Active
+EQP_576,Tower Crane,Lifting Equipment,2023-10-16,Excellent,PRJ_100,2026-01-26,Active
+EQP_577,Dump Truck,Transport,2022-12-05,Needs Repair,PRJ_101,2026-02-05,Under Maintenance
+EQP_578,Excavator,Heavy Machinery,2024-09-14,Excellent,PRJ_106,2026-05-02,Active
+EQP_579,Dump Truck,Transport,2023-10-29,Excellent,PRJ_112,2026-03-15,Active
+EQP_580,Concrete Mixer,Mixing Equipment,2022-10-20,Good,PRJ_114,2026-01-23,Active
+EQP_581,Scaffolding Set,Safety & Support,2023-08-11,Excellent,PRJ_108,2026-01-10,Active
+EQP_582,Tower Crane,Lifting Equipment,2023-03-04,Excellent,PRJ_114,2026-01-10,Active
+EQP_583,Generator 125kVA,Power Systems,2023-02-11,Needs Repair,PRJ_102,2026-03-16,Under Maintenance
+EQP_584,Excavator,Heavy Machinery,2022-01-10,Fair,PRJ_109,2026-01-28,Active
+EQP_585,Concrete Mixer,Mixing Equipment,2022-10-19,Needs Repair,PRJ_110,2026-05-20,Under Maintenance
+EQP_586,Backhoe Loader,Heavy Machinery,2023-05-21,Excellent,PRJ_113,2026-05-10,Active
+EQP_587,Dump Truck,Transport,2022-10-07,Excellent,PRJ_112,2026-01-29,Active
+EQP_588,Concrete Mixer,Mixing Equipment,2022-06-16,Needs Repair,PRJ_110,2026-03-07,Under Maintenance
+EQP_589,Scaffolding Set,Safety & Support,2022-07-10,Good,PRJ_111,2026-03-28,Active
+EQP_590,Generator 125kVA,Power Systems,2022-10-30,Excellent,PRJ_102,2026-04-14,Active
+EQP_591,Generator 125kVA,Power Systems,2023-03-14,Fair,PRJ_101,2026-04-13,Active
+EQP_592,Scaffolding Set,Safety & Support,2022-04-08,Excellent,PRJ_102,2026-05-03,Active
+EQP_593,Concrete Mixer,Mixing Equipment,2024-08-16,Excellent,PRJ_100,2026-03-08,Active
+EQP_594,Dump Truck,Transport,2022-08-30,Needs Repair,PRJ_112,2026-03-10,Under Maintenance
+EQP_595,Concrete Mixer,Mixing Equipment,2022-11-06,Good,PRJ_104,2026-04-03,Active
+EQP_596,Scaffolding Set,Safety & Support,2022-08-30,Good,PRJ_110,2026-01-31,Active
+EQP_597,Dump Truck,Transport,2022-11-11,Excellent,PRJ_106,2026-05-09,Active
+EQP_598,Scaffolding Set,Safety & Support,2024-02-28,Fair,PRJ_111,2026-01-31,Active
+EQP_599,Scaffolding Set,Safety & Support,2024-07-27,Fair,PRJ_105,2026-02-26,Active
+EQP_600,Tower Crane,Lifting Equipment,2024-09-07,Excellent,PRJ_107,2026-02-09,Active
+EQP_601,Dump Truck,Transport,2024-02-05,Fair,PRJ_106,2026-05-21,Active
+EQP_602,Dump Truck,Transport,2024-02-15,Excellent,PRJ_112,2026-03-05,Active
+EQP_603,Scaffolding Set,Safety & Support,2024-02-12,Good,PRJ_108,2026-04-25,Active
+EQP_604,Backhoe Loader,Heavy Machinery,2023-12-22,Fair,PRJ_101,2026-05-25,Active

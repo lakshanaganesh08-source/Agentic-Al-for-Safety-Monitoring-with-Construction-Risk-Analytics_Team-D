@@ -1,0 +1,16 @@
+Project_ID,Project_Name,Client_Name,Location,Project_Type,Start_Date,Expected_End_Date,Current_Status,Budget_INR,Actual_Cost_INR,Completion_Percentage,Project_Manager,Priority
+PRJ_100,Godrej Smart Project Chennai,Godrej Properties,"Chennai, Tamil Nadu",Smart City Infrastructure,2025-03-12,2026-07-15,In Progress,232800000.0,62950593.45,27,Mehaavarshini J,High
+PRJ_101,Prestige Industrial Project Chennai,Prestige Estates,"Chennai, Tamil Nadu",Industrial Warehouse,2025-01-08,2026-02-24,In Progress,229100000.0,80769744.35,39,Ramesh Verma,Critical
+PRJ_102,Prestige Smart Project Hyderabad,Prestige Estates,"Hyderabad, Telangana",Smart City Infrastructure,2025-04-25,2027-02-20,In Progress,277800000.0,25667300.37,10,Pranav Reddy,Medium
+PRJ_103,Tata Metro Project Hyderabad,Tata Housing,"Hyderabad, Telangana",Metro Rail Station,2025-03-28,2026-05-19,In Progress,125900000.0,70783384.65,58,Krishna Murthy,Critical
+PRJ_104,DLF Metro Project Ahmedabad,DLF Limited,"Ahmedabad, Gujarat",Metro Rail Station,2025-05-18,2026-07-20,In Progress,360000000.0,73757570.37,20,Karthik Raja,Medium
+PRJ_105,L&T Industrial Project Coimbatore,L&T Realty,"Coimbatore, Tamil Nadu",Industrial Warehouse,2025-01-12,2026-12-16,In Progress,236600000.0,127553620.71,47,Vijay Joshi,High
+PRJ_106,NHAI Highway Project Ahmedabad,NHAI,"Ahmedabad, Gujarat",Highway Expansion,2025-06-12,2026-12-15,In Progress,183200000.0,106622557.52,57,Aditya Deshmukh,Medium
+PRJ_107,Godrej Smart Project Kochi,Godrej Properties,"Kochi, Kerala",Smart City Infrastructure,2025-06-12,2026-09-07,In Progress,487500000.0,196413264.69,41,Rahul Nair,Medium
+PRJ_108,L&T Smart Project Pune,L&T Realty,"Pune, Maharashtra",Smart City Infrastructure,2025-01-15,2026-05-12,In Progress,76200000.0,39251875.68,50,Suresh Kumar,High
+PRJ_109,Brigade Industrial Project Hyderabad,Brigade Group,"Hyderabad, Telangana",Industrial Warehouse,2025-06-17,2027-02-27,Near Completion,374100000.0,371021295.61,92,Deepak Tiwari,High
+PRJ_110,NHAI Commercial Project Kochi,NHAI,"Kochi, Kerala",Commercial Office Complex,2025-04-20,2027-02-12,In Progress,377100000.0,209880256.13,56,Vikram Singh,Critical
+PRJ_111,Godrej Highway Project Chennai,Godrej Properties,"Chennai, Tamil Nadu",Highway Expansion,2025-01-29,2026-04-17,In Progress,181000000.0,123865604.42,64,Rahul Nair,Medium
+PRJ_112,RMZ Industrial Project Kolkata,RMZ Corp,"Kolkata, West Bengal",Industrial Warehouse,2025-03-06,2026-12-14,In Progress,59400000.0,13978657.35,24,Deepak Tiwari,Critical
+PRJ_113,Godrej Metro Project Mumbai,Godrej Properties,"Mumbai, Maharashtra",Metro Rail Station,2025-04-22,2026-07-11,In Progress,421600000.0,43482893.99,10,Deepak Tiwari,Critical
+PRJ_114,Godrej Commercial Project Mumbai,Godrej Properties,"Mumbai, Maharashtra",Commercial Office Complex,2025-06-13,2027-02-27,In Progress,212900000.0,57063029.85,29,Manish Pandey,Critical

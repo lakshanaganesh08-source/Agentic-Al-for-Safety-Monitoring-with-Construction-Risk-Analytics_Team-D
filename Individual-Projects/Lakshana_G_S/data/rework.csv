@@ -1,0 +1,106 @@
+Rework_ID,Project_ID,Date,Trade,Root_Cause,Description,Rework_Cost,Resolved,Engineer
+REW_800,PRJ_101,2025-08-25,Finishing/Plastering,Poor Mix Ratio,Rework required due to poor mix ratio in finishing/plastering segment.,183365,No,Karthik Raja
+REW_801,PRJ_103,2025-03-21,Electrical,Water Seepage,Rework required due to water seepage in electrical segment.,223720,Yes,Rahul Nair
+REW_802,PRJ_104,2025-12-02,Electrical,Dimensions Mismatch,Rework required due to dimensions mismatch in electrical segment.,150493,Yes,Naga Vedhika B
+REW_803,PRJ_112,2025-11-16,Finishing/Plastering,Water Seepage,Rework required due to water seepage in finishing/plastering segment.,26495,Yes,Siddharth Rao
+REW_804,PRJ_103,2025-08-12,Flooring,Dimensions Mismatch,Rework required due to dimensions mismatch in flooring segment.,40154,Yes,Manish Pandey
+REW_805,PRJ_108,2025-11-29,Civil/Concreting,Dimensions Mismatch,Rework required due to dimensions mismatch in civil/concreting segment.,70255,No,Siddharth Rao
+REW_806,PRJ_112,2025-06-18,Finishing/Plastering,Dimensions Mismatch,Rework required due to dimensions mismatch in finishing/plastering segment.,68891,No,Gaurav Joshi
+REW_807,PRJ_114,2025-10-09,Civil/Concreting,Poor Mix Ratio,Rework required due to poor mix ratio in civil/concreting segment.,21226,Yes,Gaurav Joshi
+REW_808,PRJ_105,2025-03-20,Civil/Concreting,Dimensions Mismatch,Rework required due to dimensions mismatch in civil/concreting segment.,29226,Yes,Deepak Tiwari
+REW_809,PRJ_108,2025-04-06,Flooring,Poor Mix Ratio,Rework required due to poor mix ratio in flooring segment.,82803,Yes,Rahul Nair
+REW_810,PRJ_107,2025-09-24,Finishing/Plastering,Wiring Layout Change,Rework required due to wiring layout change in finishing/plastering segment.,19427,Yes,Aditya Deshmukh
+REW_811,PRJ_101,2025-11-29,Civil/Concreting,Substandard Material Finish,Rework required due to substandard material finish in civil/concreting segment.,31577,No,Vimal E A
+REW_812,PRJ_100,2025-04-07,Electrical,Substandard Material Finish,Rework required due to substandard material finish in electrical segment.,42822,Yes,Aditya Deshmukh
+REW_813,PRJ_104,2025-04-14,Electrical,Water Seepage,Rework required due to water seepage in electrical segment.,114985,Yes,Aditya Deshmukh
+REW_814,PRJ_100,2025-10-29,Plumbing,Substandard Material Finish,Rework required due to substandard material finish in plumbing segment.,72636,Yes,Alok Saxena
+REW_815,PRJ_106,2025-12-05,Electrical,Poor Mix Ratio,Rework required due to poor mix ratio in electrical segment.,93133,No,Alok Saxena
+REW_816,PRJ_110,2025-09-08,Civil/Concreting,Substandard Material Finish,Rework required due to substandard material finish in civil/concreting segment.,244314,No,Vikram Singh
+REW_817,PRJ_101,2025-03-22,Civil/Concreting,Substandard Material Finish,Rework required due to substandard material finish in civil/concreting segment.,171409,Yes,Mehaavarshini J
+REW_818,PRJ_108,2025-04-13,Electrical,Poor Mix Ratio,Rework required due to poor mix ratio in electrical segment.,211161,No,Alok Saxena
+REW_819,PRJ_105,2025-06-17,Finishing/Plastering,Substandard Material Finish,Rework required due to substandard material finish in finishing/plastering segment.,52343,Yes,Sanjay Gupta
+REW_820,PRJ_103,2025-07-08,Plumbing,Dimensions Mismatch,Rework required due to dimensions mismatch in plumbing segment.,62541,No,Vimal E A
+REW_821,PRJ_113,2025-03-28,Flooring,Water Seepage,Rework required due to water seepage in flooring segment.,183997,No,Suresh Kumar
+REW_822,PRJ_104,2025-04-04,Electrical,Dimensions Mismatch,Rework required due to dimensions mismatch in electrical segment.,66751,No,Vimal E A
+REW_823,PRJ_107,2025-08-17,Electrical,Poor Mix Ratio,Rework required due to poor mix ratio in electrical segment.,190976,No,Vijay Joshi
+REW_824,PRJ_101,2025-07-24,Flooring,Dimensions Mismatch,Rework required due to dimensions mismatch in flooring segment.,65724,Yes,Lakshana G S
+REW_825,PRJ_107,2025-08-16,Flooring,Wiring Layout Change,Rework required due to wiring layout change in flooring segment.,196785,No,Vikram Singh
+REW_826,PRJ_109,2025-12-16,Electrical,Wiring Layout Change,Rework required due to wiring layout change in electrical segment.,127278,Yes,Rajesh Sharma
+REW_827,PRJ_105,2025-07-05,Plumbing,Water Seepage,Rework required due to water seepage in plumbing segment.,87529,Yes,Vikram Singh
+REW_828,PRJ_110,2025-08-17,Finishing/Plastering,Water Seepage,Rework required due to water seepage in finishing/plastering segment.,131747,Yes,Manish Pandey
+REW_829,PRJ_104,2025-11-05,Flooring,Dimensions Mismatch,Rework required due to dimensions mismatch in flooring segment.,61077,No,Karthik Raja
+REW_830,PRJ_101,2025-07-22,Plumbing,Substandard Material Finish,Rework required due to substandard material finish in plumbing segment.,66493,Yes,Alok Saxena
+REW_831,PRJ_114,2025-04-09,Civil/Concreting,Dimensions Mismatch,Rework required due to dimensions mismatch in civil/concreting segment.,237714,No,Siddharth Rao
+REW_832,PRJ_100,2025-12-23,Flooring,Water Seepage,Rework required due to water seepage in flooring segment.,216641,No,Ramesh Verma
+REW_833,PRJ_114,2025-03-19,Flooring,Wiring Layout Change,Rework required due to wiring layout change in flooring segment.,157467,No,Lakshana G S
+REW_834,PRJ_110,2025-05-16,Electrical,Water Seepage,Rework required due to water seepage in electrical segment.,73538,No,Alok Saxena
+REW_835,PRJ_113,2025-07-27,Plumbing,Water Seepage,Rework required due to water seepage in plumbing segment.,146366,No,Suresh Kumar
+REW_836,PRJ_106,2025-09-03,Flooring,Dimensions Mismatch,Rework required due to dimensions mismatch in flooring segment.,188717,Yes,Karthik Raja
+REW_837,PRJ_110,2025-05-24,Flooring,Poor Mix Ratio,Rework required due to poor mix ratio in flooring segment.,131974,Yes,Sanjay Gupta
+REW_838,PRJ_109,2025-12-15,Plumbing,Water Seepage,Rework required due to water seepage in plumbing segment.,109056,Yes,Vijay Joshi
+REW_839,PRJ_112,2025-11-05,Plumbing,Dimensions Mismatch,Rework required due to dimensions mismatch in plumbing segment.,84299,Yes,Vijay Joshi
+REW_840,PRJ_100,2025-06-14,Flooring,Wiring Layout Change,Rework required due to wiring layout change in flooring segment.,116736,Yes,Sandeep Choudhury
+REW_841,PRJ_114,2025-03-24,Civil/Concreting,Wiring Layout Change,Rework required due to wiring layout change in civil/concreting segment.,42059,No,Naga Vedhika B
+REW_842,PRJ_110,2025-07-19,Electrical,Substandard Material Finish,Rework required due to substandard material finish in electrical segment.,157698,No,Sanjay Gupta
+REW_843,PRJ_106,2025-09-10,Electrical,Substandard Material Finish,Rework required due to substandard material finish in electrical segment.,186268,Yes,Naga Vedhika B
+REW_844,PRJ_104,2025-09-09,Plumbing,Substandard Material Finish,Rework required due to substandard material finish in plumbing segment.,121389,Yes,Krishna Murthy
+REW_845,PRJ_107,2025-11-02,Flooring,Dimensions Mismatch,Rework required due to dimensions mismatch in flooring segment.,146553,Yes,Sandeep Choudhury
+REW_846,PRJ_102,2025-06-26,Civil/Concreting,Substandard Material Finish,Rework required due to substandard material finish in civil/concreting segment.,183683,Yes,Ramesh Verma
+REW_847,PRJ_102,2025-06-04,Plumbing,Wiring Layout Change,Rework required due to wiring layout change in plumbing segment.,172816,No,Anil Mehta
+REW_848,PRJ_110,2025-06-26,Finishing/Plastering,Wiring Layout Change,Rework required due to wiring layout change in finishing/plastering segment.,203810,Yes,Lakshana G S
+REW_849,PRJ_110,2025-11-01,Finishing/Plastering,Poor Mix Ratio,Rework required due to poor mix ratio in finishing/plastering segment.,169872,Yes,Siddharth Rao
+REW_850,PRJ_113,2025-09-27,Civil/Concreting,Poor Mix Ratio,Rework required due to poor mix ratio in civil/concreting segment.,26310,Yes,Vimal E A
+REW_851,PRJ_109,2025-05-22,Plumbing,Substandard Material Finish,Rework required due to substandard material finish in plumbing segment.,25273,No,Vikram Singh
+REW_852,PRJ_100,2025-05-25,Electrical,Poor Mix Ratio,Rework required due to poor mix ratio in electrical segment.,150434,Yes,Karthik Raja
+REW_853,PRJ_109,2025-03-10,Electrical,Dimensions Mismatch,Rework required due to dimensions mismatch in electrical segment.,71778,Yes,Karthik Raja
+REW_854,PRJ_107,2025-11-02,Plumbing,Poor Mix Ratio,Rework required due to poor mix ratio in plumbing segment.,232674,Yes,Karthik Raja
+REW_855,PRJ_102,2025-12-24,Plumbing,Substandard Material Finish,Rework required due to substandard material finish in plumbing segment.,187922,No,Deepak Tiwari
+REW_856,PRJ_102,2025-08-23,Finishing/Plastering,Substandard Material Finish,Rework required due to substandard material finish in finishing/plastering segment.,169821,Yes,Vijay Joshi
+REW_857,PRJ_106,2025-09-14,Plumbing,Dimensions Mismatch,Rework required due to dimensions mismatch in plumbing segment.,19341,Yes,Naga Vedhika B
+REW_858,PRJ_113,2025-11-14,Finishing/Plastering,Poor Mix Ratio,Rework required due to poor mix ratio in finishing/plastering segment.,173731,Yes,Sanjay Gupta
+REW_859,PRJ_107,2025-03-20,Flooring,Substandard Material Finish,Rework required due to substandard material finish in flooring segment.,212232,Yes,Suresh Kumar
+REW_860,PRJ_107,2025-05-06,Flooring,Substandard Material Finish,Rework required due to substandard material finish in flooring segment.,231929,Yes,Manish Pandey
+REW_861,PRJ_110,2025-10-07,Flooring,Water Seepage,Rework required due to water seepage in flooring segment.,112092,Yes,Gaurav Joshi
+REW_862,PRJ_108,2025-10-06,Plumbing,Water Seepage,Rework required due to water seepage in plumbing segment.,221977,Yes,Krishna Murthy
+REW_863,PRJ_109,2025-12-20,Civil/Concreting,Water Seepage,Rework required due to water seepage in civil/concreting segment.,50096,Yes,Lakshana G S
+REW_864,PRJ_112,2025-06-28,Civil/Concreting,Wiring Layout Change,Rework required due to wiring layout change in civil/concreting segment.,171838,No,Pranav Reddy
+REW_865,PRJ_104,2025-06-05,Civil/Concreting,Dimensions Mismatch,Rework required due to dimensions mismatch in civil/concreting segment.,166515,No,Anil Mehta
+REW_866,PRJ_108,2025-03-04,Finishing/Plastering,Poor Mix Ratio,Rework required due to poor mix ratio in finishing/plastering segment.,195293,Yes,Pranav Reddy
+REW_867,PRJ_105,2025-04-24,Plumbing,Water Seepage,Rework required due to water seepage in plumbing segment.,185806,No,Deepak Tiwari
+REW_868,PRJ_104,2025-11-30,Finishing/Plastering,Substandard Material Finish,Rework required due to substandard material finish in finishing/plastering segment.,110851,No,Deepak Tiwari
+REW_869,PRJ_110,2025-09-20,Plumbing,Water Seepage,Rework required due to water seepage in plumbing segment.,159730,No,Lakshana G S
+REW_870,PRJ_102,2025-09-06,Flooring,Substandard Material Finish,Rework required due to substandard material finish in flooring segment.,141814,Yes,Manoj Mishra
+REW_871,PRJ_109,2025-08-24,Finishing/Plastering,Poor Mix Ratio,Rework required due to poor mix ratio in finishing/plastering segment.,239132,No,Anil Mehta
+REW_872,PRJ_111,2025-06-26,Finishing/Plastering,Poor Mix Ratio,Rework required due to poor mix ratio in finishing/plastering segment.,41287,Yes,Naga Vedhika B
+REW_873,PRJ_106,2025-08-21,Flooring,Substandard Material Finish,Rework required due to substandard material finish in flooring segment.,197729,No,Gaurav Joshi
+REW_874,PRJ_100,2025-05-22,Finishing/Plastering,Dimensions Mismatch,Rework required due to dimensions mismatch in finishing/plastering segment.,225860,Yes,Vikram Singh
+REW_875,PRJ_107,2025-10-09,Civil/Concreting,Dimensions Mismatch,Rework required due to dimensions mismatch in civil/concreting segment.,83967,Yes,Krishna Murthy
+REW_876,PRJ_101,2025-03-20,Finishing/Plastering,Water Seepage,Rework required due to water seepage in finishing/plastering segment.,175947,No,Naga Vedhika B
+REW_877,PRJ_104,2025-03-30,Plumbing,Water Seepage,Rework required due to water seepage in plumbing segment.,130073,Yes,Ramesh Verma
+REW_878,PRJ_113,2025-11-21,Electrical,Poor Mix Ratio,Rework required due to poor mix ratio in electrical segment.,23810,No,Naga Vedhika B
+REW_879,PRJ_108,2025-06-27,Flooring,Poor Mix Ratio,Rework required due to poor mix ratio in flooring segment.,191691,Yes,Krishna Murthy
+REW_880,PRJ_103,2025-03-01,Plumbing,Dimensions Mismatch,Rework required due to dimensions mismatch in plumbing segment.,87335,Yes,Krishna Murthy
+REW_881,PRJ_110,2025-09-19,Finishing/Plastering,Substandard Material Finish,Rework required due to substandard material finish in finishing/plastering segment.,67510,No,Rajesh Sharma
+REW_882,PRJ_111,2025-04-05,Civil/Concreting,Substandard Material Finish,Rework required due to substandard material finish in civil/concreting segment.,89578,No,Mehaavarshini J
+REW_883,PRJ_114,2025-12-24,Electrical,Wiring Layout Change,Rework required due to wiring layout change in electrical segment.,228782,Yes,Vijay Joshi
+REW_884,PRJ_109,2025-06-08,Finishing/Plastering,Water Seepage,Rework required due to water seepage in finishing/plastering segment.,165708,Yes,Deepak Tiwari
+REW_885,PRJ_102,2025-09-25,Flooring,Dimensions Mismatch,Rework required due to dimensions mismatch in flooring segment.,161441,Yes,Naga Vedhika B
+REW_886,PRJ_104,2025-08-22,Civil/Concreting,Substandard Material Finish,Rework required due to substandard material finish in civil/concreting segment.,82552,No,Vimal E A
+REW_887,PRJ_104,2025-10-13,Finishing/Plastering,Substandard Material Finish,Rework required due to substandard material finish in finishing/plastering segment.,141780,Yes,Manish Pandey
+REW_888,PRJ_105,2025-10-21,Finishing/Plastering,Substandard Material Finish,Rework required due to substandard material finish in finishing/plastering segment.,240974,Yes,Lakshana G S
+REW_889,PRJ_101,2025-07-11,Civil/Concreting,Water Seepage,Rework required due to water seepage in civil/concreting segment.,181110,Yes,Aditya Deshmukh
+REW_890,PRJ_111,2025-06-26,Electrical,Water Seepage,Rework required due to water seepage in electrical segment.,107562,No,Mehaavarshini J
+REW_891,PRJ_100,2025-07-13,Plumbing,Wiring Layout Change,Rework required due to wiring layout change in plumbing segment.,39381,Yes,Aditya Deshmukh
+REW_892,PRJ_111,2025-08-23,Civil/Concreting,Substandard Material Finish,Rework required due to substandard material finish in civil/concreting segment.,61788,Yes,Arjun Rao
+REW_893,PRJ_105,2025-06-20,Flooring,Wiring Layout Change,Rework required due to wiring layout change in flooring segment.,62915,No,Aditya Deshmukh
+REW_894,PRJ_114,2025-06-06,Finishing/Plastering,Poor Mix Ratio,Rework required due to poor mix ratio in finishing/plastering segment.,76567,No,Vijay Joshi
+REW_895,PRJ_113,2025-07-14,Plumbing,Poor Mix Ratio,Rework required due to poor mix ratio in plumbing segment.,68154,Yes,Karthik Raja
+REW_896,PRJ_105,2025-05-19,Civil/Concreting,Dimensions Mismatch,Rework required due to dimensions mismatch in civil/concreting segment.,35575,No,Aditya Deshmukh
+REW_897,PRJ_107,2025-03-04,Flooring,Dimensions Mismatch,Rework required due to dimensions mismatch in flooring segment.,237300,Yes,Krishna Murthy
+REW_898,PRJ_109,2025-08-09,Finishing/Plastering,Substandard Material Finish,Rework required due to substandard material finish in finishing/plastering segment.,242742,Yes,Lakshana G S
+REW_899,PRJ_102,2025-11-17,Electrical,Water Seepage,Rework required due to water seepage in electrical segment.,73220,No,Vikram Singh
+REW_900,PRJ_100,2025-11-25,Finishing/Plastering,Water Seepage,Rework required due to water seepage in finishing/plastering segment.,156759,Yes,Naga Vedhika B
+REW_901,PRJ_105,2025-09-18,Plumbing,Water Seepage,Rework required due to water seepage in plumbing segment.,46553,No,Naga Vedhika B
+REW_902,PRJ_107,2025-08-09,Civil/Concreting,Dimensions Mismatch,Rework required due to dimensions mismatch in civil/concreting segment.,191712,Yes,Rahul Nair
+REW_903,PRJ_109,2025-04-21,Electrical,Wiring Layout Change,Rework required due to wiring layout change in electrical segment.,175636,Yes,Sanjay Gupta
+REW_904,PRJ_108,2025-07-13,Plumbing,Wiring Layout Change,Rework required due to wiring layout change in plumbing segment.,138560,No,Arjun Rao

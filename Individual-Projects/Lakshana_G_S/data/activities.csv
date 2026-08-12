@@ -1,0 +1,113 @@
+Activity_ID,Project_ID,Activity_Name,Start_Date,End_Date,Status,Assigned_To,Completion_Percentage
+ACT_1400,PRJ_106,Column Shuttering,2025-02-02,2025-02-18,Completed,Suresh Kumar,100
+ACT_1401,PRJ_105,Excavation,2025-06-23,2025-07-01,Completed,Manoj Mishra,100
+ACT_1402,PRJ_107,Slab Reinforcement,2025-07-12,2025-08-04,In Progress,Amit Patel,8
+ACT_1403,PRJ_103,Slab Reinforcement,2025-04-14,2025-04-24,Completed,Deepak Tiwari,100
+ACT_1404,PRJ_111,Column Shuttering,2025-04-28,2025-05-20,Completed,Sanjay Gupta,100
+ACT_1405,PRJ_103,Excavation,2025-03-18,2025-03-31,Completed,Rajesh Sharma,100
+ACT_1406,PRJ_113,Column Shuttering,2025-05-09,2025-06-03,Completed,Arjun Rao,100
+ACT_1407,PRJ_114,Slab Reinforcement,2025-04-20,2025-05-09,Completed,Krishna Murthy,100
+ACT_1408,PRJ_112,Plumbing Rough-in,2025-07-20,2025-07-30,Not Started,Karthik Raja,0
+ACT_1409,PRJ_114,Electrical Wiring,2025-02-17,2025-02-25,Completed,Vikram Singh,100
+ACT_1410,PRJ_112,Slab Reinforcement,2025-03-22,2025-04-13,In Progress,Gaurav Joshi,52
+ACT_1411,PRJ_105,Electrical Wiring,2025-07-13,2025-07-25,Completed,Manish Pandey,100
+ACT_1412,PRJ_109,Slab Reinforcement,2025-06-18,2025-07-02,Completed,Arjun Rao,100
+ACT_1413,PRJ_103,Excavation,2025-07-12,2025-08-11,In Progress,Vikram Singh,70
+ACT_1414,PRJ_109,Internal Painting,2025-03-26,2025-04-23,Completed,Lakshana G S,100
+ACT_1415,PRJ_112,Piling Work,2025-03-15,2025-04-05,In Progress,Manish Pandey,87
+ACT_1416,PRJ_112,Plumbing Rough-in,2025-06-08,2025-06-29,In Progress,Sanjay Gupta,46
+ACT_1417,PRJ_111,Plumbing Rough-in,2025-06-15,2025-07-12,In Progress,Gaurav Joshi,68
+ACT_1418,PRJ_107,Masonry Wall Setup,2025-06-29,2025-07-16,Not Started,Vimal E A,0
+ACT_1419,PRJ_110,Excavation,2025-03-26,2025-04-07,Completed,Sandeep Choudhury,100
+ACT_1420,PRJ_113,Slab Reinforcement,2025-05-13,2025-05-24,In Progress,Pranav Reddy,53
+ACT_1421,PRJ_109,Column Shuttering,2025-05-07,2025-05-20,Not Started,Suresh Kumar,0
+ACT_1422,PRJ_102,Piling Work,2025-04-17,2025-05-06,Not Started,Krishna Murthy,0
+ACT_1423,PRJ_103,Excavation,2025-05-31,2025-06-21,Not Started,Arjun Rao,0
+ACT_1424,PRJ_106,Internal Painting,2025-05-31,2025-06-18,In Progress,Krishna Murthy,68
+ACT_1425,PRJ_105,Masonry Wall Setup,2025-05-09,2025-05-14,Completed,Sandeep Choudhury,100
+ACT_1426,PRJ_103,Masonry Wall Setup,2025-07-16,2025-07-23,In Progress,Suresh Kumar,42
+ACT_1427,PRJ_113,Piling Work,2025-04-12,2025-04-24,Completed,Anil Mehta,100
+ACT_1428,PRJ_101,Plumbing Rough-in,2025-02-10,2025-03-04,Completed,Arjun Rao,100
+ACT_1429,PRJ_103,Plumbing Rough-in,2025-04-06,2025-04-20,Not Started,Manish Pandey,0
+ACT_1430,PRJ_110,Masonry Wall Setup,2025-03-21,2025-04-17,Not Started,Vikram Singh,0
+ACT_1431,PRJ_113,Masonry Wall Setup,2025-02-03,2025-03-04,In Progress,Manoj Mishra,49
+ACT_1432,PRJ_112,Electrical Wiring,2025-05-15,2025-06-07,Not Started,Rajesh Sharma,0
+ACT_1433,PRJ_107,Column Shuttering,2025-05-13,2025-05-25,Completed,Alok Saxena,100
+ACT_1434,PRJ_111,Slab Reinforcement,2025-06-02,2025-06-14,Not Started,Vimal E A,0
+ACT_1435,PRJ_112,Internal Painting,2025-05-30,2025-06-14,Completed,Arjun Rao,100
+ACT_1436,PRJ_113,Slab Reinforcement,2025-05-21,2025-06-19,Not Started,Pranav Reddy,0
+ACT_1437,PRJ_103,Internal Painting,2025-05-27,2025-06-18,Completed,Krishna Murthy,100
+ACT_1438,PRJ_102,Column Shuttering,2025-04-20,2025-05-18,Completed,Lakshana G S,100
+ACT_1439,PRJ_112,Plumbing Rough-in,2025-04-28,2025-05-10,In Progress,Pranav Reddy,92
+ACT_1440,PRJ_112,Electrical Wiring,2025-07-27,2025-08-18,In Progress,Arjun Rao,80
+ACT_1441,PRJ_100,Excavation,2025-03-08,2025-03-17,In Progress,Vimal E A,85
+ACT_1442,PRJ_112,Electrical Wiring,2025-05-09,2025-05-20,In Progress,Suresh Kumar,73
+ACT_1443,PRJ_106,Slab Reinforcement,2025-06-02,2025-06-10,In Progress,Vimal E A,62
+ACT_1444,PRJ_110,Masonry Wall Setup,2025-02-24,2025-03-06,Completed,Aditya Deshmukh,100
+ACT_1445,PRJ_108,Column Shuttering,2025-02-09,2025-03-08,Not Started,Lakshana G S,0
+ACT_1446,PRJ_100,Column Shuttering,2025-03-23,2025-03-30,In Progress,Manoj Mishra,31
+ACT_1447,PRJ_103,Masonry Wall Setup,2025-07-19,2025-08-09,Completed,Sandeep Choudhury,100
+ACT_1448,PRJ_100,Plumbing Rough-in,2025-06-13,2025-06-18,Completed,Arjun Rao,100
+ACT_1449,PRJ_113,Electrical Wiring,2025-05-12,2025-05-22,Completed,Vikram Singh,100
+ACT_1450,PRJ_108,Electrical Wiring,2025-06-03,2025-07-01,Completed,Rahul Nair,100
+ACT_1451,PRJ_114,Slab Reinforcement,2025-03-06,2025-03-17,In Progress,Pranav Reddy,95
+ACT_1452,PRJ_110,Internal Painting,2025-03-13,2025-04-06,Not Started,Manoj Mishra,0
+ACT_1453,PRJ_109,Slab Reinforcement,2025-06-09,2025-07-06,Not Started,Sandeep Choudhury,0
+ACT_1454,PRJ_104,Slab Reinforcement,2025-02-02,2025-02-11,In Progress,Suresh Kumar,56
+ACT_1455,PRJ_109,Slab Reinforcement,2025-06-15,2025-06-30,Not Started,Lakshana G S,0
+ACT_1456,PRJ_107,Internal Painting,2025-06-28,2025-07-04,Not Started,Suresh Kumar,0
+ACT_1457,PRJ_104,Internal Painting,2025-04-30,2025-05-27,Not Started,Manoj Mishra,0
+ACT_1458,PRJ_106,Column Shuttering,2025-05-18,2025-05-30,Completed,Karthik Raja,100
+ACT_1459,PRJ_111,Electrical Wiring,2025-05-29,2025-06-15,Not Started,Sanjay Gupta,0
+ACT_1460,PRJ_111,Piling Work,2025-05-12,2025-06-08,Completed,Vijay Joshi,100
+ACT_1461,PRJ_114,Column Shuttering,2025-04-12,2025-05-07,Not Started,Manoj Mishra,0
+ACT_1462,PRJ_110,Piling Work,2025-07-29,2025-08-26,Not Started,Ramesh Verma,0
+ACT_1463,PRJ_114,Internal Painting,2025-05-17,2025-06-15,Not Started,Anil Mehta,0
+ACT_1464,PRJ_105,Piling Work,2025-02-27,2025-03-20,In Progress,Pranav Reddy,62
+ACT_1465,PRJ_102,Masonry Wall Setup,2025-03-26,2025-04-16,Completed,Sandeep Choudhury,100
+ACT_1466,PRJ_100,Piling Work,2025-07-14,2025-08-10,Not Started,Alok Saxena,0
+ACT_1467,PRJ_107,Electrical Wiring,2025-04-29,2025-05-27,In Progress,Ramesh Verma,55
+ACT_1468,PRJ_100,Excavation,2025-04-06,2025-04-14,Not Started,Vikram Singh,0
+ACT_1469,PRJ_105,Internal Painting,2025-06-05,2025-06-24,Completed,Suresh Kumar,100
+ACT_1470,PRJ_108,Slab Reinforcement,2025-05-24,2025-06-02,In Progress,Deepak Tiwari,25
+ACT_1471,PRJ_102,Excavation,2025-07-06,2025-07-14,Completed,Manoj Mishra,100
+ACT_1472,PRJ_101,Electrical Wiring,2025-03-16,2025-03-23,Not Started,Manish Pandey,0
+ACT_1473,PRJ_100,Masonry Wall Setup,2025-03-12,2025-03-31,In Progress,Sanjay Gupta,32
+ACT_1474,PRJ_111,Excavation,2025-07-23,2025-08-14,Completed,Sandeep Choudhury,100
+ACT_1475,PRJ_111,Excavation,2025-07-13,2025-08-12,Not Started,Siddharth Rao,0
+ACT_1476,PRJ_110,Piling Work,2025-05-11,2025-06-07,In Progress,Sandeep Choudhury,11
+ACT_1477,PRJ_109,Excavation,2025-02-13,2025-03-14,In Progress,Manish Pandey,30
+ACT_1478,PRJ_114,Slab Reinforcement,2025-05-07,2025-05-19,Completed,Suresh Kumar,100
+ACT_1479,PRJ_100,Electrical Wiring,2025-02-08,2025-02-13,In Progress,Ramesh Verma,92
+ACT_1480,PRJ_110,Piling Work,2025-03-29,2025-04-06,Not Started,Sanjay Gupta,0
+ACT_1481,PRJ_111,Column Shuttering,2025-02-12,2025-03-02,Not Started,Anil Mehta,0
+ACT_1482,PRJ_113,Plumbing Rough-in,2025-04-24,2025-05-16,Not Started,Ramesh Verma,0
+ACT_1483,PRJ_109,Slab Reinforcement,2025-06-19,2025-07-06,In Progress,Anil Mehta,34
+ACT_1484,PRJ_103,Piling Work,2025-05-03,2025-05-18,Completed,Rajesh Sharma,100
+ACT_1485,PRJ_106,Plumbing Rough-in,2025-02-04,2025-02-21,Completed,Sandeep Choudhury,100
+ACT_1486,PRJ_103,Piling Work,2025-07-19,2025-08-01,Not Started,Karthik Raja,0
+ACT_1487,PRJ_105,Excavation,2025-02-18,2025-03-01,In Progress,Manoj Mishra,81
+ACT_1488,PRJ_107,Piling Work,2025-06-18,2025-07-18,Not Started,Sanjay Gupta,0
+ACT_1489,PRJ_104,Piling Work,2025-07-04,2025-07-19,Not Started,Gaurav Joshi,0
+ACT_1490,PRJ_106,Column Shuttering,2025-04-27,2025-05-07,Not Started,Manish Pandey,0
+ACT_1491,PRJ_114,Plumbing Rough-in,2025-07-21,2025-08-10,Completed,Arjun Rao,100
+ACT_1492,PRJ_100,Internal Painting,2025-05-09,2025-05-30,Not Started,Alok Saxena,0
+ACT_1493,PRJ_103,Excavation,2025-04-01,2025-04-06,Not Started,Manish Pandey,0
+ACT_1494,PRJ_114,Piling Work,2025-04-21,2025-05-03,Not Started,Pranav Reddy,0
+ACT_1495,PRJ_112,Slab Reinforcement,2025-07-09,2025-07-16,Completed,Vikram Singh,100
+ACT_1496,PRJ_105,Internal Painting,2025-04-17,2025-04-28,Completed,Rahul Nair,100
+ACT_1497,PRJ_103,Excavation,2025-04-02,2025-04-30,Not Started,Sandeep Choudhury,0
+ACT_1498,PRJ_111,Plumbing Rough-in,2025-03-07,2025-03-20,In Progress,Siddharth Rao,10
+ACT_1499,PRJ_108,Electrical Wiring,2025-07-16,2025-07-30,Completed,Vijay Joshi,100
+ACT_1500,PRJ_113,Plumbing Rough-in,2025-04-29,2025-05-11,Completed,Mehaavarshini J,100
+ACT_1501,PRJ_100,Slab Reinforcement,2025-07-26,2025-08-22,Not Started,Vijay Joshi,0
+ACT_1502,PRJ_109,Electrical Wiring,2025-06-14,2025-06-29,Completed,Sandeep Choudhury,100
+ACT_1503,PRJ_110,Excavation,2025-02-17,2025-03-09,Completed,Ramesh Verma,100
+ACT_1504,PRJ_100,Column Shuttering,2025-03-25,2025-04-03,Completed,Sanjay Gupta,100
+ACT_1505,PRJ_109,Slab Reinforcement,2025-04-02,2025-04-23,Completed,Pranav Reddy,100
+ACT_1506,PRJ_111,Internal Painting,2025-04-21,2025-05-01,Not Started,Ramesh Verma,0
+ACT_1507,PRJ_103,Electrical Wiring,2025-03-18,2025-04-11,Completed,Manoj Mishra,100
+ACT_1508,PRJ_104,Internal Painting,2025-07-13,2025-07-24,In Progress,Lakshana G S,15
+ACT_1509,PRJ_105,Electrical Wiring,2025-05-08,2025-05-18,In Progress,Sandeep Choudhury,59
+ACT_1510,PRJ_108,Electrical Wiring,2025-03-12,2025-04-11,In Progress,Rajesh Sharma,53
+ACT_1511,PRJ_106,Piling Work,2025-04-18,2025-05-12,Not Started,Vikram Singh,0

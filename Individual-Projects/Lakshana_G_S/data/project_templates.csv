@@ -1,0 +1,33 @@
+Template_ID,Project_Type,Default_Material_Quality,Average_Cost_Per_Sqft,Average_Duration_Months,Average_Labour_Count,Average_Equipment_Count,Risk_Level,Recommended_Contingency_Percentage
+TMP_201,Smart City Infrastructure,Standard,4050,26,162,27,Medium,10.9
+TMP_202,Smart City Infrastructure,Luxury,6910,25,208,21,Medium,8.4
+TMP_203,Airport Terminal,Luxury,7090,48,200,59,High,12.1
+TMP_204,Highway Expansion,Premium,4610,26,208,30,High,8.6
+TMP_205,Commercial Office Complex,Standard,3980,17,125,21,Medium,8.8
+TMP_206,Residential,Luxury,3700,28,55,10,Low,6.7
+TMP_207,Shopping Mall,Luxury,4850,33,88,11,Medium,9.0
+TMP_208,Commercial Office Complex,Standard,4970,17,128,18,Medium,8.4
+TMP_209,Shopping Mall,Standard,3960,21,106,18,Medium,9.1
+TMP_210,Smart City Infrastructure,Luxury,5600,30,236,43,Medium,8.7
+TMP_211,School,Luxury,3970,21,81,4,Low,7.5
+TMP_212,Bridge,Premium,6140,33,383,45,High,11.1
+TMP_213,Bridge,Luxury,8290,36,217,33,High,11.2
+TMP_214,Airport Terminal,Premium,7740,44,259,50,High,11.8
+TMP_215,Airport Terminal,Premium,6190,50,162,32,High,10.8
+TMP_216,Smart City Infrastructure,Premium,6000,24,198,32,High,10.1
+TMP_217,Residential,Luxury,2750,29,108,8,Medium,5.3
+TMP_218,Industrial Warehouse,Premium,2080,19,104,6,Low,7.6
+TMP_219,Smart City Infrastructure,Luxury,7080,32,139,31,Medium,10.2
+TMP_220,Residential,Luxury,3330,25,42,5,Medium,7.6
+TMP_221,Hospital,Standard,3690,30,152,12,Medium,7.3
+TMP_222,Metro Rail Station,Standard,6760,41,346,33,High,10.6
+TMP_223,Metro Rail Station,Luxury,7480,40,285,52,High,14.8
+TMP_224,Hospital,Luxury,5180,30,165,21,Medium,8.3
+TMP_225,Metro Rail Station,Standard,5710,31,166,46,High,10.1
+TMP_226,Airport Terminal,Standard,6400,31,151,29,High,13.5
+TMP_227,Residential,Standard,1940,12,82,5,Low,5.8
+TMP_228,Metro Rail Station,Standard,6300,28,335,55,High,11.2
+TMP_229,Metro Rail Station,Premium,6430,30,174,52,High,11.8
+TMP_230,Metro Rail Station,Luxury,7170,51,317,31,High,10.3
+TMP_231,Commercial Office Complex,Standard,3590,19,148,24,Medium,7.4
+TMP_232,Industrial Warehouse,Premium,3160,19,49,11,Low,5.2

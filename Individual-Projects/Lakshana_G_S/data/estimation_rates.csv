@@ -1,0 +1,34 @@
+Project_Type,Material_Quality,Cost_Per_Sqft,Labour_Percentage,Equipment_Percentage,Duration_Per_1000_Sqft_Months
+Airport Terminal,Standard,5230,23.3,27.4,4.0
+Airport Terminal,Premium,6300,28.0,25.0,6.5
+Airport Terminal,Luxury,7660,20.5,20.9,10.0
+Bridge,Standard,5800,29.0,24.0,4.5
+Bridge,Premium,7200,35.0,21.4,6.4
+Bridge,Luxury,8100,26.0,29.0,10.3
+Commercial Office Complex,Standard,3627,25.2,13.2,4.3
+Commercial Office Complex,Premium,4700,29.5,16.5,5.8
+Commercial Office Complex,Luxury,5912,31.4,19.2,7.3
+Highway Expansion,Standard,4307,23.4,29.1,5.2
+Highway Expansion,Premium,5344,28.1,23.0,6.8
+Highway Expansion,Luxury,6745,30.7,27.0,9.8
+Hospital,Standard,4020,33.0,19.1,4.0
+Hospital,Premium,5299,34.6,20.3,7.1
+Hospital,Luxury,6450,30.5,21.5,9.0
+Industrial Warehouse,Standard,2318,28.7,25.4,6.4
+Industrial Warehouse,Premium,3453,29.6,25.6,9.0
+Industrial Warehouse,Luxury,4339,23.2,27.6,8.4
+Metro Rail Station,Standard,5719,24.2,26.4,3.4
+Metro Rail Station,Premium,6950,30.5,24.5,7.5
+Metro Rail Station,Luxury,8219,28.7,27.0,11.3
+Residential,Standard,2377,24.0,19.4,6.4
+Residential,Premium,3350,28.0,17.5,7.0
+Residential,Luxury,4514,33.8,10.9,7.6
+School,Standard,2792,32.1,12.9,6.4
+School,Premium,3500,29.5,14.0,7.3
+School,Luxury,4200,29.7,10.7,10.3
+Shopping Mall,Standard,4335,21.4,19.0,3.1
+Shopping Mall,Premium,5200,24.5,18.5,6.2
+Shopping Mall,Luxury,6014,26.0,18.1,10.6
+Smart City Infrastructure,Standard,2833,28.0,10.7,6.2
+Smart City Infrastructure,Premium,3921,23.4,14.1,5.5
+Smart City Infrastructure,Luxury,4506,20.6,14.4,9.1

@@ -1,0 +1,43 @@
+Equipment_ID,Equipment_Name,Category,Rental_Cost_Per_Day_INR,Fuel_Cost_Per_Day_INR,Operator_Required,Maintenance_Cost_Per_Day_INR,Availability
+EQP_901,Mobile Crane,Lifting Equipment,12300,6100,Yes,1600,Low
+EQP_902,Mobile Crane (Model B),Lifting Equipment,20800,14800,Yes,1300,Medium
+EQP_903,Bulldozer,Heavy Machinery,7200,3400,Yes,1100,High
+EQP_904,Vibratory Roller,Compaction Equipment,5100,3200,Yes,700,High
+EQP_905,Scissor Lift,Access Equipment,3700,2500,No,200,High
+EQP_906,Generator (125 kVA),Power Systems,4200,1900,No,700,Medium
+EQP_907,Mobile Crane (Model C),Lifting Equipment,13200,5700,Yes,2600,Low
+EQP_908,Forklift,Material Handling,4100,2700,Yes,400,Medium
+EQP_909,Tower Crane,Lifting Equipment,23300,16100,Yes,2700,Medium
+EQP_910,Road Roller,Compaction Equipment,5300,2200,Yes,500,Medium
+EQP_911,Tower Crane (Model B),Lifting Equipment,27800,19600,Yes,2300,Medium
+EQP_912,Compactor,Compaction Equipment,1700,900,No,300,Low
+EQP_913,Tower Crane (Model C),Lifting Equipment,24100,11100,Yes,3000,High
+EQP_914,Scissor Lift (Model B),Access Equipment,3300,2500,No,400,Low
+EQP_915,Backhoe Loader,Heavy Machinery,8700,6000,Yes,1000,High
+EQP_916,Bulldozer (Model B),Heavy Machinery,11800,6400,Yes,700,Low
+EQP_917,Boom Lift,Access Equipment,6400,3700,Yes,1200,Low
+EQP_918,Scissor Lift (Model C),Access Equipment,2800,1300,No,400,Low
+EQP_919,Forklift (Model B),Material Handling,4000,2200,Yes,500,Medium
+EQP_920,Backhoe Loader (Model B),Heavy Machinery,10000,4500,Yes,800,High
+EQP_921,Mobile Crane (Model D),Lifting Equipment,14000,6400,Yes,2300,Low
+EQP_922,Tower Crane (Model D),Lifting Equipment,20800,12700,Yes,2400,Medium
+EQP_923,Vibratory Roller (Model B),Compaction Equipment,7100,2900,Yes,800,Low
+EQP_924,Vibratory Roller (Model C),Compaction Equipment,6800,4500,Yes,600,Medium
+EQP_925,Generator (125 kVA) (Model B),Power Systems,3600,1400,No,600,Low
+EQP_926,Forklift (Model C),Material Handling,4400,2900,Yes,400,High
+EQP_927,Dump Truck,Transport,7400,4300,Yes,500,Medium
+EQP_928,Transit Mixer,Transport & Mixing,7200,4800,Yes,900,High
+EQP_929,Boom Lift (Model B),Access Equipment,7500,3300,Yes,900,Medium
+EQP_930,Backhoe Loader (Model C),Heavy Machinery,6200,4400,Yes,1100,High
+EQP_931,Paver Machine,Paving Equipment,20500,15200,Yes,1900,High
+EQP_932,Concrete Mixer,Mixing Equipment,2100,1500,No,200,Low
+EQP_933,Generator (125 kVA) (Model C),Power Systems,6400,4600,No,600,Low
+EQP_934,Road Roller (Model B),Compaction Equipment,5300,2900,Yes,700,Medium
+EQP_935,Scissor Lift (Model D),Access Equipment,4300,2400,No,300,High
+EQP_936,Boom Lift (Model C),Access Equipment,5600,3300,Yes,1000,High
+EQP_937,Tower Crane (Model E),Lifting Equipment,25600,10800,Yes,1600,High
+EQP_938,Boom Lift (Model D),Access Equipment,5800,2800,Yes,1100,High
+EQP_939,Vibratory Roller (Model D),Compaction Equipment,4900,3600,Yes,700,Medium
+EQP_940,Backhoe Loader (Model D),Heavy Machinery,9100,6200,Yes,700,High
+EQP_941,Generator (125 kVA) (Model D),Power Systems,4200,2300,No,700,High
+EQP_942,Mobile Crane (Model E),Lifting Equipment,12800,8400,Yes,2500,High

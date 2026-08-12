@@ -1,0 +1,103 @@
+Risk_ID,Project_ID,Risk_Type,Probability,Impact,Risk_Level,Recommended_Action,Status
+RSK_1000,PRJ_112,Supply Chain,High,Critical,High,Diversify material vendors,Mitigated
+RSK_1001,PRJ_111,Environmental,Medium,High,Medium,Implement weather tracking protocols,Active
+RSK_1002,PRJ_104,Technical Labor,Low,Medium,Medium,Initiate specialized training programs,Mitigated
+RSK_1003,PRJ_101,Environmental,Medium,Medium,Medium,Implement weather tracking protocols,Monitored
+RSK_1004,PRJ_109,Technical Labor,High,High,High,Initiate specialized training programs,Mitigated
+RSK_1005,PRJ_105,Environmental,Low,Medium,Medium,Implement weather tracking protocols,Active
+RSK_1006,PRJ_112,Financial,Low,High,Medium,Maintain a cash buffer,Active
+RSK_1007,PRJ_102,Regulatory,Low,Medium,Medium,Expedite legal approvals,Active
+RSK_1008,PRJ_112,Regulatory,Low,High,Medium,Expedite legal approvals,Monitored
+RSK_1009,PRJ_104,Technical Labor,Low,Critical,High,Initiate specialized training programs,Active
+RSK_1010,PRJ_108,Technical Labor,High,High,High,Initiate specialized training programs,Monitored
+RSK_1011,PRJ_110,Environmental,Medium,High,Medium,Implement weather tracking protocols,Mitigated
+RSK_1012,PRJ_104,Financial,Medium,Medium,Medium,Maintain a cash buffer,Monitored
+RSK_1013,PRJ_108,Supply Chain,Low,Critical,High,Diversify material vendors,Active
+RSK_1014,PRJ_102,Technical Labor,High,Medium,High,Initiate specialized training programs,Monitored
+RSK_1015,PRJ_113,Environmental,Low,High,Medium,Implement weather tracking protocols,Active
+RSK_1016,PRJ_106,Financial,Medium,High,Medium,Maintain a cash buffer,Active
+RSK_1017,PRJ_107,Environmental,High,Critical,High,Implement weather tracking protocols,Active
+RSK_1018,PRJ_102,Financial,Medium,High,Medium,Maintain a cash buffer,Mitigated
+RSK_1019,PRJ_114,Financial,Medium,Critical,High,Maintain a cash buffer,Mitigated
+RSK_1020,PRJ_112,Regulatory,Low,High,Medium,Expedite legal approvals,Mitigated
+RSK_1021,PRJ_105,Regulatory,Low,Critical,High,Expedite legal approvals,Active
+RSK_1022,PRJ_112,Environmental,High,High,High,Implement weather tracking protocols,Monitored
+RSK_1023,PRJ_110,Supply Chain,High,Critical,High,Diversify material vendors,Mitigated
+RSK_1024,PRJ_107,Regulatory,Low,Critical,High,Expedite legal approvals,Mitigated
+RSK_1025,PRJ_100,Environmental,High,Critical,High,Implement weather tracking protocols,Monitored
+RSK_1026,PRJ_113,Financial,Medium,Medium,Medium,Maintain a cash buffer,Mitigated
+RSK_1027,PRJ_101,Technical Labor,Low,Critical,High,Initiate specialized training programs,Active
+RSK_1028,PRJ_100,Technical Labor,Medium,Critical,High,Initiate specialized training programs,Mitigated
+RSK_1029,PRJ_105,Supply Chain,High,Medium,High,Diversify material vendors,Active
+RSK_1030,PRJ_108,Environmental,Medium,Critical,High,Implement weather tracking protocols,Mitigated
+RSK_1031,PRJ_104,Supply Chain,High,Medium,High,Diversify material vendors,Mitigated
+RSK_1032,PRJ_100,Technical Labor,Low,Critical,High,Initiate specialized training programs,Mitigated
+RSK_1033,PRJ_103,Technical Labor,Medium,Critical,High,Initiate specialized training programs,Active
+RSK_1034,PRJ_104,Supply Chain,Low,Medium,Medium,Diversify material vendors,Monitored
+RSK_1035,PRJ_103,Supply Chain,High,Medium,High,Diversify material vendors,Monitored
+RSK_1036,PRJ_114,Environmental,Low,Medium,Medium,Implement weather tracking protocols,Mitigated
+RSK_1037,PRJ_102,Financial,Medium,Critical,High,Maintain a cash buffer,Mitigated
+RSK_1038,PRJ_101,Regulatory,High,High,High,Expedite legal approvals,Active
+RSK_1039,PRJ_106,Supply Chain,Low,Critical,High,Diversify material vendors,Monitored
+RSK_1040,PRJ_110,Regulatory,Low,Medium,Medium,Expedite legal approvals,Active
+RSK_1041,PRJ_105,Supply Chain,Low,Critical,High,Diversify material vendors,Monitored
+RSK_1042,PRJ_101,Regulatory,Low,High,Medium,Expedite legal approvals,Mitigated
+RSK_1043,PRJ_113,Regulatory,High,Medium,High,Expedite legal approvals,Active
+RSK_1044,PRJ_110,Regulatory,Medium,High,Medium,Expedite legal approvals,Mitigated
+RSK_1045,PRJ_102,Technical Labor,Medium,Medium,Medium,Initiate specialized training programs,Active
+RSK_1046,PRJ_102,Environmental,Medium,Medium,Medium,Implement weather tracking protocols,Active
+RSK_1047,PRJ_100,Financial,Medium,High,Medium,Maintain a cash buffer,Active
+RSK_1048,PRJ_107,Regulatory,High,Medium,High,Expedite legal approvals,Active
+RSK_1049,PRJ_109,Technical Labor,High,Critical,High,Initiate specialized training programs,Mitigated
+RSK_1050,PRJ_106,Financial,Medium,Critical,High,Maintain a cash buffer,Monitored
+RSK_1051,PRJ_101,Environmental,Low,Medium,Medium,Implement weather tracking protocols,Active
+RSK_1052,PRJ_109,Regulatory,High,Critical,High,Expedite legal approvals,Mitigated
+RSK_1053,PRJ_108,Supply Chain,Medium,Medium,Medium,Diversify material vendors,Mitigated
+RSK_1054,PRJ_105,Supply Chain,Low,Critical,High,Diversify material vendors,Active
+RSK_1055,PRJ_112,Regulatory,Low,Medium,Medium,Expedite legal approvals,Monitored
+RSK_1056,PRJ_111,Supply Chain,High,Critical,High,Diversify material vendors,Monitored
+RSK_1057,PRJ_101,Technical Labor,Medium,High,Medium,Initiate specialized training programs,Monitored
+RSK_1058,PRJ_109,Regulatory,Medium,Critical,High,Expedite legal approvals,Mitigated
+RSK_1059,PRJ_113,Regulatory,High,Medium,High,Expedite legal approvals,Active
+RSK_1060,PRJ_101,Technical Labor,High,Critical,High,Initiate specialized training programs,Monitored
+RSK_1061,PRJ_112,Regulatory,Medium,Medium,Medium,Expedite legal approvals,Monitored
+RSK_1062,PRJ_110,Financial,High,High,High,Maintain a cash buffer,Mitigated
+RSK_1063,PRJ_114,Technical Labor,Low,High,Medium,Initiate specialized training programs,Mitigated
+RSK_1064,PRJ_110,Supply Chain,Medium,Critical,High,Diversify material vendors,Active
+RSK_1065,PRJ_106,Technical Labor,Low,Medium,Medium,Initiate specialized training programs,Mitigated
+RSK_1066,PRJ_103,Environmental,Medium,Critical,High,Implement weather tracking protocols,Monitored
+RSK_1067,PRJ_104,Regulatory,Low,Medium,Medium,Expedite legal approvals,Mitigated
+RSK_1068,PRJ_109,Financial,Low,Critical,High,Maintain a cash buffer,Active
+RSK_1069,PRJ_113,Supply Chain,Medium,High,Medium,Diversify material vendors,Active
+RSK_1070,PRJ_114,Technical Labor,High,High,High,Initiate specialized training programs,Monitored
+RSK_1071,PRJ_108,Environmental,High,Medium,High,Implement weather tracking protocols,Mitigated
+RSK_1072,PRJ_103,Regulatory,Low,Critical,High,Expedite legal approvals,Active
+RSK_1073,PRJ_110,Environmental,Low,Medium,Medium,Implement weather tracking protocols,Active
+RSK_1074,PRJ_106,Regulatory,Low,High,Medium,Expedite legal approvals,Monitored
+RSK_1075,PRJ_102,Regulatory,High,High,High,Expedite legal approvals,Monitored
+RSK_1076,PRJ_106,Environmental,Medium,High,Medium,Implement weather tracking protocols,Active
+RSK_1077,PRJ_113,Supply Chain,High,High,High,Diversify material vendors,Mitigated
+RSK_1078,PRJ_110,Financial,High,Critical,High,Maintain a cash buffer,Active
+RSK_1079,PRJ_110,Regulatory,High,High,High,Expedite legal approvals,Mitigated
+RSK_1080,PRJ_110,Regulatory,Medium,Critical,High,Expedite legal approvals,Monitored
+RSK_1081,PRJ_114,Regulatory,Low,High,Medium,Expedite legal approvals,Active
+RSK_1082,PRJ_108,Regulatory,Low,Medium,Medium,Expedite legal approvals,Active
+RSK_1083,PRJ_105,Supply Chain,High,Medium,High,Diversify material vendors,Monitored
+RSK_1084,PRJ_100,Technical Labor,Medium,Critical,High,Initiate specialized training programs,Mitigated
+RSK_1085,PRJ_111,Technical Labor,Medium,Medium,Medium,Initiate specialized training programs,Monitored
+RSK_1086,PRJ_109,Environmental,High,High,High,Implement weather tracking protocols,Monitored
+RSK_1087,PRJ_107,Environmental,High,Critical,High,Implement weather tracking protocols,Active
+RSK_1088,PRJ_111,Financial,High,Critical,High,Maintain a cash buffer,Monitored
+RSK_1089,PRJ_108,Environmental,Medium,Critical,High,Implement weather tracking protocols,Mitigated
+RSK_1090,PRJ_108,Technical Labor,High,High,High,Initiate specialized training programs,Active
+RSK_1091,PRJ_110,Financial,Low,Critical,High,Maintain a cash buffer,Monitored
+RSK_1092,PRJ_112,Technical Labor,Medium,Critical,High,Initiate specialized training programs,Mitigated
+RSK_1093,PRJ_114,Environmental,Low,High,Medium,Implement weather tracking protocols,Active
+RSK_1094,PRJ_107,Technical Labor,Medium,Critical,High,Initiate specialized training programs,Monitored
+RSK_1095,PRJ_105,Regulatory,Medium,Medium,Medium,Expedite legal approvals,Active
+RSK_1096,PRJ_102,Financial,Low,Critical,High,Maintain a cash buffer,Monitored
+RSK_1097,PRJ_104,Technical Labor,Medium,High,Medium,Initiate specialized training programs,Monitored
+RSK_1098,PRJ_107,Technical Labor,High,Critical,High,Initiate specialized training programs,Mitigated
+RSK_1099,PRJ_110,Environmental,Low,Critical,High,Implement weather tracking protocols,Mitigated
+RSK_1100,PRJ_104,Regulatory,High,High,High,Expedite legal approvals,Monitored
+RSK_1101,PRJ_101,Environmental,Medium,High,Medium,Implement weather tracking protocols,Monitored

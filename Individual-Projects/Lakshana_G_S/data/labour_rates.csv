@@ -1,0 +1,43 @@
+Labour_ID,Labour_Type,Skill_Level,Daily_Wage_INR,Productivity_Per_Day,Availability,Overtime_Rate_INR
+LAB_701,Plumber,Beginner,688,5 meters pipes installed,High,111
+LAB_702,Plumber,Expert,1217,23 meters pipes installed,High,213
+LAB_703,Carpenter,Beginner,611,5 sqft woodwork,Low,107
+LAB_704,Concrete Worker,Beginner,685,8 cuM poured,Medium,112
+LAB_705,Site Supervisor,Beginner,1295,5 hours,Low,219
+LAB_706,Steel Fixer,Intermediate,780,12 kg steel bound,High,131
+LAB_707,Machine Operator,Expert,1103,8 hours,Low,188
+LAB_708,Plumber,Intermediate,775,11 meters pipes installed,Low,136
+LAB_709,Steel Fixer,Expert,1056,25 kg steel bound,High,191
+LAB_710,Electrician,Beginner,703,7 points wired,Medium,120
+LAB_711,Machine Operator,Beginner,644,5 hours,Low,106
+LAB_712,Electrician,Expert,1192,23 points wired,Low,195
+LAB_713,Helper,Intermediate,600,8 hours,Low,104
+LAB_714,Civil Engineer,Beginner,1960,4 hours,Medium,331
+LAB_715,Tile Worker,Intermediate,936,14 sqft tiles laid,Medium,150
+LAB_716,Painter,Beginner,689,8 sqft painted,Medium,124
+LAB_717,Surveyor,Expert,2129,18 points surveyed,High,367
+LAB_718,Welder,Expert,1141,16 joints welded,Medium,192
+LAB_719,Helper,Expert,756,8 hours,High,134
+LAB_720,Concrete Worker,Intermediate,913,11 cuM poured,High,151
+LAB_721,Welder,Intermediate,760,14 joints welded,Low,125
+LAB_722,Scaffolding Worker,Beginner,660,4 sqft erected,Low,109
+LAB_723,Scaffolding Worker,Expert,1087,20 sqft erected,High,188
+LAB_724,Civil Engineer,Intermediate,2387,8 hours,Medium,391
+LAB_725,Bar Bender,Expert,1267,16 kg bars bent,Low,217
+LAB_726,Tile Worker,Expert,1079,23 sqft tiles laid,Low,183
+LAB_727,Project Engineer,Intermediate,2996,8 hours,Medium,509
+LAB_728,Scaffolding Worker,Intermediate,784,10 sqft erected,High,131
+LAB_729,Bar Bender,Beginner,608,4 kg bars bent,High,96
+LAB_730,Carpenter,Intermediate,774,10 sqft woodwork,Medium,137
+LAB_731,Steel Fixer,Expert,1071,24 kg steel bound,Low,183
+LAB_732,Tile Worker,Intermediate,798,9 sqft tiles laid,Low,135
+LAB_733,Surveyor,Intermediate,1600,14 points surveyed,High,284
+LAB_734,Plumber,Beginner,648,6 meters pipes installed,High,106
+LAB_735,Steel Fixer,Expert,1147,21 kg steel bound,High,189
+LAB_736,Bar Bender,Beginner,653,8 kg bars bent,High,103
+LAB_737,Concrete Worker,Beginner,716,5 cuM poured,High,121
+LAB_738,Tile Worker,Beginner,703,4 sqft tiles laid,High,118
+LAB_739,Excavator Operator,Intermediate,1772,12 cuM excavated,Medium,300
+LAB_740,Concrete Worker,Expert,1212,17 cuM poured,High,201
+LAB_741,Carpenter,Expert,1216,15 sqft woodwork,Low,202
+LAB_742,Carpenter,Expert,1154,23 sqft woodwork,High,182

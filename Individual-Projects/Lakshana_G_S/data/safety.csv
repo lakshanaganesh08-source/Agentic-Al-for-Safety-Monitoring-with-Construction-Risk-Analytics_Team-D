@@ -1,0 +1,116 @@
+Safety_ID,Project_ID,Inspection_Date,Inspector,Helmet_Compliance,PPE_Compliance,Scaffolding_Status,Fire_Safety,Electrical_Safety,Overall_Safety_Score,Remarks
+SAF_900,PRJ_105,2025-05-06,Amit Patel G,Yes,Yes,Safe,Action Required,Minor Violation,81,Excellent safety culture
+SAF_901,PRJ_104,2025-09-19,Aditya Deshmukh N,Partial,Yes,Needs Attention,Action Required,Safe,96,All standards met
+SAF_902,PRJ_111,2025-06-19,Ramesh Verma O,Partial,Partial,Safe,Compliant,Safe,95,Minor PPE non-compliance noticed
+SAF_903,PRJ_107,2025-02-05,Aditya Deshmukh N,Yes,Partial,Safe,Action Required,Minor Violation,95,Excellent safety culture
+SAF_904,PRJ_104,2025-06-09,Mehaavarshini J M,Partial,Yes,Safe,Compliant,Safe,71,Minor PPE non-compliance noticed
+SAF_905,PRJ_113,2025-06-11,Amit Patel G,Partial,Yes,Safe,Action Required,Minor Violation,78,Scaffolding needs reinforcement
+SAF_906,PRJ_105,2025-11-14,Mehaavarshini J M,Yes,Partial,Safe,Compliant,Safe,81,Electrical hazards addressed immediately
+SAF_907,PRJ_103,2025-11-23,Krishna Murthy S,Partial,Yes,Needs Attention,Compliant,Minor Violation,81,Scaffolding needs reinforcement
+SAF_908,PRJ_110,2025-10-20,Amit Patel G,Partial,Partial,Safe,Compliant,Minor Violation,84,Minor PPE non-compliance noticed
+SAF_909,PRJ_113,2025-04-27,Karthik Raja A,Yes,Partial,Needs Attention,Action Required,Minor Violation,97,All standards met
+SAF_910,PRJ_101,2025-04-24,Vijay Joshi C,Yes,Partial,Safe,Action Required,Minor Violation,92,Scaffolding needs reinforcement
+SAF_911,PRJ_109,2025-08-22,Gaurav Joshi Y,Yes,Partial,Needs Attention,Action Required,Minor Violation,83,Minor PPE non-compliance noticed
+SAF_912,PRJ_102,2025-02-12,Suresh Kumar V,Partial,Yes,Needs Attention,Compliant,Safe,76,Minor PPE non-compliance noticed
+SAF_913,PRJ_106,2025-03-25,Amit Patel J,Yes,Partial,Needs Attention,Compliant,Safe,94,Excellent safety culture
+SAF_914,PRJ_108,2025-03-15,Amit Patel J,Yes,Yes,Safe,Compliant,Minor Violation,79,Minor PPE non-compliance noticed
+SAF_915,PRJ_103,2025-06-26,Gaurav Joshi P,Partial,Yes,Safe,Action Required,Safe,70,All standards met
+SAF_916,PRJ_110,2025-08-02,Vijay Joshi C,Yes,Partial,Needs Attention,Compliant,Minor Violation,74,Electrical hazards addressed immediately
+SAF_917,PRJ_102,2025-11-30,Amit Patel S,Yes,Yes,Needs Attention,Action Required,Minor Violation,86,Electrical hazards addressed immediately
+SAF_918,PRJ_104,2025-07-28,Amit Patel G,Partial,Yes,Safe,Compliant,Minor Violation,81,Excellent safety culture
+SAF_919,PRJ_104,2025-04-21,Pranav Reddy V,Yes,Yes,Needs Attention,Compliant,Minor Violation,79,Excellent safety culture
+SAF_920,PRJ_108,2025-02-05,Amit Patel G,Yes,Partial,Safe,Compliant,Minor Violation,89,Minor PPE non-compliance noticed
+SAF_921,PRJ_112,2025-02-04,Mehaavarshini J M,Yes,Yes,Safe,Action Required,Minor Violation,82,Minor PPE non-compliance noticed
+SAF_922,PRJ_102,2025-08-19,Gaurav Joshi O,Yes,Partial,Safe,Compliant,Safe,86,Electrical hazards addressed immediately
+SAF_923,PRJ_112,2025-06-20,Pranav Reddy V,Partial,Yes,Needs Attention,Compliant,Minor Violation,76,All standards met
+SAF_924,PRJ_102,2025-04-11,Pranav Reddy V,Yes,Yes,Safe,Action Required,Minor Violation,78,Electrical hazards addressed immediately
+SAF_925,PRJ_107,2025-05-08,Vijay Joshi C,Yes,Yes,Safe,Action Required,Safe,75,All standards met
+SAF_926,PRJ_104,2025-06-18,Suresh Kumar V,Partial,Partial,Needs Attention,Compliant,Safe,72,Minor PPE non-compliance noticed
+SAF_927,PRJ_100,2025-10-11,Rajesh Sharma L,Yes,Partial,Safe,Compliant,Minor Violation,84,All standards met
+SAF_928,PRJ_105,2025-03-14,Suresh Kumar V,Yes,Partial,Safe,Compliant,Minor Violation,75,Minor PPE non-compliance noticed
+SAF_929,PRJ_114,2025-06-09,Gaurav Joshi O,Yes,Yes,Needs Attention,Compliant,Minor Violation,94,Excellent safety culture
+SAF_930,PRJ_103,2025-02-18,Rajesh Sharma L,Yes,Yes,Safe,Action Required,Safe,85,Excellent safety culture
+SAF_931,PRJ_110,2025-07-10,Vijay Joshi C,Yes,Yes,Needs Attention,Compliant,Safe,78,Excellent safety culture
+SAF_932,PRJ_110,2025-07-03,Rajesh Sharma L,Yes,Yes,Needs Attention,Compliant,Safe,77,Excellent safety culture
+SAF_933,PRJ_105,2025-02-08,Aditya Deshmukh N,Yes,Yes,Safe,Compliant,Safe,70,All standards met
+SAF_934,PRJ_109,2025-10-02,Amit Patel S,Yes,Partial,Safe,Compliant,Safe,85,All standards met
+SAF_935,PRJ_110,2025-12-14,Vijay Joshi C,Partial,Yes,Safe,Compliant,Safe,92,Electrical hazards addressed immediately
+SAF_936,PRJ_112,2025-03-27,Suresh Kumar V,Yes,Yes,Safe,Action Required,Minor Violation,95,Excellent safety culture
+SAF_937,PRJ_111,2025-05-10,Vimal E A Q,Partial,Partial,Safe,Action Required,Safe,78,All standards met
+SAF_938,PRJ_107,2025-09-13,Mehaavarshini J M,Yes,Yes,Needs Attention,Compliant,Safe,88,Minor PPE non-compliance noticed
+SAF_939,PRJ_108,2025-07-29,Vijay Joshi C,Partial,Partial,Safe,Action Required,Safe,72,Electrical hazards addressed immediately
+SAF_940,PRJ_102,2025-09-19,Pranav Reddy V,Yes,Yes,Safe,Compliant,Safe,94,Electrical hazards addressed immediately
+SAF_941,PRJ_106,2025-05-06,Vimal E A Q,Partial,Partial,Needs Attention,Compliant,Minor Violation,93,All standards met
+SAF_942,PRJ_110,2025-11-03,Gaurav Joshi O,Yes,Yes,Needs Attention,Compliant,Safe,89,Scaffolding needs reinforcement
+SAF_943,PRJ_105,2025-08-29,Karthik Raja A,Yes,Yes,Safe,Action Required,Safe,71,Minor PPE non-compliance noticed
+SAF_944,PRJ_102,2025-02-17,Rajesh Sharma L,Yes,Partial,Safe,Compliant,Safe,88,Excellent safety culture
+SAF_945,PRJ_110,2025-10-09,Lakshana G S L,Partial,Yes,Needs Attention,Compliant,Safe,81,Minor PPE non-compliance noticed
+SAF_946,PRJ_109,2025-03-09,Vimal E A Q,Yes,Yes,Safe,Compliant,Minor Violation,95,All standards met
+SAF_947,PRJ_105,2025-11-13,Siddharth Rao O,Yes,Yes,Safe,Action Required,Minor Violation,86,All standards met
+SAF_948,PRJ_111,2025-03-09,Pranav Reddy V,Yes,Yes,Needs Attention,Compliant,Safe,93,Minor PPE non-compliance noticed
+SAF_949,PRJ_108,2025-08-17,Rajesh Sharma L,Yes,Yes,Needs Attention,Compliant,Safe,87,Electrical hazards addressed immediately
+SAF_950,PRJ_106,2025-03-27,Karthik Raja A,Partial,Partial,Needs Attention,Compliant,Minor Violation,98,All standards met
+SAF_951,PRJ_102,2025-05-04,Mehaavarshini J M,Yes,Yes,Safe,Action Required,Safe,87,Electrical hazards addressed immediately
+SAF_952,PRJ_107,2025-07-31,Vijay Joshi C,Partial,Partial,Safe,Compliant,Minor Violation,96,Scaffolding needs reinforcement
+SAF_953,PRJ_109,2025-06-04,Krishna Murthy S,Partial,Yes,Safe,Action Required,Minor Violation,81,Excellent safety culture
+SAF_954,PRJ_107,2025-08-23,Vimal E A Q,Partial,Yes,Safe,Action Required,Safe,86,Minor PPE non-compliance noticed
+SAF_955,PRJ_114,2025-07-05,Vimal E A Q,Yes,Yes,Safe,Compliant,Safe,94,Scaffolding needs reinforcement
+SAF_956,PRJ_114,2025-11-11,Lakshana G S L,Partial,Yes,Needs Attention,Compliant,Safe,71,Excellent safety culture
+SAF_957,PRJ_105,2025-04-21,Suresh Kumar V,Yes,Partial,Needs Attention,Compliant,Safe,78,Scaffolding needs reinforcement
+SAF_958,PRJ_101,2025-11-20,Gaurav Joshi O,Partial,Yes,Needs Attention,Compliant,Minor Violation,95,Excellent safety culture
+SAF_959,PRJ_102,2025-10-08,Krishna Murthy S,Yes,Yes,Needs Attention,Compliant,Safe,93,Electrical hazards addressed immediately
+SAF_960,PRJ_106,2025-03-13,Suresh Kumar H,Yes,Partial,Safe,Compliant,Safe,97,Minor PPE non-compliance noticed
+SAF_961,PRJ_111,2025-12-06,Vimal E A Q,Partial,Yes,Safe,Compliant,Minor Violation,86,All standards met
+SAF_962,PRJ_105,2025-11-04,Krishna Murthy S,Yes,Partial,Needs Attention,Action Required,Safe,74,All standards met
+SAF_963,PRJ_110,2025-08-21,Gaurav Joshi P,Partial,Yes,Needs Attention,Compliant,Safe,83,Scaffolding needs reinforcement
+SAF_964,PRJ_112,2025-08-21,Suresh Kumar V,Yes,Partial,Safe,Compliant,Safe,87,Excellent safety culture
+SAF_965,PRJ_104,2025-03-16,Gaurav Joshi O,Partial,Partial,Needs Attention,Compliant,Safe,85,Electrical hazards addressed immediately
+SAF_966,PRJ_103,2025-10-08,Gaurav Joshi O,Partial,Yes,Safe,Action Required,Safe,77,All standards met
+SAF_967,PRJ_104,2025-09-09,Vijay Joshi C,Partial,Yes,Safe,Compliant,Minor Violation,83,Scaffolding needs reinforcement
+SAF_968,PRJ_105,2025-05-09,Vijay Joshi C,Yes,Yes,Needs Attention,Compliant,Minor Violation,75,Scaffolding needs reinforcement
+SAF_969,PRJ_109,2025-09-15,Amit Patel S,Yes,Partial,Safe,Compliant,Safe,91,Scaffolding needs reinforcement
+SAF_970,PRJ_102,2025-03-16,Amit Patel J,Partial,Yes,Safe,Action Required,Safe,97,Scaffolding needs reinforcement
+SAF_971,PRJ_100,2025-07-26,Amit Patel J,Yes,Partial,Safe,Compliant,Minor Violation,76,Electrical hazards addressed immediately
+SAF_972,PRJ_103,2025-05-16,Mehaavarshini J M,Partial,Partial,Needs Attention,Compliant,Safe,92,All standards met
+SAF_973,PRJ_106,2025-11-26,Lakshana G S L,Yes,Partial,Safe,Compliant,Minor Violation,76,Electrical hazards addressed immediately
+SAF_974,PRJ_104,2025-02-28,Gaurav Joshi P,Partial,Yes,Safe,Compliant,Minor Violation,91,Scaffolding needs reinforcement
+SAF_975,PRJ_113,2025-03-28,Vimal E A Q,Yes,Yes,Safe,Compliant,Minor Violation,86,All standards met
+SAF_976,PRJ_114,2025-07-12,Amit Patel G,Partial,Yes,Safe,Compliant,Safe,86,Excellent safety culture
+SAF_977,PRJ_108,2025-02-12,Suresh Kumar H,Yes,Yes,Safe,Compliant,Minor Violation,82,Minor PPE non-compliance noticed
+SAF_978,PRJ_100,2025-07-28,Rajesh Sharma C,Yes,Yes,Safe,Compliant,Minor Violation,95,All standards met
+SAF_979,PRJ_110,2025-06-12,Gaurav Joshi O,Yes,Yes,Safe,Compliant,Safe,80,Excellent safety culture
+SAF_980,PRJ_110,2025-04-12,Anil Mehta E,Partial,Partial,Needs Attention,Action Required,Safe,83,Minor PPE non-compliance noticed
+SAF_981,PRJ_109,2025-04-20,Siddharth Rao O,Yes,Yes,Safe,Compliant,Safe,76,Minor PPE non-compliance noticed
+SAF_982,PRJ_109,2025-11-05,Rajesh Sharma L,Yes,Partial,Needs Attention,Action Required,Safe,83,Minor PPE non-compliance noticed
+SAF_983,PRJ_110,2025-11-17,Aditya Deshmukh N,Yes,Yes,Needs Attention,Action Required,Safe,75,Scaffolding needs reinforcement
+SAF_984,PRJ_113,2025-04-16,Vimal E A Q,Yes,Partial,Safe,Compliant,Minor Violation,93,Scaffolding needs reinforcement
+SAF_985,PRJ_102,2025-05-08,Amit Patel J,Yes,Yes,Safe,Action Required,Minor Violation,89,Electrical hazards addressed immediately
+SAF_986,PRJ_109,2025-05-30,Amit Patel S,Yes,Yes,Needs Attention,Compliant,Minor Violation,72,Excellent safety culture
+SAF_987,PRJ_102,2025-10-16,Amit Patel S,Yes,Yes,Needs Attention,Compliant,Safe,97,Excellent safety culture
+SAF_988,PRJ_107,2025-10-01,Suresh Kumar V,Yes,Yes,Safe,Compliant,Minor Violation,94,All standards met
+SAF_989,PRJ_114,2025-06-19,Siddharth Rao O,Yes,Yes,Needs Attention,Compliant,Safe,72,Minor PPE non-compliance noticed
+SAF_990,PRJ_114,2025-09-13,Amit Patel S,Yes,Yes,Safe,Compliant,Safe,83,Excellent safety culture
+SAF_991,PRJ_112,2025-02-22,Amit Patel S,Partial,Partial,Needs Attention,Compliant,Minor Violation,89,Electrical hazards addressed immediately
+SAF_992,PRJ_109,2025-11-02,Lakshana G S L,Partial,Yes,Safe,Action Required,Safe,84,Excellent safety culture
+SAF_993,PRJ_113,2025-02-22,Ramesh Verma O,Partial,Yes,Safe,Action Required,Safe,87,Excellent safety culture
+SAF_994,PRJ_108,2025-02-26,Rajesh Sharma L,Yes,Partial,Safe,Compliant,Minor Violation,84,Minor PPE non-compliance noticed
+SAF_995,PRJ_106,2025-07-01,Amit Patel S,Yes,Yes,Needs Attention,Compliant,Minor Violation,96,Excellent safety culture
+SAF_996,PRJ_101,2025-10-15,Amit Patel J,Yes,Yes,Needs Attention,Action Required,Safe,82,Excellent safety culture
+SAF_997,PRJ_105,2025-09-19,Vimal E A Q,Yes,Partial,Needs Attention,Action Required,Safe,98,Excellent safety culture
+SAF_998,PRJ_101,2025-06-09,Vijay Joshi C,Partial,Yes,Needs Attention,Compliant,Safe,72,All standards met
+SAF_999,PRJ_111,2025-09-19,Karthik Raja A,Yes,Yes,Needs Attention,Action Required,Minor Violation,93,Electrical hazards addressed immediately
+SAF_1000,PRJ_109,2025-04-23,Gaurav Joshi O,Partial,Partial,Safe,Compliant,Minor Violation,88,Minor PPE non-compliance noticed
+SAF_1001,PRJ_102,2025-04-16,Aditya Deshmukh N,Partial,Yes,Safe,Compliant,Minor Violation,93,Excellent safety culture
+SAF_1002,PRJ_104,2025-12-18,Aditya Deshmukh N,Yes,Yes,Safe,Compliant,Minor Violation,70,Excellent safety culture
+SAF_1003,PRJ_107,2025-10-14,Mehaavarshini J M,Yes,Yes,Safe,Compliant,Safe,88,Excellent safety culture
+SAF_1004,PRJ_107,2025-08-29,Gaurav Joshi P,Yes,Yes,Needs Attention,Compliant,Safe,98,Electrical hazards addressed immediately
+SAF_1005,PRJ_104,2025-12-15,Karthik Raja A,Partial,Yes,Safe,Compliant,Safe,71,Scaffolding needs reinforcement
+SAF_1006,PRJ_100,2025-04-16,Suresh Kumar H,Partial,Yes,Needs Attention,Compliant,Minor Violation,72,All standards met
+SAF_1007,PRJ_101,2025-09-02,Aditya Deshmukh N,Yes,Yes,Safe,Action Required,Safe,84,Electrical hazards addressed immediately
+SAF_1008,PRJ_105,2025-02-19,Anil Mehta E,Yes,Partial,Safe,Compliant,Safe,94,Excellent safety culture
+SAF_1009,PRJ_113,2025-11-09,Anil Mehta E,Yes,Partial,Safe,Compliant,Minor Violation,80,Electrical hazards addressed immediately
+SAF_1010,PRJ_106,2025-10-27,Rajesh Sharma L,Partial,Yes,Needs Attention,Compliant,Safe,88,Electrical hazards addressed immediately
+SAF_1011,PRJ_101,2025-10-06,Amit Patel S,Partial,Partial,Safe,Action Required,Minor Violation,78,Electrical hazards addressed immediately
+SAF_1012,PRJ_109,2025-12-17,Rajesh Sharma C,Yes,Yes,Needs Attention,Compliant,Minor Violation,85,Minor PPE non-compliance noticed
+SAF_1013,PRJ_114,2025-12-10,Ramesh Verma O,Partial,Partial,Safe,Compliant,Safe,70,Excellent safety culture
+SAF_1014,PRJ_110,2025-04-02,Rajesh Sharma L,Partial,Partial,Safe,Compliant,Minor Violation,81,Electrical hazards addressed immediately

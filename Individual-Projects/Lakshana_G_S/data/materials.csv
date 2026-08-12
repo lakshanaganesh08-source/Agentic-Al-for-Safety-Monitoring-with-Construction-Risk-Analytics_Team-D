@@ -1,0 +1,111 @@
+Material_ID,Material_Name,Category,Unit,Current_Price,Vendor_ID,Available_Stock,Minimum_Stock,Project_ID
+MAT_400,Electrical Cables Standard Grade,Electrical,Meters,115.32,VND_202,1469,214,PRJ_102
+MAT_401,Steel Rebars Standard Grade,Structural,kg,65.89,VND_219,1582,374,PRJ_108
+MAT_402,Paint Standard Grade,Finishing,Liters,282.0,VND_219,934,321,PRJ_107
+MAT_403,Plumbing Pipes Standard Grade,Plumbing,Meters,218.57,VND_203,1903,456,PRJ_101
+MAT_404,Plumbing Pipes Standard Grade,Plumbing,Meters,222.21,VND_206,1204,270,PRJ_114
+MAT_405,Aggregate Standard Grade,Civil,tons,1821.73,VND_214,1115,254,PRJ_111
+MAT_406,Steel Rebars Standard Grade,Structural,kg,67.79,VND_210,922,390,PRJ_105
+MAT_407,Sand Standard Grade,Civil,tons,2632.56,VND_215,280,84,PRJ_113
+MAT_408,Steel Rebars Standard Grade,Structural,kg,65.55,VND_203,1954,431,PRJ_105
+MAT_409,Sand Standard Grade,Civil,tons,2583.64,VND_218,1497,337,PRJ_105
+MAT_410,Steel Rebars Standard Grade,Structural,kg,68.79,VND_213,2379,494,PRJ_111
+MAT_411,Cement Standard Grade,Structural,Bags,460.01,VND_219,939,209,PRJ_101
+MAT_412,Plumbing Pipes Standard Grade,Plumbing,Meters,206.2,VND_215,1909,164,PRJ_101
+MAT_413,Paint Standard Grade,Finishing,Liters,301.51,VND_211,1679,108,PRJ_104
+MAT_414,Aggregate Standard Grade,Civil,tons,1927.95,VND_217,2128,442,PRJ_109
+MAT_415,Plumbing Pipes Standard Grade,Plumbing,Meters,200.33,VND_208,443,64,PRJ_104
+MAT_416,Bricks Standard Grade,Civil,Pcs,8.71,VND_211,434,53,PRJ_113
+MAT_417,Sand Standard Grade,Civil,tons,2587.37,VND_212,385,85,PRJ_111
+MAT_418,Cement Standard Grade,Structural,Bags,404.78,VND_216,940,160,PRJ_106
+MAT_419,Electrical Cables Standard Grade,Electrical,Meters,120.14,VND_211,1696,209,PRJ_105
+MAT_420,Steel Rebars Standard Grade,Structural,kg,73.61,VND_204,1685,130,PRJ_109
+MAT_421,Cement Standard Grade,Structural,Bags,441.46,VND_208,1641,276,PRJ_106
+MAT_422,Electrical Cables Standard Grade,Electrical,Meters,124.93,VND_213,640,189,PRJ_112
+MAT_423,Plumbing Pipes Standard Grade,Plumbing,Meters,203.09,VND_213,696,106,PRJ_110
+MAT_424,Electrical Cables Standard Grade,Electrical,Meters,123.48,VND_209,534,73,PRJ_106
+MAT_425,Cement Standard Grade,Structural,Bags,399.48,VND_209,1739,158,PRJ_102
+MAT_426,Bricks Standard Grade,Civil,Pcs,7.95,VND_203,1081,53,PRJ_111
+MAT_427,Tiles Standard Grade,Finishing,sqft,53.7,VND_212,1773,322,PRJ_103
+MAT_428,Plumbing Pipes Standard Grade,Plumbing,Meters,217.1,VND_211,909,86,PRJ_113
+MAT_429,Cement Standard Grade,Structural,Bags,426.48,VND_214,1864,89,PRJ_105
+MAT_430,Tiles Standard Grade,Finishing,sqft,56.98,VND_213,443,198,PRJ_106
+MAT_431,Cement Standard Grade,Structural,Bags,459.87,VND_205,2410,460,PRJ_109
+MAT_432,Electrical Cables Standard Grade,Electrical,Meters,128.98,VND_211,999,95,PRJ_113
+MAT_433,Steel Rebars Standard Grade,Structural,kg,67.08,VND_218,1338,255,PRJ_101
+MAT_434,Tiles Standard Grade,Finishing,sqft,59.43,VND_210,855,163,PRJ_112
+MAT_435,Sand Standard Grade,Civil,tons,2403.64,VND_203,1375,321,PRJ_103
+MAT_436,Paint Standard Grade,Finishing,Liters,280.75,VND_204,390,170,PRJ_102
+MAT_437,Bricks Standard Grade,Civil,Pcs,7.84,VND_219,1694,128,PRJ_112
+MAT_438,Steel Rebars Standard Grade,Structural,kg,66.41,VND_215,1842,287,PRJ_109
+MAT_439,Electrical Cables Standard Grade,Electrical,Meters,126.26,VND_218,1690,379,PRJ_109
+MAT_440,Paint Standard Grade,Finishing,Liters,302.3,VND_210,1037,127,PRJ_101
+MAT_441,Electrical Cables Standard Grade,Electrical,Meters,121.96,VND_209,1029,457,PRJ_109
+MAT_442,Cement Standard Grade,Structural,Bags,421.17,VND_202,1163,208,PRJ_107
+MAT_443,Cement Standard Grade,Structural,Bags,402.58,VND_209,1419,89,PRJ_113
+MAT_444,Steel Rebars Standard Grade,Structural,kg,70.87,VND_216,1203,246,PRJ_109
+MAT_445,Plumbing Pipes Standard Grade,Plumbing,Meters,229.56,VND_201,2151,280,PRJ_112
+MAT_446,Aggregate Standard Grade,Civil,tons,1796.81,VND_215,624,306,PRJ_100
+MAT_447,Electrical Cables Standard Grade,Electrical,Meters,115.86,VND_210,597,415,PRJ_108
+MAT_448,Sand Standard Grade,Civil,tons,2389.68,VND_214,1357,274,PRJ_108
+MAT_449,Sand Standard Grade,Civil,tons,2511.46,VND_209,1095,248,PRJ_112
+MAT_450,Paint Standard Grade,Finishing,Liters,294.51,VND_201,1756,454,PRJ_110
+MAT_451,Paint Standard Grade,Finishing,Liters,268.77,VND_203,1734,335,PRJ_106
+MAT_452,Bricks Standard Grade,Civil,Pcs,7.9,VND_219,814,497,PRJ_105
+MAT_453,Steel Rebars Standard Grade,Structural,kg,70.54,VND_204,874,229,PRJ_110
+MAT_454,Tiles Standard Grade,Finishing,sqft,53.31,VND_202,1362,208,PRJ_106
+MAT_455,Paint Standard Grade,Finishing,Liters,300.15,VND_216,1430,97,PRJ_110
+MAT_456,Tiles Standard Grade,Finishing,sqft,56.45,VND_200,877,235,PRJ_102
+MAT_457,Aggregate Standard Grade,Civil,tons,1802.27,VND_215,621,148,PRJ_102
+MAT_458,Sand Standard Grade,Civil,tons,2403.94,VND_203,1897,309,PRJ_108
+MAT_459,Plumbing Pipes Standard Grade,Plumbing,Meters,200.69,VND_210,2077,498,PRJ_109
+MAT_460,Sand Standard Grade,Civil,tons,2598.97,VND_204,513,133,PRJ_113
+MAT_461,Sand Standard Grade,Civil,tons,2645.44,VND_201,1016,260,PRJ_110
+MAT_462,Aggregate Standard Grade,Civil,tons,1971.79,VND_219,1745,195,PRJ_111
+MAT_463,Electrical Cables Standard Grade,Electrical,Meters,118.21,VND_207,2195,208,PRJ_112
+MAT_464,Electrical Cables Standard Grade,Electrical,Meters,130.27,VND_206,1637,238,PRJ_109
+MAT_465,Electrical Cables Standard Grade,Electrical,Meters,122.31,VND_209,1240,448,PRJ_108
+MAT_466,Plumbing Pipes Standard Grade,Plumbing,Meters,212.69,VND_205,886,468,PRJ_112
+MAT_467,Sand Standard Grade,Civil,tons,2702.38,VND_201,1372,378,PRJ_113
+MAT_468,Paint Standard Grade,Finishing,Liters,289.29,VND_203,2156,414,PRJ_108
+MAT_469,Steel Rebars Standard Grade,Structural,kg,67.51,VND_205,1119,189,PRJ_114
+MAT_470,Plumbing Pipes Standard Grade,Plumbing,Meters,204.14,VND_213,2044,96,PRJ_114
+MAT_471,Aggregate Standard Grade,Civil,tons,1930.51,VND_211,922,63,PRJ_100
+MAT_472,Tiles Standard Grade,Finishing,sqft,56.39,VND_207,424,247,PRJ_105
+MAT_473,Aggregate Standard Grade,Civil,tons,1717.61,VND_203,1952,479,PRJ_110
+MAT_474,Paint Standard Grade,Finishing,Liters,299.24,VND_204,666,69,PRJ_114
+MAT_475,Electrical Cables Standard Grade,Electrical,Meters,126.53,VND_204,1892,438,PRJ_107
+MAT_476,Electrical Cables Standard Grade,Electrical,Meters,125.08,VND_202,593,59,PRJ_103
+MAT_477,Sand Standard Grade,Civil,tons,2580.8,VND_219,1196,320,PRJ_101
+MAT_478,Bricks Standard Grade,Civil,Pcs,7.89,VND_203,572,74,PRJ_106
+MAT_479,Electrical Cables Standard Grade,Electrical,Meters,115.13,VND_215,1462,355,PRJ_100
+MAT_480,Plumbing Pipes Standard Grade,Plumbing,Meters,217.61,VND_204,1088,199,PRJ_100
+MAT_481,Paint Standard Grade,Finishing,Liters,276.1,VND_213,1515,145,PRJ_110
+MAT_482,Steel Rebars Standard Grade,Structural,kg,69.94,VND_211,2046,84,PRJ_108
+MAT_483,Plumbing Pipes Standard Grade,Plumbing,Meters,215.48,VND_216,384,333,PRJ_106
+MAT_484,Electrical Cables Standard Grade,Electrical,Meters,114.78,VND_212,770,241,PRJ_111
+MAT_485,Cement Standard Grade,Structural,Bags,421.5,VND_202,729,226,PRJ_111
+MAT_486,Steel Rebars Standard Grade,Structural,kg,72.47,VND_210,218,118,PRJ_105
+MAT_487,Plumbing Pipes Standard Grade,Plumbing,Meters,210.16,VND_205,2080,475,PRJ_110
+MAT_488,Electrical Cables Standard Grade,Electrical,Meters,131.65,VND_215,756,373,PRJ_112
+MAT_489,Sand Standard Grade,Civil,tons,2398.66,VND_214,678,68,PRJ_103
+MAT_490,Cement Standard Grade,Structural,Bags,448.84,VND_201,2132,211,PRJ_104
+MAT_491,Plumbing Pipes Standard Grade,Plumbing,Meters,212.04,VND_217,820,292,PRJ_100
+MAT_492,Aggregate Standard Grade,Civil,tons,1787.25,VND_201,1845,493,PRJ_105
+MAT_493,Bricks Standard Grade,Civil,Pcs,7.75,VND_211,2104,273,PRJ_106
+MAT_494,Electrical Cables Standard Grade,Electrical,Meters,130.1,VND_212,615,223,PRJ_107
+MAT_495,Electrical Cables Standard Grade,Electrical,Meters,120.61,VND_216,1836,186,PRJ_101
+MAT_496,Tiles Standard Grade,Finishing,sqft,52.9,VND_219,850,471,PRJ_108
+MAT_497,Bricks Standard Grade,Civil,Pcs,7.99,VND_202,1580,217,PRJ_104
+MAT_498,Bricks Standard Grade,Civil,Pcs,8.14,VND_213,1557,135,PRJ_107
+MAT_499,Paint Standard Grade,Finishing,Liters,284.78,VND_211,1264,364,PRJ_104
+MAT_500,Cement Standard Grade,Structural,Bags,403.73,VND_212,1296,236,PRJ_112
+MAT_501,Sand Standard Grade,Civil,tons,2732.3,VND_204,1738,484,PRJ_110
+MAT_502,Electrical Cables Standard Grade,Electrical,Meters,114.63,VND_202,1774,170,PRJ_110
+MAT_503,Paint Standard Grade,Finishing,Liters,281.21,VND_218,1315,66,PRJ_102
+MAT_504,Electrical Cables Standard Grade,Electrical,Meters,131.08,VND_211,1849,277,PRJ_101
+MAT_505,Sand Standard Grade,Civil,tons,2573.55,VND_212,1550,210,PRJ_104
+MAT_506,Aggregate Standard Grade,Civil,tons,1969.34,VND_200,817,426,PRJ_107
+MAT_507,Plumbing Pipes Standard Grade,Plumbing,Meters,211.69,VND_217,656,110,PRJ_112
+MAT_508,Bricks Standard Grade,Civil,Pcs,8.44,VND_206,957,363,PRJ_111
+MAT_509,Electrical Cables Standard Grade,Electrical,Meters,117.6,VND_204,647,486,PRJ_107

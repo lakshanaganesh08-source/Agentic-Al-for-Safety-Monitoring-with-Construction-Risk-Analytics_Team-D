@@ -1,0 +1,121 @@
+Employee_ID,Employee_Name,Role,Department,Phone,Email,Experience_Years,Assigned_Project_ID,Salary,Status
+EMP_300,Suresh Kumar F,Site Engineer,Planning,+91 64453 98501,sureshkumarf@constructiq.in,15,PRJ_103,87923,Active
+EMP_301,Vimal E A H,Quality Inspector,Quality Control,+91 98962 15209,vimaleah@constructiq.in,11,PRJ_101,89948,Active
+EMP_302,Vimal E A Q,Safety Officer,Safety,+91 77089 36772,vimaleaq@constructiq.in,12,PRJ_111,76180,Active
+EMP_303,Rahul Nair E,Store Keeper,Quality Control,+91 89964 51441,rahulnaire@constructiq.in,14,PRJ_114,44508,On Leave
+EMP_304,Karthik Raja S,Site Engineer,Operations,+91 95234 37938,karthikrajas@constructiq.in,10,PRJ_104,52361,Active
+EMP_305,Suresh Kumar H,Safety Officer,Safety,+91 78676 30676,sureshkumarh@constructiq.in,9,PRJ_113,106200,Active
+EMP_306,Karthik Raja Z,Store Keeper,Planning,+91 60512 97538,karthikrajaz@constructiq.in,15,PRJ_108,74240,Active
+EMP_307,Anil Mehta E,Safety Officer,Safety,+91 67564 24029,anilmehtae@constructiq.in,13,PRJ_108,55374,Active
+EMP_308,Karthik Raja G,Store Keeper,Quality Control,+91 73342 93130,karthikrajag@constructiq.in,15,PRJ_104,101244,Active
+EMP_309,Amit Patel C,Store Keeper,Procurement,+91 78132 15778,amitpatelc@constructiq.in,2,PRJ_105,52146,Active
+EMP_310,Deepak Tiwari F,Store Keeper,Procurement,+91 96154 66057,deepaktiwarif@constructiq.in,10,PRJ_100,49663,Active
+EMP_311,Gaurav Joshi E,Quality Inspector,Quality Control,+91 62361 58393,gauravjoshie@constructiq.in,11,PRJ_108,54410,Active
+EMP_312,Amit Patel J,Safety Officer,Safety,+91 62614 56898,amitpatelj@constructiq.in,5,PRJ_110,67706,Active
+EMP_313,Krishna Murthy Y,Quality Inspector,Quality Control,+91 86632 91351,krishnamurthyy@constructiq.in,13,PRJ_102,66029,Active
+EMP_314,Sanjay Gupta N,Site Engineer,Safety,+91 81770 63964,sanjayguptan@constructiq.in,14,PRJ_110,67527,Active
+EMP_315,Gaurav Joshi D,Billing Engineer,Operations,+91 90847 39154,gauravjoshid@constructiq.in,5,PRJ_113,95332,Active
+EMP_316,Vijay Joshi H,Site Engineer,Safety,+91 86113 53025,vijayjoshih@constructiq.in,6,PRJ_113,44099,Active
+EMP_317,Deepak Tiwari L,Store Keeper,Planning,+91 86193 99065,deepaktiwaril@constructiq.in,15,PRJ_108,78404,Active
+EMP_318,Anil Mehta I,Project Coordinator,Planning,+91 77397 15014,anilmehtai@constructiq.in,3,PRJ_109,91959,Active
+EMP_319,Arjun Rao N,Quality Inspector,Quality Control,+91 93516 25157,arjunraon@constructiq.in,8,PRJ_114,110574,Active
+EMP_320,Amit Patel W,Billing Engineer,Operations,+91 94073 80575,amitpatelw@constructiq.in,12,PRJ_111,60825,Active
+EMP_321,Suresh Kumar V,Safety Officer,Safety,+91 80572 96951,sureshkumarv@constructiq.in,15,PRJ_101,74363,Active
+EMP_322,Aditya Deshmukh N,Safety Officer,Safety,+91 86371 48752,adityadeshmukhn@constructiq.in,10,PRJ_102,60144,Active
+EMP_323,Rahul Nair V,Store Keeper,Safety,+91 97296 49446,rahulnairv@constructiq.in,8,PRJ_108,35053,Active
+EMP_324,Ramesh Verma N,Supervisor,Planning,+91 99758 95813,rameshverman@constructiq.in,7,PRJ_107,92905,Active
+EMP_325,Ramesh Verma Q,Billing Engineer,Safety,+91 65557 47196,rameshvermaq@constructiq.in,10,PRJ_110,117960,Active
+EMP_326,Suresh Kumar Y,Project Coordinator,Quality Control,+91 74722 36100,sureshkumary@constructiq.in,4,PRJ_100,41057,Active
+EMP_327,Lakshana G S T,Supervisor,Operations,+91 89846 64321,lakshanagst@constructiq.in,12,PRJ_109,60485,Active
+EMP_328,Rahul Nair P,Billing Engineer,Safety,+91 69671 95990,rahulnairp@constructiq.in,13,PRJ_100,48970,Active
+EMP_329,Vijay Joshi F,Supervisor,Planning,+91 90444 16582,vijayjoshif@constructiq.in,10,PRJ_103,50906,Active
+EMP_330,Sandeep Choudhury V,Quality Inspector,Quality Control,+91 96629 88047,sandeepchoudhuryv@constructiq.in,7,PRJ_112,93008,Active
+EMP_331,Alok Saxena Q,Billing Engineer,Planning,+91 89223 30861,aloksaxenaq@constructiq.in,13,PRJ_113,97216,Active
+EMP_332,Manish Pandey H,Supervisor,Quality Control,+91 94163 73517,manishpandeyh@constructiq.in,12,PRJ_103,70992,Active
+EMP_333,Gaurav Joshi J,Project Coordinator,Quality Control,+91 82010 51904,gauravjoshij@constructiq.in,10,PRJ_101,53136,Active
+EMP_334,Rahul Nair W,Project Coordinator,Safety,+91 64209 64377,rahulnairw@constructiq.in,8,PRJ_105,106121,Active
+EMP_335,Amit Patel G,Supervisor,Procurement,+91 85524 86556,amitpatelg@constructiq.in,13,PRJ_100,110456,Active
+EMP_336,Rajesh Sharma L,Safety Officer,Safety,+91 85558 64921,rajeshsharmal@constructiq.in,10,PRJ_111,106582,Active
+EMP_337,Vijay Joshi P,Project Coordinator,Quality Control,+91 88562 73654,vijayjoship@constructiq.in,2,PRJ_106,79057,Active
+EMP_338,Rahul Nair X,Project Coordinator,Procurement,+91 68364 91560,rahulnairx@constructiq.in,10,PRJ_100,86645,Active
+EMP_339,Aditya Deshmukh A,Site Engineer,Procurement,+91 68893 70515,adityadeshmukha@constructiq.in,4,PRJ_100,69099,Active
+EMP_340,Ramesh Verma O,Safety Officer,Safety,+91 82118 59692,rameshvermao@constructiq.in,6,PRJ_112,90255,Active
+EMP_341,Suresh Kumar P,Site Engineer,Planning,+91 63413 55870,sureshkumarp@constructiq.in,5,PRJ_110,43993,Active
+EMP_342,Siddharth Rao B,Supervisor,Operations,+91 76205 36130,siddharthraob@constructiq.in,15,PRJ_100,116439,Active
+EMP_343,Vikram Singh P,Store Keeper,Operations,+91 96960 38569,vikramsinghp@constructiq.in,9,PRJ_111,68586,Active
+EMP_344,Sanjay Gupta T,Quality Inspector,Quality Control,+91 67506 31465,sanjayguptat@constructiq.in,6,PRJ_101,110849,On Leave
+EMP_345,Manoj Mishra S,Store Keeper,Procurement,+91 85995 35995,manojmishras@constructiq.in,3,PRJ_109,117213,Active
+EMP_346,Gaurav Joshi Y,Safety Officer,Safety,+91 99348 25866,gauravjoshiy@constructiq.in,14,PRJ_109,40383,Active
+EMP_347,Pranav Reddy V,Safety Officer,Safety,+91 64519 76317,pranavreddyv@constructiq.in,12,PRJ_105,36658,Active
+EMP_348,Lakshana G S D,Billing Engineer,Quality Control,+91 90129 30052,lakshanagsd@constructiq.in,8,PRJ_102,103386,Active
+EMP_349,Deepak Tiwari T,Supervisor,Planning,+91 91686 70931,deepaktiwarit@constructiq.in,8,PRJ_113,112656,Active
+EMP_350,Vijay Joshi C,Safety Officer,Safety,+91 89543 41963,vijayjoshic@constructiq.in,14,PRJ_107,109691,Active
+EMP_351,Rahul Nair K,Site Engineer,Procurement,+91 81300 33834,rahulnairk@constructiq.in,9,PRJ_103,81507,Active
+EMP_352,Arjun Rao I,Quality Inspector,Quality Control,+91 78105 82848,arjunraoi@constructiq.in,2,PRJ_108,60042,Active
+EMP_353,Alok Saxena N,Billing Engineer,Planning,+91 75749 72402,aloksaxenan@constructiq.in,12,PRJ_111,99332,Active
+EMP_354,Rajesh Sharma C,Safety Officer,Safety,+91 74522 63005,rajeshsharmac@constructiq.in,13,PRJ_103,75135,Active
+EMP_355,Krishna Murthy P,Quality Inspector,Quality Control,+91 94794 55056,krishnamurthyp@constructiq.in,8,PRJ_111,107140,Active
+EMP_356,Gaurav Joshi O,Safety Officer,Safety,+91 80094 42951,gauravjoshio@constructiq.in,5,PRJ_101,60242,Active
+EMP_357,Alok Saxena R,Supervisor,Safety,+91 72552 38361,aloksaxenar@constructiq.in,13,PRJ_107,71241,Active
+EMP_358,Manish Pandey Q,Quality Inspector,Quality Control,+91 78546 23176,manishpandeyq@constructiq.in,15,PRJ_103,73829,Active
+EMP_359,Sanjay Gupta J,Site Engineer,Planning,+91 68295 45954,sanjayguptaj@constructiq.in,2,PRJ_100,107529,Active
+EMP_360,Vikram Singh U,Supervisor,Procurement,+91 66723 11607,vikramsinghu@constructiq.in,11,PRJ_104,96524,Active
+EMP_361,Arjun Rao F,Site Engineer,Quality Control,+91 91308 24953,arjunraof@constructiq.in,15,PRJ_101,87521,Active
+EMP_362,Vimal E A U,Store Keeper,Operations,+91 69943 29555,vimaleau@constructiq.in,14,PRJ_109,74824,Active
+EMP_363,Vijay Joshi D,Quality Inspector,Quality Control,+91 87274 89471,vijayjoshid@constructiq.in,11,PRJ_112,116057,Active
+EMP_364,Naga Vedhika B M,Billing Engineer,Procurement,+91 79487 87139,nagavedhikabm@constructiq.in,8,PRJ_104,109531,Active
+EMP_365,Karthik Raja X,Site Engineer,Safety,+91 73829 44687,karthikrajax@constructiq.in,12,PRJ_101,55585,Active
+EMP_366,Mehaavarshini J C,Project Coordinator,Operations,+91 86772 69048,mehaavarshinijc@constructiq.in,13,PRJ_109,96592,Active
+EMP_367,Vijay Joshi J,Store Keeper,Quality Control,+91 89755 19329,vijayjoshij@constructiq.in,12,PRJ_103,69675,Active
+EMP_368,Siddharth Rao S,Store Keeper,Safety,+91 87861 25043,siddharthraos@constructiq.in,10,PRJ_103,119886,Active
+EMP_369,Deepak Tiwari E,Site Engineer,Operations,+91 70873 50319,deepaktiwarie@constructiq.in,11,PRJ_111,109607,Active
+EMP_370,Sandeep Choudhury D,Billing Engineer,Quality Control,+91 86378 45683,sandeepchoudhuryd@constructiq.in,10,PRJ_108,99722,Active
+EMP_371,Karthik Raja B,Billing Engineer,Quality Control,+91 99564 42816,karthikrajab@constructiq.in,2,PRJ_101,65005,Active
+EMP_372,Vimal E A S,Site Engineer,Quality Control,+91 97764 15273,vimaleas@constructiq.in,14,PRJ_112,57962,Active
+EMP_373,Siddharth Rao O,Safety Officer,Safety,+91 71894 86720,siddharthraoo@constructiq.in,8,PRJ_110,99451,Active
+EMP_374,Lakshana G S L,Billing Engineer,Quality Control,+91 81040 97835,lakshanagsl@constructiq.in,3,PRJ_113,56079,Active
+EMP_375,Gaurav Joshi P,Safety Officer,Safety,+91 86244 82102,gauravjoship@constructiq.in,2,PRJ_107,46542,Active
+EMP_376,Arjun Rao D,Supervisor,Procurement,+91 93724 10150,arjunraod@constructiq.in,12,PRJ_113,106118,Active
+EMP_377,Amit Patel G,Quality Inspector,Quality Control,+91 83709 91609,amitpatelg@constructiq.in,14,PRJ_107,116973,Active
+EMP_378,Amit Patel G,Safety Officer,Safety,+91 95993 27172,amitpatelg@constructiq.in,6,PRJ_107,98532,Active
+EMP_379,Siddharth Rao T,Supervisor,Safety,+91 70379 50730,siddharthraot@constructiq.in,10,PRJ_100,107384,Active
+EMP_380,Vijay Joshi D,Billing Engineer,Operations,+91 70090 75323,vijayjoshid@constructiq.in,13,PRJ_104,101698,Active
+EMP_381,Pranav Reddy P,Billing Engineer,Safety,+91 89935 82255,pranavreddyp@constructiq.in,4,PRJ_106,59983,Active
+EMP_382,Naga Vedhika B X,Project Coordinator,Operations,+91 78104 64387,nagavedhikabx@constructiq.in,7,PRJ_114,101550,Active
+EMP_383,Rajesh Sharma J,Store Keeper,Quality Control,+91 98465 86011,rajeshsharmaj@constructiq.in,12,PRJ_107,54476,Active
+EMP_384,Lakshana G S L,Safety Officer,Safety,+91 96170 81228,lakshanagsl@constructiq.in,8,PRJ_107,77176,Active
+EMP_385,Gaurav Joshi H,Quality Inspector,Quality Control,+91 85098 40613,gauravjoshih@constructiq.in,15,PRJ_112,88841,On Leave
+EMP_386,Alok Saxena P,Store Keeper,Procurement,+91 85302 96991,aloksaxenap@constructiq.in,14,PRJ_113,54936,Active
+EMP_387,Amit Patel E,Quality Inspector,Quality Control,+91 98678 53515,amitpatele@constructiq.in,15,PRJ_101,92711,Active
+EMP_388,Sandeep Choudhury A,Store Keeper,Safety,+91 86868 95823,sandeepchoudhurya@constructiq.in,4,PRJ_101,96537,Active
+EMP_389,Deepak Tiwari K,Quality Inspector,Quality Control,+91 86049 95175,deepaktiwarik@constructiq.in,3,PRJ_113,78065,Active
+EMP_390,Mehaavarshini J M,Safety Officer,Safety,+91 91978 80912,mehaavarshinijm@constructiq.in,2,PRJ_109,43968,Active
+EMP_391,Aditya Deshmukh J,Project Coordinator,Operations,+91 88440 22903,adityadeshmukhj@constructiq.in,14,PRJ_110,48173,Active
+EMP_392,Gaurav Joshi J,Site Engineer,Operations,+91 81258 17355,gauravjoshij@constructiq.in,6,PRJ_105,84131,Active
+EMP_393,Vijay Joshi Q,Billing Engineer,Planning,+91 71800 32280,vijayjoshiq@constructiq.in,4,PRJ_101,114887,Active
+EMP_394,Karthik Raja V,Project Coordinator,Procurement,+91 98217 28758,karthikrajav@constructiq.in,5,PRJ_107,118611,Active
+EMP_395,Deepak Tiwari V,Site Engineer,Procurement,+91 78850 98815,deepaktiwariv@constructiq.in,10,PRJ_102,44681,Active
+EMP_396,Krishna Murthy S,Safety Officer,Safety,+91 87807 42780,krishnamurthys@constructiq.in,9,PRJ_113,74599,Active
+EMP_397,Rahul Nair P,Site Engineer,Safety,+91 84993 84963,rahulnairp@constructiq.in,7,PRJ_109,73780,Active
+EMP_398,Manoj Mishra A,Supervisor,Procurement,+91 77988 11061,manojmishraa@constructiq.in,11,PRJ_113,41428,Active
+EMP_399,Alok Saxena P,Supervisor,Quality Control,+91 75081 89569,aloksaxenap@constructiq.in,14,PRJ_105,63705,Active
+EMP_400,Karthik Raja I,Store Keeper,Safety,+91 66367 92242,karthikrajai@constructiq.in,12,PRJ_100,75492,Active
+EMP_401,Amit Patel S,Safety Officer,Safety,+91 68612 21813,amitpatels@constructiq.in,6,PRJ_105,89460,Active
+EMP_402,Vikram Singh Z,Quality Inspector,Quality Control,+91 83976 79579,vikramsinghz@constructiq.in,10,PRJ_114,70720,Active
+EMP_403,Deepak Tiwari P,Supervisor,Quality Control,+91 82198 25095,deepaktiwarip@constructiq.in,9,PRJ_101,53449,Active
+EMP_404,Vijay Joshi V,Store Keeper,Procurement,+91 96524 57942,vijayjoshiv@constructiq.in,3,PRJ_112,86717,On Leave
+EMP_405,Mehaavarshini J D,Billing Engineer,Quality Control,+91 77181 86619,mehaavarshinijd@constructiq.in,8,PRJ_113,118695,Active
+EMP_406,Anil Mehta V,Project Coordinator,Procurement,+91 61640 91205,anilmehtav@constructiq.in,10,PRJ_105,114964,Active
+EMP_407,Suresh Kumar U,Supervisor,Procurement,+91 79804 95097,sureshkumaru@constructiq.in,8,PRJ_101,53320,On Leave
+EMP_408,Amit Patel J,Billing Engineer,Operations,+91 66369 40775,amitpatelj@constructiq.in,10,PRJ_102,85940,Active
+EMP_409,Aditya Deshmukh X,Store Keeper,Planning,+91 87467 86983,adityadeshmukhx@constructiq.in,13,PRJ_111,55253,Active
+EMP_410,Siddharth Rao D,Supervisor,Procurement,+91 86746 46666,siddharthraod@constructiq.in,2,PRJ_111,83566,Active
+EMP_411,Sandeep Choudhury H,Supervisor,Quality Control,+91 66511 99873,sandeepchoudhuryh@constructiq.in,7,PRJ_108,119518,Active
+EMP_412,Rahul Nair I,Project Coordinator,Operations,+91 89800 22015,rahulnairi@constructiq.in,12,PRJ_103,119109,Active
+EMP_413,Rajesh Sharma B,Supervisor,Quality Control,+91 75962 26505,rajeshsharmab@constructiq.in,14,PRJ_109,61896,Active
+EMP_414,Manish Pandey R,Project Coordinator,Planning,+91 74152 40539,manishpandeyr@constructiq.in,7,PRJ_112,54340,Active
+EMP_415,Karthik Raja A,Safety Officer,Safety,+91 69482 27038,karthikrajaa@constructiq.in,10,PRJ_104,57871,Active
+EMP_416,Rajesh Sharma E,Site Engineer,Quality Control,+91 75593 87182,rajeshsharmae@constructiq.in,7,PRJ_100,57838,Active
+EMP_417,Vikram Singh X,Billing Engineer,Planning,+91 67448 18330,vikramsinghx@constructiq.in,9,PRJ_107,82453,Active
+EMP_418,Anil Mehta O,Quality Inspector,Quality Control,+91 74519 90623,anilmehtao@constructiq.in,2,PRJ_111,103347,Active
+EMP_419,Siddharth Rao A,Site Engineer,Procurement,+91 86320 65872,siddharthraoa@constructiq.in,12,PRJ_101,99260,Active

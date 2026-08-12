@@ -1,0 +1,111 @@
+Delay_ID,Project_ID,Date,Delay_Days,Reason,Weather,Material_Availability,Labour_Availability,Severity
+DEL_700,PRJ_110,2025-11-09,1,Material Shortage,Clear,Low,Sufficient,Low
+DEL_701,PRJ_110,2025-06-26,11,Equipment Breakdown,Overcast,Available,Sufficient,High
+DEL_702,PRJ_109,2025-11-03,12,Labor Strike,Clear,Available,Shortage,High
+DEL_703,PRJ_113,2025-06-27,9,Regulatory Delay,Monsoon,Available,Sufficient,High
+DEL_704,PRJ_101,2025-08-12,2,Heavy Rainfall,Rainy,Available,Sufficient,Low
+DEL_705,PRJ_107,2025-07-21,10,Labor Strike,Overcast,Available,Shortage,High
+DEL_706,PRJ_113,2025-10-12,4,Material Shortage,Clear,Low,Sufficient,Medium
+DEL_707,PRJ_104,2025-07-12,1,Equipment Breakdown,Clear,Available,Sufficient,Low
+DEL_708,PRJ_114,2025-07-24,12,Design Change Approval,Overcast,Available,Sufficient,High
+DEL_709,PRJ_103,2025-06-01,1,Regulatory Delay,Rainy,Available,Sufficient,Low
+DEL_710,PRJ_114,2025-06-29,14,Equipment Breakdown,Clear,Available,Sufficient,High
+DEL_711,PRJ_102,2025-06-24,13,Equipment Breakdown,Rainy,Available,Sufficient,High
+DEL_712,PRJ_111,2025-12-03,2,Material Shortage,Sunny,Low,Sufficient,Low
+DEL_713,PRJ_107,2025-08-15,5,Design Change Approval,Rainy,Available,Sufficient,Medium
+DEL_714,PRJ_101,2025-07-15,14,Heavy Rainfall,Rainy,Available,Sufficient,High
+DEL_715,PRJ_113,2025-08-14,6,Regulatory Delay,Overcast,Available,Sufficient,Medium
+DEL_716,PRJ_106,2025-12-07,2,Heavy Rainfall,Rainy,Available,Sufficient,Low
+DEL_717,PRJ_113,2025-12-12,15,Heavy Rainfall,Rainy,Available,Sufficient,High
+DEL_718,PRJ_100,2025-07-06,11,Regulatory Delay,Sunny,Available,Sufficient,High
+DEL_719,PRJ_105,2025-08-31,15,Design Change Approval,Monsoon,Available,Sufficient,High
+DEL_720,PRJ_104,2025-12-05,2,Material Shortage,Overcast,Low,Sufficient,Low
+DEL_721,PRJ_102,2025-06-30,7,Design Change Approval,Clear,Available,Sufficient,Medium
+DEL_722,PRJ_104,2025-09-07,12,Design Change Approval,Clear,Available,Sufficient,High
+DEL_723,PRJ_110,2025-07-13,2,Labor Strike,Rainy,Available,Shortage,Low
+DEL_724,PRJ_113,2025-07-11,2,Design Change Approval,Monsoon,Available,Sufficient,Low
+DEL_725,PRJ_107,2025-10-24,11,Design Change Approval,Sunny,Available,Sufficient,High
+DEL_726,PRJ_109,2025-09-06,13,Material Shortage,Monsoon,Low,Sufficient,High
+DEL_727,PRJ_100,2025-11-23,15,Regulatory Delay,Sunny,Available,Sufficient,High
+DEL_728,PRJ_107,2025-10-03,2,Design Change Approval,Clear,Available,Sufficient,Low
+DEL_729,PRJ_100,2025-06-17,5,Regulatory Delay,Overcast,Available,Sufficient,Medium
+DEL_730,PRJ_100,2025-11-28,14,Regulatory Delay,Monsoon,Available,Sufficient,High
+DEL_731,PRJ_112,2025-12-08,10,Regulatory Delay,Monsoon,Available,Sufficient,High
+DEL_732,PRJ_103,2025-11-19,14,Material Shortage,Monsoon,Low,Sufficient,High
+DEL_733,PRJ_108,2025-11-24,12,Equipment Breakdown,Rainy,Available,Sufficient,High
+DEL_734,PRJ_106,2025-11-17,12,Labor Strike,Clear,Available,Shortage,High
+DEL_735,PRJ_105,2025-11-17,11,Regulatory Delay,Clear,Available,Sufficient,High
+DEL_736,PRJ_102,2025-10-21,15,Equipment Breakdown,Rainy,Available,Sufficient,High
+DEL_737,PRJ_100,2025-11-12,15,Labor Strike,Monsoon,Available,Shortage,High
+DEL_738,PRJ_113,2025-09-29,14,Design Change Approval,Sunny,Available,Sufficient,High
+DEL_739,PRJ_101,2025-12-10,8,Material Shortage,Sunny,Low,Sufficient,High
+DEL_740,PRJ_105,2025-08-11,1,Equipment Breakdown,Sunny,Available,Sufficient,Low
+DEL_741,PRJ_108,2025-11-12,7,Design Change Approval,Sunny,Available,Sufficient,Medium
+DEL_742,PRJ_101,2025-09-26,8,Equipment Breakdown,Clear,Available,Sufficient,High
+DEL_743,PRJ_101,2025-10-06,8,Material Shortage,Rainy,Low,Sufficient,High
+DEL_744,PRJ_107,2025-12-08,11,Heavy Rainfall,Rainy,Available,Sufficient,High
+DEL_745,PRJ_101,2025-09-12,7,Heavy Rainfall,Rainy,Available,Sufficient,Medium
+DEL_746,PRJ_108,2025-10-19,1,Heavy Rainfall,Rainy,Available,Sufficient,Low
+DEL_747,PRJ_112,2025-11-02,10,Regulatory Delay,Overcast,Available,Sufficient,High
+DEL_748,PRJ_114,2025-10-09,9,Labor Strike,Clear,Available,Shortage,High
+DEL_749,PRJ_105,2025-09-02,14,Heavy Rainfall,Rainy,Available,Sufficient,High
+DEL_750,PRJ_113,2025-07-28,14,Design Change Approval,Overcast,Available,Sufficient,High
+DEL_751,PRJ_108,2025-12-14,10,Equipment Breakdown,Clear,Available,Sufficient,High
+DEL_752,PRJ_111,2025-11-16,6,Regulatory Delay,Clear,Available,Sufficient,Medium
+DEL_753,PRJ_101,2025-06-25,13,Regulatory Delay,Sunny,Available,Sufficient,High
+DEL_754,PRJ_100,2025-08-27,6,Regulatory Delay,Overcast,Available,Sufficient,Medium
+DEL_755,PRJ_108,2025-10-12,6,Regulatory Delay,Rainy,Available,Sufficient,Medium
+DEL_756,PRJ_100,2025-07-13,8,Labor Strike,Clear,Available,Shortage,High
+DEL_757,PRJ_101,2025-08-05,10,Labor Strike,Sunny,Available,Shortage,High
+DEL_758,PRJ_101,2025-09-09,4,Design Change Approval,Sunny,Available,Sufficient,Medium
+DEL_759,PRJ_111,2025-08-26,2,Design Change Approval,Rainy,Available,Sufficient,Low
+DEL_760,PRJ_114,2025-11-10,14,Regulatory Delay,Monsoon,Available,Sufficient,High
+DEL_761,PRJ_101,2025-12-15,15,Design Change Approval,Clear,Available,Sufficient,High
+DEL_762,PRJ_110,2025-10-29,9,Labor Strike,Clear,Available,Shortage,High
+DEL_763,PRJ_100,2025-10-14,12,Heavy Rainfall,Rainy,Available,Sufficient,High
+DEL_764,PRJ_108,2025-09-19,14,Equipment Breakdown,Clear,Available,Sufficient,High
+DEL_765,PRJ_114,2025-10-09,13,Labor Strike,Monsoon,Available,Shortage,High
+DEL_766,PRJ_102,2025-12-05,14,Labor Strike,Rainy,Available,Shortage,High
+DEL_767,PRJ_106,2025-11-16,10,Equipment Breakdown,Overcast,Available,Sufficient,High
+DEL_768,PRJ_108,2025-09-07,7,Equipment Breakdown,Sunny,Available,Sufficient,Medium
+DEL_769,PRJ_104,2025-09-10,6,Material Shortage,Clear,Low,Sufficient,Medium
+DEL_770,PRJ_112,2025-07-05,3,Design Change Approval,Monsoon,Available,Sufficient,Low
+DEL_771,PRJ_111,2025-12-09,9,Material Shortage,Monsoon,Low,Sufficient,High
+DEL_772,PRJ_113,2025-08-20,12,Regulatory Delay,Monsoon,Available,Sufficient,High
+DEL_773,PRJ_110,2025-07-26,4,Labor Strike,Monsoon,Available,Shortage,Medium
+DEL_774,PRJ_111,2025-08-14,11,Material Shortage,Sunny,Low,Sufficient,High
+DEL_775,PRJ_111,2025-11-14,3,Equipment Breakdown,Monsoon,Available,Sufficient,Low
+DEL_776,PRJ_111,2025-11-11,6,Regulatory Delay,Rainy,Available,Sufficient,Medium
+DEL_777,PRJ_112,2025-08-30,9,Design Change Approval,Monsoon,Available,Sufficient,High
+DEL_778,PRJ_109,2025-11-18,12,Design Change Approval,Monsoon,Available,Sufficient,High
+DEL_779,PRJ_104,2025-09-17,13,Heavy Rainfall,Rainy,Available,Sufficient,High
+DEL_780,PRJ_108,2025-06-28,1,Design Change Approval,Sunny,Available,Sufficient,Low
+DEL_781,PRJ_100,2025-11-19,1,Labor Strike,Overcast,Available,Shortage,Low
+DEL_782,PRJ_112,2025-07-12,5,Regulatory Delay,Overcast,Available,Sufficient,Medium
+DEL_783,PRJ_102,2025-06-16,12,Material Shortage,Sunny,Low,Sufficient,High
+DEL_784,PRJ_112,2025-10-17,1,Material Shortage,Clear,Low,Sufficient,Low
+DEL_785,PRJ_101,2025-11-05,14,Regulatory Delay,Monsoon,Available,Sufficient,High
+DEL_786,PRJ_113,2025-07-28,12,Regulatory Delay,Monsoon,Available,Sufficient,High
+DEL_787,PRJ_106,2025-07-31,9,Regulatory Delay,Overcast,Available,Sufficient,High
+DEL_788,PRJ_111,2025-11-18,1,Design Change Approval,Clear,Available,Sufficient,Low
+DEL_789,PRJ_106,2025-11-23,6,Equipment Breakdown,Rainy,Available,Sufficient,Medium
+DEL_790,PRJ_100,2025-12-08,5,Labor Strike,Monsoon,Available,Shortage,Medium
+DEL_791,PRJ_113,2025-12-17,14,Design Change Approval,Sunny,Available,Sufficient,High
+DEL_792,PRJ_114,2025-11-10,12,Regulatory Delay,Overcast,Available,Sufficient,High
+DEL_793,PRJ_112,2025-10-29,9,Regulatory Delay,Monsoon,Available,Sufficient,High
+DEL_794,PRJ_103,2025-12-16,12,Labor Strike,Overcast,Available,Shortage,High
+DEL_795,PRJ_107,2025-07-16,11,Heavy Rainfall,Rainy,Available,Sufficient,High
+DEL_796,PRJ_102,2025-07-15,12,Equipment Breakdown,Rainy,Available,Sufficient,High
+DEL_797,PRJ_106,2025-06-11,7,Material Shortage,Monsoon,Low,Sufficient,Medium
+DEL_798,PRJ_104,2025-07-04,3,Equipment Breakdown,Overcast,Available,Sufficient,Low
+DEL_799,PRJ_100,2025-08-24,8,Regulatory Delay,Sunny,Available,Sufficient,High
+DEL_800,PRJ_100,2025-07-10,15,Material Shortage,Monsoon,Low,Sufficient,High
+DEL_801,PRJ_100,2025-12-16,15,Regulatory Delay,Monsoon,Available,Sufficient,High
+DEL_802,PRJ_113,2025-11-17,5,Design Change Approval,Monsoon,Available,Sufficient,Medium
+DEL_803,PRJ_108,2025-08-31,2,Regulatory Delay,Overcast,Available,Sufficient,Low
+DEL_804,PRJ_108,2025-07-27,3,Equipment Breakdown,Rainy,Available,Sufficient,Low
+DEL_805,PRJ_112,2025-10-08,3,Design Change Approval,Monsoon,Available,Sufficient,Low
+DEL_806,PRJ_108,2025-09-12,2,Material Shortage,Sunny,Low,Sufficient,Low
+DEL_807,PRJ_114,2025-07-25,11,Material Shortage,Overcast,Low,Sufficient,High
+DEL_808,PRJ_105,2025-08-15,4,Equipment Breakdown,Monsoon,Available,Sufficient,Medium
+DEL_809,PRJ_107,2025-10-22,14,Regulatory Delay,Rainy,Available,Sufficient,High

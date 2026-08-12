@@ -1,0 +1,121 @@
+Report_ID,Project_ID,Date,Weather,Workers_Present,Work_Completed,Materials_Used,Equipment_Used,Issues,Supervisor
+REP_1100,PRJ_104,2025-07-10,Humid,48,Slab Concreting Completed,"Cement: 94 Bags, Steel: 1711 kg","Scaffolding, Generator",None,Aditya Deshmukh
+REP_1101,PRJ_107,2025-08-03,Clear,111,Brickwork Level 4 Active,"Cement: 174 Bags, Steel: 870 kg","Scaffolding, Generator",None,Arjun Rao
+REP_1102,PRJ_101,2025-06-07,Light Showers,84,Foundation Excavation,"Cement: 155 Bags, Steel: 1284 kg","Excavator, Concrete Mixer",Shortage of premium sand tiles,Alok Saxena
+REP_1103,PRJ_110,2025-06-12,Clear,192,External Plastering Ongoing,"Cement: 63 Bags, Steel: 1815 kg","Tower Crane, Dump Truck",None,Amit Patel
+REP_1104,PRJ_102,2025-08-27,Overcast,166,External Plastering Ongoing,"Cement: 171 Bags, Steel: 1590 kg","Excavator, Concrete Mixer",Shortage of premium sand tiles,Aditya Deshmukh
+REP_1105,PRJ_111,2025-08-08,Overcast,112,Brickwork Level 4 Active,"Cement: 185 Bags, Steel: 1390 kg","Excavator, Concrete Mixer",Minor voltage fluctuation,Sandeep Choudhury
+REP_1106,PRJ_106,2025-07-20,Light Showers,219,Slab Concreting Completed,"Cement: 74 Bags, Steel: 1588 kg","Scaffolding, Generator",Minor voltage fluctuation,Pranav Reddy
+REP_1107,PRJ_109,2025-07-09,Humid,114,External Plastering Ongoing,"Cement: 75 Bags, Steel: 1022 kg","Scaffolding, Generator",Shortage of premium sand tiles,Sandeep Choudhury
+REP_1108,PRJ_112,2025-07-01,Light Showers,242,Brickwork Level 4 Active,"Cement: 183 Bags, Steel: 1191 kg","Scaffolding, Generator",None,Arjun Rao
+REP_1109,PRJ_108,2025-05-03,Sunny,62,Slab Concreting Completed,"Cement: 155 Bags, Steel: 700 kg","Scaffolding, Generator",None,Aditya Deshmukh
+REP_1110,PRJ_107,2025-07-29,Clear,230,External Plastering Ongoing,"Cement: 114 Bags, Steel: 895 kg","Excavator, Concrete Mixer",None,Karthik Raja
+REP_1111,PRJ_101,2025-05-15,Light Showers,213,Brickwork Level 4 Active,"Cement: 81 Bags, Steel: 1950 kg","Excavator, Concrete Mixer",None,Karthik Raja
+REP_1112,PRJ_102,2025-08-05,Light Showers,250,Brickwork Level 4 Active,"Cement: 78 Bags, Steel: 1924 kg","Excavator, Concrete Mixer",Minor voltage fluctuation,Manoj Mishra
+REP_1113,PRJ_107,2025-05-20,Overcast,115,Foundation Excavation,"Cement: 132 Bags, Steel: 1027 kg","Excavator, Concrete Mixer",None,Deepak Tiwari
+REP_1114,PRJ_112,2025-05-16,Overcast,144,External Plastering Ongoing,"Cement: 65 Bags, Steel: 1028 kg","Tower Crane, Dump Truck",None,Sandeep Choudhury
+REP_1115,PRJ_101,2025-09-03,Clear,201,Foundation Excavation,"Cement: 95 Bags, Steel: 1821 kg","Tower Crane, Dump Truck",None,Vikram Singh
+REP_1116,PRJ_108,2025-08-19,Clear,202,Slab Concreting Completed,"Cement: 163 Bags, Steel: 1965 kg","Tower Crane, Dump Truck",None,Amit Patel
+REP_1117,PRJ_101,2025-05-19,Light Showers,231,External Plastering Ongoing,"Cement: 164 Bags, Steel: 538 kg","Tower Crane, Dump Truck",None,Siddharth Rao
+REP_1118,PRJ_110,2025-05-01,Sunny,215,Foundation Excavation,"Cement: 118 Bags, Steel: 810 kg","Scaffolding, Generator",Minor voltage fluctuation,Rahul Nair
+REP_1119,PRJ_109,2025-05-01,Light Showers,226,Foundation Excavation,"Cement: 172 Bags, Steel: 1393 kg","Tower Crane, Dump Truck",None,Mehaavarshini J
+REP_1120,PRJ_103,2025-05-01,Overcast,221,Foundation Excavation,"Cement: 81 Bags, Steel: 1661 kg","Scaffolding, Generator",Minor voltage fluctuation,Arjun Rao
+REP_1121,PRJ_110,2025-07-17,Overcast,59,Slab Concreting Completed,"Cement: 143 Bags, Steel: 1594 kg","Tower Crane, Dump Truck",None,Sandeep Choudhury
+REP_1122,PRJ_112,2025-07-14,Clear,90,Electrical Conduit Fixing,"Cement: 60 Bags, Steel: 1286 kg","Scaffolding, Generator",None,Manoj Mishra
+REP_1123,PRJ_111,2025-08-08,Sunny,206,External Plastering Ongoing,"Cement: 174 Bags, Steel: 673 kg","Scaffolding, Generator",Shortage of premium sand tiles,Alok Saxena
+REP_1124,PRJ_103,2025-06-05,Sunny,94,Slab Concreting Completed,"Cement: 111 Bags, Steel: 1501 kg","Tower Crane, Dump Truck",None,Mehaavarshini J
+REP_1125,PRJ_110,2025-07-18,Overcast,181,Foundation Excavation,"Cement: 54 Bags, Steel: 575 kg","Tower Crane, Dump Truck",None,Arjun Rao
+REP_1126,PRJ_112,2025-05-11,Overcast,75,Brickwork Level 4 Active,"Cement: 183 Bags, Steel: 1438 kg","Scaffolding, Generator",None,Alok Saxena
+REP_1127,PRJ_109,2025-06-29,Sunny,54,Brickwork Level 4 Active,"Cement: 175 Bags, Steel: 1839 kg","Excavator, Concrete Mixer",Shortage of premium sand tiles,Karthik Raja
+REP_1128,PRJ_100,2025-07-02,Clear,48,Brickwork Level 4 Active,"Cement: 62 Bags, Steel: 1129 kg","Excavator, Concrete Mixer",Shortage of premium sand tiles,Karthik Raja
+REP_1129,PRJ_102,2025-05-17,Sunny,74,Foundation Excavation,"Cement: 106 Bags, Steel: 629 kg","Excavator, Concrete Mixer",Shortage of premium sand tiles,Arjun Rao
+REP_1130,PRJ_112,2025-08-11,Humid,75,Electrical Conduit Fixing,"Cement: 189 Bags, Steel: 781 kg","Tower Crane, Dump Truck",None,Manish Pandey
+REP_1131,PRJ_100,2025-06-14,Humid,61,Slab Concreting Completed,"Cement: 120 Bags, Steel: 789 kg","Tower Crane, Dump Truck",None,Gaurav Joshi
+REP_1132,PRJ_105,2025-09-19,Clear,157,Brickwork Level 4 Active,"Cement: 198 Bags, Steel: 583 kg","Excavator, Concrete Mixer",None,Siddharth Rao
+REP_1133,PRJ_109,2025-08-05,Clear,49,Foundation Excavation,"Cement: 70 Bags, Steel: 513 kg","Excavator, Concrete Mixer",None,Suresh Kumar
+REP_1134,PRJ_111,2025-07-12,Overcast,222,Foundation Excavation,"Cement: 82 Bags, Steel: 922 kg","Excavator, Concrete Mixer",Minor voltage fluctuation,Naga Vedhika B
+REP_1135,PRJ_107,2025-08-14,Clear,89,Electrical Conduit Fixing,"Cement: 59 Bags, Steel: 1721 kg","Excavator, Concrete Mixer",Shortage of premium sand tiles,Karthik Raja
+REP_1136,PRJ_101,2025-07-17,Humid,152,Slab Concreting Completed,"Cement: 192 Bags, Steel: 982 kg","Excavator, Concrete Mixer",None,Naga Vedhika B
+REP_1137,PRJ_101,2025-08-01,Light Showers,174,Brickwork Level 4 Active,"Cement: 168 Bags, Steel: 1782 kg","Scaffolding, Generator",None,Deepak Tiwari
+REP_1138,PRJ_100,2025-06-19,Sunny,248,Brickwork Level 4 Active,"Cement: 171 Bags, Steel: 1518 kg","Excavator, Concrete Mixer",None,Aditya Deshmukh
+REP_1139,PRJ_114,2025-05-12,Sunny,210,External Plastering Ongoing,"Cement: 122 Bags, Steel: 929 kg","Tower Crane, Dump Truck",Minor voltage fluctuation,Arjun Rao
+REP_1140,PRJ_109,2025-08-25,Sunny,71,Slab Concreting Completed,"Cement: 187 Bags, Steel: 860 kg","Excavator, Concrete Mixer",None,Lakshana G S
+REP_1141,PRJ_108,2025-05-30,Sunny,105,Foundation Excavation,"Cement: 198 Bags, Steel: 1167 kg","Tower Crane, Dump Truck",None,Alok Saxena
+REP_1142,PRJ_110,2025-07-23,Clear,244,Slab Concreting Completed,"Cement: 133 Bags, Steel: 966 kg","Excavator, Concrete Mixer",None,Alok Saxena
+REP_1143,PRJ_106,2025-06-21,Overcast,101,Slab Concreting Completed,"Cement: 170 Bags, Steel: 1698 kg","Tower Crane, Dump Truck",None,Pranav Reddy
+REP_1144,PRJ_102,2025-06-25,Light Showers,161,Brickwork Level 4 Active,"Cement: 149 Bags, Steel: 1264 kg","Excavator, Concrete Mixer",Shortage of premium sand tiles,Alok Saxena
+REP_1145,PRJ_103,2025-07-31,Humid,96,External Plastering Ongoing,"Cement: 82 Bags, Steel: 565 kg","Scaffolding, Generator",None,Deepak Tiwari
+REP_1146,PRJ_102,2025-05-29,Overcast,162,Foundation Excavation,"Cement: 93 Bags, Steel: 1203 kg","Excavator, Concrete Mixer",Minor voltage fluctuation,Karthik Raja
+REP_1147,PRJ_102,2025-06-13,Light Showers,186,Brickwork Level 4 Active,"Cement: 72 Bags, Steel: 1343 kg","Scaffolding, Generator",Shortage of premium sand tiles,Ramesh Verma
+REP_1148,PRJ_109,2025-08-30,Overcast,116,Slab Concreting Completed,"Cement: 159 Bags, Steel: 1005 kg","Excavator, Concrete Mixer",Minor voltage fluctuation,Pranav Reddy
+REP_1149,PRJ_109,2025-06-26,Light Showers,83,Electrical Conduit Fixing,"Cement: 51 Bags, Steel: 1355 kg","Excavator, Concrete Mixer",None,Lakshana G S
+REP_1150,PRJ_111,2025-09-07,Sunny,153,Electrical Conduit Fixing,"Cement: 150 Bags, Steel: 1481 kg","Scaffolding, Generator",None,Sandeep Choudhury
+REP_1151,PRJ_107,2025-07-01,Sunny,187,Slab Concreting Completed,"Cement: 154 Bags, Steel: 946 kg","Excavator, Concrete Mixer",Minor voltage fluctuation,Manoj Mishra
+REP_1152,PRJ_103,2025-05-24,Sunny,167,External Plastering Ongoing,"Cement: 91 Bags, Steel: 1940 kg","Tower Crane, Dump Truck",None,Sandeep Choudhury
+REP_1153,PRJ_107,2025-06-05,Overcast,92,External Plastering Ongoing,"Cement: 168 Bags, Steel: 1941 kg","Scaffolding, Generator",None,Siddharth Rao
+REP_1154,PRJ_101,2025-08-07,Humid,180,Slab Concreting Completed,"Cement: 125 Bags, Steel: 1372 kg","Tower Crane, Dump Truck",None,Aditya Deshmukh
+REP_1155,PRJ_101,2025-07-25,Sunny,176,External Plastering Ongoing,"Cement: 63 Bags, Steel: 727 kg","Tower Crane, Dump Truck",Minor voltage fluctuation,Sandeep Choudhury
+REP_1156,PRJ_109,2025-05-11,Humid,138,Brickwork Level 4 Active,"Cement: 193 Bags, Steel: 1943 kg","Excavator, Concrete Mixer",None,Vikram Singh
+REP_1157,PRJ_105,2025-07-01,Light Showers,74,Foundation Excavation,"Cement: 198 Bags, Steel: 1939 kg","Excavator, Concrete Mixer",None,Arjun Rao
+REP_1158,PRJ_105,2025-07-08,Light Showers,219,Foundation Excavation,"Cement: 120 Bags, Steel: 611 kg","Excavator, Concrete Mixer",Minor voltage fluctuation,Krishna Murthy
+REP_1159,PRJ_107,2025-09-02,Light Showers,179,Slab Concreting Completed,"Cement: 170 Bags, Steel: 1953 kg","Scaffolding, Generator",Minor voltage fluctuation,Sandeep Choudhury
+REP_1160,PRJ_109,2025-08-03,Sunny,93,Foundation Excavation,"Cement: 72 Bags, Steel: 664 kg","Tower Crane, Dump Truck",None,Manoj Mishra
+REP_1161,PRJ_101,2025-05-28,Clear,115,Slab Concreting Completed,"Cement: 87 Bags, Steel: 1516 kg","Excavator, Concrete Mixer",None,Naga Vedhika B
+REP_1162,PRJ_110,2025-05-06,Humid,151,Electrical Conduit Fixing,"Cement: 83 Bags, Steel: 1470 kg","Tower Crane, Dump Truck",Shortage of premium sand tiles,Sandeep Choudhury
+REP_1163,PRJ_111,2025-05-06,Humid,93,Slab Concreting Completed,"Cement: 55 Bags, Steel: 975 kg","Scaffolding, Generator",Minor voltage fluctuation,Pranav Reddy
+REP_1164,PRJ_109,2025-07-27,Humid,169,Electrical Conduit Fixing,"Cement: 185 Bags, Steel: 1623 kg","Tower Crane, Dump Truck",Shortage of premium sand tiles,Manoj Mishra
+REP_1165,PRJ_109,2025-06-03,Humid,88,External Plastering Ongoing,"Cement: 108 Bags, Steel: 1491 kg","Tower Crane, Dump Truck",Minor voltage fluctuation,Manish Pandey
+REP_1166,PRJ_113,2025-05-13,Clear,135,External Plastering Ongoing,"Cement: 166 Bags, Steel: 840 kg","Scaffolding, Generator",None,Gaurav Joshi
+REP_1167,PRJ_108,2025-07-13,Clear,89,Brickwork Level 4 Active,"Cement: 91 Bags, Steel: 987 kg","Excavator, Concrete Mixer",None,Arjun Rao
+REP_1168,PRJ_109,2025-06-02,Overcast,111,External Plastering Ongoing,"Cement: 97 Bags, Steel: 920 kg","Scaffolding, Generator",None,Aditya Deshmukh
+REP_1169,PRJ_105,2025-07-28,Clear,140,Foundation Excavation,"Cement: 188 Bags, Steel: 832 kg","Scaffolding, Generator",Minor voltage fluctuation,Anil Mehta
+REP_1170,PRJ_114,2025-05-07,Overcast,172,Brickwork Level 4 Active,"Cement: 167 Bags, Steel: 1155 kg","Excavator, Concrete Mixer",None,Alok Saxena
+REP_1171,PRJ_108,2025-09-07,Humid,210,External Plastering Ongoing,"Cement: 171 Bags, Steel: 1093 kg","Scaffolding, Generator",None,Vimal E A
+REP_1172,PRJ_111,2025-08-22,Humid,221,Slab Concreting Completed,"Cement: 172 Bags, Steel: 582 kg","Excavator, Concrete Mixer",None,Manoj Mishra
+REP_1173,PRJ_100,2025-08-11,Light Showers,101,Foundation Excavation,"Cement: 141 Bags, Steel: 689 kg","Tower Crane, Dump Truck",None,Karthik Raja
+REP_1174,PRJ_110,2025-06-19,Light Showers,179,Brickwork Level 4 Active,"Cement: 121 Bags, Steel: 900 kg","Excavator, Concrete Mixer",None,Mehaavarshini J
+REP_1175,PRJ_113,2025-08-23,Sunny,176,Foundation Excavation,"Cement: 99 Bags, Steel: 1504 kg","Tower Crane, Dump Truck",None,Aditya Deshmukh
+REP_1176,PRJ_105,2025-08-10,Clear,228,Foundation Excavation,"Cement: 144 Bags, Steel: 1290 kg","Tower Crane, Dump Truck",None,Manoj Mishra
+REP_1177,PRJ_105,2025-07-29,Humid,159,Electrical Conduit Fixing,"Cement: 72 Bags, Steel: 941 kg","Scaffolding, Generator",Shortage of premium sand tiles,Alok Saxena
+REP_1178,PRJ_106,2025-08-22,Humid,86,Foundation Excavation,"Cement: 156 Bags, Steel: 785 kg","Scaffolding, Generator",None,Vikram Singh
+REP_1179,PRJ_103,2025-07-17,Overcast,179,External Plastering Ongoing,"Cement: 66 Bags, Steel: 1709 kg","Tower Crane, Dump Truck",None,Rajesh Sharma
+REP_1180,PRJ_106,2025-07-09,Overcast,89,Electrical Conduit Fixing,"Cement: 168 Bags, Steel: 1954 kg","Scaffolding, Generator",None,Ramesh Verma
+REP_1181,PRJ_102,2025-08-06,Humid,186,Foundation Excavation,"Cement: 60 Bags, Steel: 1118 kg","Scaffolding, Generator",Minor voltage fluctuation,Lakshana G S
+REP_1182,PRJ_108,2025-08-27,Clear,51,Slab Concreting Completed,"Cement: 89 Bags, Steel: 1037 kg","Tower Crane, Dump Truck",Shortage of premium sand tiles,Anil Mehta
+REP_1183,PRJ_110,2025-07-13,Overcast,90,Foundation Excavation,"Cement: 112 Bags, Steel: 558 kg","Excavator, Concrete Mixer",Minor voltage fluctuation,Lakshana G S
+REP_1184,PRJ_101,2025-08-01,Light Showers,168,Electrical Conduit Fixing,"Cement: 161 Bags, Steel: 1028 kg","Scaffolding, Generator",Shortage of premium sand tiles,Gaurav Joshi
+REP_1185,PRJ_113,2025-05-31,Humid,176,Electrical Conduit Fixing,"Cement: 54 Bags, Steel: 1031 kg","Excavator, Concrete Mixer",None,Vikram Singh
+REP_1186,PRJ_105,2025-08-27,Clear,136,Brickwork Level 4 Active,"Cement: 63 Bags, Steel: 1058 kg","Tower Crane, Dump Truck",Shortage of premium sand tiles,Siddharth Rao
+REP_1187,PRJ_114,2025-07-31,Sunny,119,External Plastering Ongoing,"Cement: 185 Bags, Steel: 1808 kg","Excavator, Concrete Mixer",None,Manish Pandey
+REP_1188,PRJ_110,2025-06-16,Sunny,198,Brickwork Level 4 Active,"Cement: 189 Bags, Steel: 1160 kg","Tower Crane, Dump Truck",Minor voltage fluctuation,Deepak Tiwari
+REP_1189,PRJ_110,2025-08-01,Sunny,181,Electrical Conduit Fixing,"Cement: 140 Bags, Steel: 794 kg","Excavator, Concrete Mixer",None,Naga Vedhika B
+REP_1190,PRJ_104,2025-08-04,Overcast,150,External Plastering Ongoing,"Cement: 91 Bags, Steel: 709 kg","Excavator, Concrete Mixer",None,Naga Vedhika B
+REP_1191,PRJ_103,2025-06-18,Light Showers,202,Electrical Conduit Fixing,"Cement: 186 Bags, Steel: 1959 kg","Scaffolding, Generator",None,Pranav Reddy
+REP_1192,PRJ_107,2025-05-20,Sunny,78,Slab Concreting Completed,"Cement: 172 Bags, Steel: 1213 kg","Tower Crane, Dump Truck",Minor voltage fluctuation,Vikram Singh
+REP_1193,PRJ_113,2025-08-22,Light Showers,178,External Plastering Ongoing,"Cement: 94 Bags, Steel: 1953 kg","Tower Crane, Dump Truck",None,Alok Saxena
+REP_1194,PRJ_113,2025-05-31,Clear,77,Brickwork Level 4 Active,"Cement: 108 Bags, Steel: 1129 kg","Excavator, Concrete Mixer",None,Vikram Singh
+REP_1195,PRJ_101,2025-08-17,Sunny,64,Slab Concreting Completed,"Cement: 173 Bags, Steel: 1383 kg","Excavator, Concrete Mixer",None,Anil Mehta
+REP_1196,PRJ_100,2025-09-09,Light Showers,60,Foundation Excavation,"Cement: 80 Bags, Steel: 1018 kg","Excavator, Concrete Mixer",None,Manoj Mishra
+REP_1197,PRJ_110,2025-05-03,Sunny,245,Slab Concreting Completed,"Cement: 102 Bags, Steel: 1703 kg","Excavator, Concrete Mixer",None,Aditya Deshmukh
+REP_1198,PRJ_105,2025-05-08,Sunny,82,External Plastering Ongoing,"Cement: 198 Bags, Steel: 1212 kg","Tower Crane, Dump Truck",None,Naga Vedhika B
+REP_1199,PRJ_112,2025-07-01,Light Showers,190,Slab Concreting Completed,"Cement: 75 Bags, Steel: 1684 kg","Excavator, Concrete Mixer",None,Gaurav Joshi
+REP_1200,PRJ_103,2025-07-12,Clear,238,Electrical Conduit Fixing,"Cement: 51 Bags, Steel: 1985 kg","Excavator, Concrete Mixer",None,Naga Vedhika B
+REP_1201,PRJ_113,2025-08-30,Humid,223,Electrical Conduit Fixing,"Cement: 97 Bags, Steel: 1400 kg","Scaffolding, Generator",None,Sanjay Gupta
+REP_1202,PRJ_113,2025-07-30,Overcast,153,Brickwork Level 4 Active,"Cement: 181 Bags, Steel: 966 kg","Tower Crane, Dump Truck",None,Manish Pandey
+REP_1203,PRJ_105,2025-06-01,Overcast,73,Electrical Conduit Fixing,"Cement: 84 Bags, Steel: 1515 kg","Tower Crane, Dump Truck",Minor voltage fluctuation,Mehaavarshini J
+REP_1204,PRJ_111,2025-05-11,Sunny,128,Foundation Excavation,"Cement: 79 Bags, Steel: 1288 kg","Tower Crane, Dump Truck",Shortage of premium sand tiles,Karthik Raja
+REP_1205,PRJ_111,2025-07-19,Overcast,102,Electrical Conduit Fixing,"Cement: 154 Bags, Steel: 1095 kg","Tower Crane, Dump Truck",None,Suresh Kumar
+REP_1206,PRJ_114,2025-08-30,Humid,90,Slab Concreting Completed,"Cement: 175 Bags, Steel: 1876 kg","Excavator, Concrete Mixer",Shortage of premium sand tiles,Sandeep Choudhury
+REP_1207,PRJ_108,2025-05-22,Sunny,81,Foundation Excavation,"Cement: 152 Bags, Steel: 1923 kg","Scaffolding, Generator",None,Alok Saxena
+REP_1208,PRJ_114,2025-06-13,Sunny,138,Brickwork Level 4 Active,"Cement: 136 Bags, Steel: 910 kg","Scaffolding, Generator",Shortage of premium sand tiles,Anil Mehta
+REP_1209,PRJ_103,2025-08-17,Overcast,116,Electrical Conduit Fixing,"Cement: 119 Bags, Steel: 1818 kg","Tower Crane, Dump Truck",Minor voltage fluctuation,Lakshana G S
+REP_1210,PRJ_110,2025-08-12,Overcast,175,External Plastering Ongoing,"Cement: 87 Bags, Steel: 1431 kg","Excavator, Concrete Mixer",None,Deepak Tiwari
+REP_1211,PRJ_107,2025-09-05,Clear,205,Brickwork Level 4 Active,"Cement: 57 Bags, Steel: 703 kg","Scaffolding, Generator",None,Suresh Kumar
+REP_1212,PRJ_107,2025-05-07,Clear,142,Electrical Conduit Fixing,"Cement: 133 Bags, Steel: 812 kg","Tower Crane, Dump Truck",None,Manish Pandey
+REP_1213,PRJ_101,2025-09-11,Overcast,247,Foundation Excavation,"Cement: 101 Bags, Steel: 1101 kg","Scaffolding, Generator",Shortage of premium sand tiles,Lakshana G S
+REP_1214,PRJ_108,2025-07-06,Light Showers,132,Electrical Conduit Fixing,"Cement: 189 Bags, Steel: 536 kg","Excavator, Concrete Mixer",Shortage of premium sand tiles,Anil Mehta
+REP_1215,PRJ_106,2025-08-24,Humid,141,Foundation Excavation,"Cement: 167 Bags, Steel: 573 kg","Excavator, Concrete Mixer",None,Mehaavarshini J
+REP_1216,PRJ_110,2025-07-17,Clear,170,Foundation Excavation,"Cement: 84 Bags, Steel: 1139 kg","Scaffolding, Generator",Shortage of premium sand tiles,Lakshana G S
+REP_1217,PRJ_112,2025-05-29,Light Showers,217,Foundation Excavation,"Cement: 191 Bags, Steel: 1903 kg","Scaffolding, Generator",Shortage of premium sand tiles,Lakshana G S
+REP_1218,PRJ_108,2025-06-10,Light Showers,59,Foundation Excavation,"Cement: 117 Bags, Steel: 1513 kg","Scaffolding, Generator",Shortage of premium sand tiles,Karthik Raja
+REP_1219,PRJ_110,2025-07-30,Humid,127,Slab Concreting Completed,"Cement: 57 Bags, Steel: 1709 kg","Excavator, Concrete Mixer",None,Krishna Murthy
