@@ -1,0 +1,3966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Intelligence Control Center</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Three.js & GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        /* Streamlit DOM hiding overrides */
+        .stApp {
+            overflow: hidden !important;
+        }
+        header, footer {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+        }
+        div[data-testid="stSidebar"] {
+            display: none !important;
+        }
+        div[data-testid="stAppViewContainer"] {
+            background-color: #030308 !important;
+            padding: 0 !important;
+        }
+        .main .block-container {
+            padding: 0 !important;
+            margin: 0 !important;
+            max-width: 100% !important;
+            height: 100vh !important;
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #030308;
+            font-family: 'Outfit', sans-serif;
+            color: #e2e8f0;
+        }
+
+        /* Ambient background grid */
+        #bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(77, 57, 233, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(77, 57, 233, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Background glows */
+        .ambient-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(150px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+        .glow-blue {
+            top: -10%;
+            left: 10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 180, 216, 0.2) 0%, transparent 70%);
+        }
+        .glow-purple {
+            bottom: -10%;
+            right: 10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.2) 0%, transparent 70%);
+        }
+
+        /* --- 1. INTRO SCREEN --- */
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #04040a;
+            z-index: 999999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1.5s ease-in-out, visibility 1.5s;
+        }
+        
+        #intro-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .intro-hud {
+            z-index: 2;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .intro-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 30%, #4d39e9 70%, #00b4d8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(77, 57, 233, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .intro-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #a0aec0;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .ai-core-btn {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #00f5d4 0%, rgba(0, 180, 216, 0.4) 60%, transparent 100%);
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(0, 245, 212, 0.3);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .ai-core-btn::before {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 1px dashed rgba(0, 180, 216, 0.4);
+            animation: rotate-dashed 10s linear infinite;
+        }
+
+        .ai-core-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(0, 245, 212, 0.6);
+            background: radial-gradient(circle, #00f5d4 0%, rgba(77, 57, 233, 0.6) 60%, transparent 100%);
+            border-color: #00f5d4;
+        }
+
+        .ai-core-btn-inner {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #030308;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #00f5d4;
+            text-shadow: 0 0 10px #00f5d4;
+            transition: all 0.3s;
+        }
+
+        /* --- 2. MAIN HUD DASHBOARD --- */
+        #main-dashboard {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            z-index: 10;
+            opacity: 0; /* Animated by GSAP on entry */
+        }
+
+        /* Left Navigation Floating Sidebar */
+        #left-nav {
+            height: 90%;
+            align-self: center;
+            margin-left: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            padding: 30px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #a0aec0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #4d39e9 0%, #00b4d8 100%);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(0, 180, 216, 0.5);
+            transform: scale(1.1);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, #00f5d4 0%, #4d39e9 100%);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(0, 245, 212, 0.6);
+        }
+
+        /* Tooltip text styling */
+        .nav-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: 65px;
+            background: rgba(10, 12, 22, 0.85);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            padding: 6px 12px;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-10px);
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Screen Panel Coordinator */
+        .hud-panel {
+            position: absolute;
+            top: 0;
+            left: 100px;
+            width: calc(100vw - 120px);
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 320px 1fr 320px;
+            padding: 30px;
+            gap: 20px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s, visibility 0.5s;
+            z-index: 10;
+        }
+
+        .hud-panel.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Glassmorphic Floating Cards */
+        .glass-hud-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .glass-hud-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 180, 216, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 180, 216, 0.15);
+        }
+
+        .glass-hud-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #4d39e9, #00b4d8);
+            opacity: 0.7;
+        }
+
+        .card-header-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #00b4d8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Center viewport for 3D holographic rendering */
+        #center-viewport {
+            grid-column: 2;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        #three-canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Overlay metrics around 3D viewport */
+        .hud-connector-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* Floating live stats details overlay */
+        .floating-stat-tag {
+            position: absolute;
+            background: rgba(10, 12, 22, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 0.85rem;
+            color: white;
+            pointer-events: auto;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        .floating-stat-tag:hover {
+            border-color: #00f5d4;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 245, 212, 0.4);
+        }
+
+        /* Columns alignment */
+        .left-col, .right-col {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 10;
+            overflow-y: auto;
+            max-height: calc(100vh - 60px);
+            padding-right: 5px;
+        }
+        .left-col::-webkit-scrollbar, .right-col::-webkit-scrollbar {
+            width: 4px;
+        }
+        .left-col::-webkit-scrollbar-thumb, .right-col::-webkit-scrollbar-thumb {
+            background: rgba(0, 180, 216, 0.2);
+            border-radius: 2px;
+        }
+
+        /* --- 3. SPECIFIC PANEL DESIGN SYSTEM --- */
+        
+        /* space analysis panel */
+        .slider-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #a0aec0;
+        }
+
+        .slider-val {
+            color: #00f5d4;
+            font-weight: 600;
+        }
+
+        /* Futuristic neon slider inputs */
+        .glowing-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+            outline: none;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .glowing-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #00f5d4;
+            box-shadow: 0 0 10px #00f5d4;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .glowing-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px #00f5d4;
+        }
+
+        /* Interactive 2D Drag resizing map */
+        .interactive-2d-map-container {
+            width: 100%;
+            height: 180px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #blueprint-canvas {
+            width: 100%;
+            height: 100%;
+            cursor: crosshair;
+        }
+
+        .map-instructions {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: #718096;
+            white-space: nowrap;
+        }
+
+        /* Big laser commit button */
+        .neon-action-btn {
+            background: linear-gradient(135deg, #4d39e9 0%, #00b4d8 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 14px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(77, 57, 233, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .neon-action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.7);
+            background: linear-gradient(135deg, #00b4d8 0%, #4d39e9 100%);
+        }
+
+        /* Holographic Loader Overlay */
+        #laser-scan-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 3, 8, 0.7);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        .laser-beam {
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #00f5d4, transparent);
+            box-shadow: 0 0 15px #00f5d4;
+            position: absolute;
+            top: 0;
+        }
+
+        .laser-scan-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            color: #00f5d4;
+            text-shadow: 0 0 10px #00f5d4;
+            margin-top: 20px;
+        }
+
+        /* --- 4. FLOATING CHAT ORB WINDOW --- */
+        #floating-ai-agent {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        .pulsing-ai-orb {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #00f5d4 0%, #4d39e9 80%, #030308 100%);
+            border: 2px solid rgba(0, 245, 212, 0.4);
+            box-shadow: 0 0 20px rgba(0, 245, 212, 0.4), 0 0 40px rgba(77, 57, 233, 0.2);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .pulsing-ai-orb:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 0 35px rgba(0, 245, 212, 0.7);
+            border-color: #00f5d4;
+        }
+
+        .chatbot-card {
+            width: 320px;
+            height: 380px;
+            background: rgba(10, 12, 22, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            transform-origin: bottom right;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .chatbot-card.open {
+            visibility: visible;
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .chatbot-header {
+            padding: 15px;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chatbot-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.85rem;
+        }
+
+        .chatbot-msg {
+            padding: 10px 12px;
+            border-radius: 12px;
+            line-height: 1.4;
+            max-width: 85%;
+        }
+
+        .msg-ai {
+            background: rgba(138, 43, 226, 0.06) !important;
+            border: 1px solid rgba(138, 43, 226, 0.25) !important;
+            border-left: 4px solid #8A2BE2 !important;
+            margin-right: auto;
+            border-bottom-left-radius: 2px;
+            color: #ffffff;
+            backdrop-filter: blur(8px);
+        }
+
+        .msg-user {
+            background: rgba(0, 180, 216, 0.06) !important;
+            border: 1px solid rgba(0, 180, 216, 0.25) !important;
+            border-right: 4px solid #00B4D8 !important;
+            margin-left: auto;
+            border-bottom-right-radius: 2px;
+            color: #e2e8f0;
+            backdrop-filter: blur(8px);
+        }
+
+
+        .chatbot-footer {
+            padding: 12px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: white;
+            font-family: inherit;
+            outline: none;
+            font-size: 0.85rem;
+        }
+        
+        .chatbot-input:focus {
+            border-color: #00b4d8;
+        }
+
+        .chatbot-send-btn {
+            background: #4d39e9;
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        
+        .chatbot-send-btn:hover {
+            background: #00b4d8;
+        }
+
+        .chatbot-upload-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0aec0;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .chatbot-upload-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #00f5d4;
+            border-color: #00f5d4;
+        }
+
+        /* Voice Waveform animation inside chatbot */
+        .waveform {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            height: 15px;
+        }
+
+        .waveform-bar {
+            width: 2px;
+            height: 100%;
+            background-color: #00f5d4;
+            border-radius: 1px;
+            animation: pulse-wave 1s infinite alternate;
+        }
+        
+        .waveform-bar:nth-child(2) { animation-delay: 0.2s; }
+        .waveform-bar:nth-child(3) { animation-delay: 0.4s; }
+        .waveform-bar:nth-child(4) { animation-delay: 0.1s; }
+        .waveform-bar:nth-child(5) { animation-delay: 0.3s; }
+
+        /* --- 5. PROGRESS RINGS & SCIFI CHARTS --- */
+        .circular-progress-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .progress-ring-box {
+            position: relative;
+            width: 70px;
+            height: 70px;
+        }
+
+        .progress-ring-svg {
+            transform: rotate(-90deg);
+            width: 100%;
+            height: 100%;
+        }
+
+        .progress-ring-circle-bg {
+            fill: none;
+            stroke: rgba(255,255,255,0.05);
+            stroke-width: 4;
+        }
+
+        .progress-ring-circle {
+            fill: none;
+            stroke: #00f5d4;
+            stroke-width: 4;
+            stroke-dasharray: 207; /* 2 * PI * r (r=33) */
+            stroke-dashoffset: 207;
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+
+        .progress-ring-val {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Radar Material Chart */
+        .radar-box {
+            width: 100%;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- 6. GLOWING FOOTER --- */
+        #hud-footer {
+            position: absolute;
+            bottom: 15px;
+            left: 100px;
+            width: calc(100vw - 120px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #718096;
+            z-index: 100;
+            pointer-events: none;
+            padding: 0 10px;
+        }
+
+        .footer-tech-stack {
+            display: flex;
+            gap: 12px;
+            pointer-events: auto;
+        }
+
+        .footer-tech-stack span {
+            color: #00b4d8;
+            font-weight: 500;
+        }
+
+        /* --- KEYFRAME ANIMATIONS --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes rotate-dashed {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-wave {
+            0% { transform: scaleY(0.2); }
+            100% { transform: scaleY(1); }
+        }
+
+        @keyframes scan-anim {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Grid and Color Glows -->
+    <div id="bg-grid"></div>
+    <div class="ambient-glow glow-blue"></div>
+    <div class="ambient-glow glow-purple"></div>
+
+    <!-- 1. CINEMATIC OPENING INTRO -->
+    <div id="intro-screen">
+        <canvas id="intro-canvas"></canvas>
+        <div class="intro-hud">
+            <h1 class="intro-title">CONSTRUCTION INTELLIGENCE HUB</h1>
+            <p class="intro-subtitle">AI-Powered Generative Digital Twin Architecture</p>
+            <div class="ai-core-btn" onclick="initializeSystem()">
+                <div class="ai-core-btn-inner">
+                    <i class="fa-solid fa-power-off"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MAIN HUD DASHBOARD -->
+    <div id="main-dashboard">
+        
+        <!-- TOP RIGHT HEADER BAR (Save Project & Logout) -->
+        <div id="top-right-bar" style="position: absolute; top: 20px; right: 30px; z-index: 1000; display: flex; align-items: center; gap: 12px; pointer-events: auto;">
+            <!-- Active User Indicator -->
+            <div style="background: rgba(10, 12, 22, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(0, 245, 212, 0.3); padding: 7px 14px; border-radius: 12px; font-size: 0.8rem; color: #ffffff; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-circle-user" style="color: #00f5d4; font-size: 0.9rem;"></i>
+                <span style="color:#a0aec0;">User:</span>
+                <strong id="header-user-name" style="color:#ffffff;">Guest Architect</strong>
+            </div>
+
+            <!-- Save Project Button -->
+            <button class="neon-action-btn" onclick="openSaveProjectModal()" style="padding: 8px 16px; font-size: 0.8rem; border-radius: 12px; background: linear-gradient(135deg, #00f5d4 0%, #4d39e9 100%); font-weight:700;">
+                <i class="fa-solid fa-floppy-disk"></i> SAVE PROJECT
+            </button>
+
+            <!-- Logout Button -->
+            <button onclick="handleLogout()" style="background: rgba(255, 59, 48, 0.15); border: 1px solid rgba(255, 59, 48, 0.4); color: #ff6b6b; padding: 8px 14px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.3s;" title="Sign out of active session">
+                <i class="fa-solid fa-right-from-bracket"></i> LOGOUT
+            </button>
+        </div>
+
+        <!-- Sidebar Menu (Circular Icons) -->
+        <div id="left-nav">
+            <div class="nav-btn active" data-tooltip="Dashboard" onclick="switchPanel('dashboard', this)">
+                <i class="fa-solid fa-gauge-high"></i>
+            </div>
+            <div class="nav-btn" data-tooltip="Land Analysis" onclick="switchPanel('analysis', this)">
+                <i class="fa-solid fa-ruler-combined"></i>
+            </div>
+            <div class="nav-btn" data-tooltip="AI Recommendation" onclick="switchPanel('recommendation', this)">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <div class="nav-btn" data-tooltip="Safety & Risks" onclick="switchPanel('safety', this)">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="nav-btn" data-tooltip="Exporters & Reports" onclick="switchPanel('reports', this)">
+                <i class="fa-solid fa-file-invoice"></i>
+            </div>
+            <div class="nav-btn" data-tooltip="Weights & Settings" onclick="switchPanel('settings', this)">
+                <i class="fa-solid fa-sliders"></i>
+            </div>
+        </div>
+
+        <!-- 3D HOLOGRAM VIEWPORT (Central element, shared between pages) -->
+        <div id="center-viewport">
+            <div id="three-canvas-container"></div>
+            
+            <!-- Connection Overlays & Tags -->
+            <div class="hud-connector-overlay">
+                <div class="floating-stat-tag" style="top: 15%; left: 10%;" onclick="switchPanel('recommendation')">
+                    <i class="fa-solid fa-house-chimney" style="color:#8A2BE2;"></i>
+                    <span>ArchType: <strong id="tag-house-type">Duplex (3 BHK)</strong></span>
+                </div>
+                <div class="floating-stat-tag" style="top: 25%; right: 15%;" onclick="switchPanel('analysis')">
+                    <i class="fa-solid fa-crop" style="color:#00b4d8;"></i>
+                    <span>Zoning Area: <strong id="tag-area">2,400 sqft</strong></span>
+                </div>
+                <div class="floating-stat-tag" style="bottom: 20%; left: 15%;" onclick="switchPanel('analytics')">
+                    <i class="fa-solid fa-dollar-sign" style="color:#00f5d4;"></i>
+                    <span>Est. Cost: <strong id="tag-cost">$360,000</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN PANELS -->
+        
+        <!-- PAGE 1: EXECUTIVE DASHBOARD -->
+        <div class="hud-panel active" id="panel-dashboard">
+            <!-- Left Cards Column -->
+            <div class="left-col">
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-satellite-dish"></i> Live Project Telemetry
+                    </div>
+                    <p style="font-size: 0.8rem; color: #a0aec0;">AI calculations and active workspace details.</p>
+                    
+                    <div style="display:flex; justify-content:space-between; margin-top: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 6px;">
+                        <span style="font-size: 0.8rem; color:#718096;">Projects Done</span>
+                        <strong style="font-size: 0.9rem; color:#00f5d4; font-family:'Space Grotesk',sans-serif;">1,482</strong>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 6px;">
+                        <span style="font-size: 0.8rem; color:#718096;">Active Estimations</span>
+                        <strong style="font-size: 0.9rem; color:#00b4d8; font-family:'Space Grotesk',sans-serif;">4,921</strong>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; padding-bottom: 2px;">
+                        <span style="font-size: 0.8rem; color:#718096;">AI Match Confidence</span>
+                        <strong style="font-size: 0.9rem; color:#ffffff; font-family:'Space Grotesk',sans-serif;" id="dash-confidence">95.8%</strong>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <button class="neon-action-btn" onclick="openSaveProjectModal()" style="width: 100%; padding: 10px; font-size: 0.82rem; background: linear-gradient(135deg, #00f5d4 0%, #4d39e9 100%); font-weight:700;">
+                            <i class="fa-solid fa-floppy-disk"></i> SAVE PROJECT TO DATABASE
+                        </button>
+                    </div>
+                </div>
+
+                <!-- NEW: Resource and Materials Estimator -->
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-truck-ramp-box"></i> Resources & Materials
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:8px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:4px;">
+                            <span style="color:#a0aec0;">Cement Needed</span>
+                            <strong id="res-cement" style="color:#00b4d8;">- Bags</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:4px;">
+                            <span style="color:#a0aec0;">Steel Needed</span>
+                            <strong id="res-steel" style="color:#00f5d4;">- Tonnes</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:4px;">
+                            <span style="color:#a0aec0;">Sand Required</span>
+                            <strong id="res-sand" style="color:#ff9f1c;">- Brass</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:4px;">
+                            <span style="color:#a0aec0;">Material Buffer Limit</span>
+                            <strong id="res-stock" style="color:#a855f7;">- Days</strong>
+                        </div>
+                        <div style="font-size:0.8rem; color:#00b4d8; font-weight:600; margin-top:2px;">Daily Labor Deployment:</div>
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:6px; font-size:0.75rem; background:rgba(0,0,0,0.15); padding:8px; border-radius:8px;">
+                            <div>👷 Masons: <strong id="res-masons" style="color:white;">-</strong></div>
+                            <div>🧑‍🔧 Helpers: <strong id="res-helpers" style="color:white;">-</strong></div>
+                            <div style="grid-column: span 2; margin-top: 2px;">👨‍💼 Supervisor: <strong style="color:white;">1 Engineer</strong></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-arrows-spin"></i> Spatial Efficiency
+                    </div>
+                    <div class="circular-progress-container">
+                        <div class="progress-ring-box">
+                            <svg class="progress-ring-svg">
+                                <circle class="progress-ring-circle-bg" cx="35" cy="35" r="30"></circle>
+                                <circle class="progress-ring-circle" id="ring-efficiency" cx="35" cy="35" r="30" style="stroke-dashoffset: 60;"></circle>
+                            </svg>
+                            <span class="progress-ring-val" id="ring-eff-val">71%</span>
+                        </div>
+                        <div style="font-size: 0.8rem; color:#a0aec0; width: 60%;">
+                            <strong>Zoning Ratio:</strong> 71.2% built-up land space coverage.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Cards Column -->
+            <div class="right-col">
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-shield-halved"></i> Engineering Indices
+                    </div>
+                    <div style="display: flex; flex-direction:column; gap: 8px;">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#a0aec0; margin-bottom: 2px;">
+                                <span>Safety Score</span>
+                                <span id="dash-safety">96%</span>
+                            </div>
+                            <div style="width:100%; height:4px; background:rgba(255,255,255,0.05); border-radius:2px;">
+                                <div style="width:96%; height:100%; background:#00f5d4; box-shadow:0 0 5px #00f5d4; border-radius:2px;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#a0aec0; margin-bottom: 2px;">
+                                <span>Energy Saving Rating</span>
+                                <span id="dash-energy">94%</span>
+                            </div>
+                            <div style="width:100%; height:4px; background:rgba(255,255,255,0.05); border-radius:2px;">
+                                <div style="width:94%; height:100%; background:#00b4d8; box-shadow:0 0 5px #00b4d8; border-radius:2px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-cubes-stacked"></i> Material Usage Profile & Allocation
+                    </div>
+                    
+                    <!-- Radar Chart Visualizer -->
+                    <div class="radar-box" style="height: 145px; position: relative;">
+                        <canvas id="material-radar-canvas" style="width:100%; height:100%;"></canvas>
+                    </div>
+
+                    <!-- Material Allocation Breakdown -->
+                    <div id="material-breakdown-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+                        <!-- Cement -->
+                        <div>
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:#e2e8f0; margin-bottom:3px;">
+                                <span>🧱 Cement & Concrete (<strong id="mat-pct-cement" style="color:#00f5d4;">40%</strong>)</span>
+                                <span id="mat-val-cement" style="color:#00f5d4; font-weight:600;">- Bags</span>
+                            </div>
+                            <div style="width:100%; height:5px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden;">
+                                <div id="mat-bar-cement" style="width:40%; height:100%; background:linear-gradient(90deg, #4d39e9, #00f5d4); box-shadow:0 0 6px #00f5d4; border-radius:3px; transition:width 0.5s;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Steel -->
+                        <div>
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:#e2e8f0; margin-bottom:3px;">
+                                <span>🔩 TMT Steel Rebars (<strong id="mat-pct-steel" style="color:#00b4d8;">25%</strong>)</span>
+                                <span id="mat-val-steel" style="color:#00b4d8; font-weight:600;">- Tonnes</span>
+                            </div>
+                            <div style="width:100%; height:5px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden;">
+                                <div id="mat-bar-steel" style="width:25%; height:100%; background:linear-gradient(90deg, #00b4d8, #4d39e9); box-shadow:0 0 6px #00b4d8; border-radius:3px; transition:width 0.5s;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Sand -->
+                        <div>
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:#e2e8f0; margin-bottom:3px;">
+                                <span>🏜️ Sand & Aggregate (<strong id="mat-pct-sand" style="color:#ff9f1c;">15%</strong>)</span>
+                                <span id="mat-val-sand" style="color:#ff9f1c; font-weight:600;">- Brass</span>
+                            </div>
+                            <div style="width:100%; height:5px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden;">
+                                <div id="mat-bar-sand" style="width:15%; height:100%; background:linear-gradient(90deg, #ff9f1c, #ff3b30); box-shadow:0 0 6px #ff9f1c; border-radius:3px; transition:width 0.5s;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Bricks -->
+                        <div>
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:#e2e8f0; margin-bottom:3px;">
+                                <span>🧱 AAC Bricks & Blocks (<strong id="mat-pct-bricks" style="color:#a855f7;">12%</strong>)</span>
+                                <span id="mat-val-bricks" style="color:#a855f7; font-weight:600;">- Pcs</span>
+                            </div>
+                            <div style="width:100%; height:5px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden;">
+                                <div id="mat-bar-bricks" style="width:12%; height:100%; background:linear-gradient(90deg, #a855f7, #6c4cf5); box-shadow:0 0 6px #a855f7; border-radius:3px; transition:width 0.5s;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Finishing & Glass -->
+                        <div>
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:#e2e8f0; margin-bottom:3px;">
+                                <span>🪟 Glass, Tiles & Paint (<strong id="mat-pct-finish" style="color:#ec4899;">8%</strong>)</span>
+                                <span id="mat-val-finish" style="color:#ec4899; font-weight:600;">Premium Finish</span>
+                            </div>
+                            <div style="width:100%; height:5px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden;">
+                                <div id="mat-bar-finish" style="width:8%; height:100%; background:linear-gradient(90deg, #ec4899, #f43f5e); box-shadow:0 0 6px #ec4899; border-radius:3px; transition:width 0.5s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2: SPACE ANALYSIS EDITOR -->
+        <div class="hud-panel" id="panel-analysis">
+            <div class="left-col">
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-sliders"></i> Boundary Resizing
+                    </div>
+                    
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <span>Plot Width (ft)</span>
+                            <span class="slider-val"><span id="lbl-width">40</span> ft</span>
+                        </div>
+                        <input type="range" class="glowing-slider" id="inp-width" min="20" max="150" value="40" oninput="updatePlotDimensions()">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <span>Plot Length (ft)</span>
+                            <span class="slider-val"><span id="lbl-length">60</span> ft</span>
+                        </div>
+                        <input type="range" class="glowing-slider" id="inp-length" min="20" max="200" value="60" oninput="updatePlotDimensions()">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <span>Family Occupants</span>
+                            <span class="slider-val"><span id="lbl-occupants">4</span></span>
+                        </div>
+                        <input type="range" class="glowing-slider" id="inp-occupants" min="1" max="12" value="4" oninput="updatePlotDimensions()">
+                    </div>
+                </div>
+
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-pencil"></i> Interactive 2D Sketch
+                    </div>
+                    <div class="interactive-2d-map-container">
+                        <canvas id="blueprint-canvas"></canvas>
+                        <div class="map-instructions">Drag boundary corners to resize plot</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-tree"></i> Spatial Preferences
+                    </div>
+                    
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+                        <span style="font-size: 0.85rem; color: #a0aec0;">Include Parking Driveway</span>
+                        <input type="checkbox" id="chk-parking" checked onclick="updatePlotDimensions()" style="accent-color:#00f5d4; width:18px; height:18px;">
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+                        <span style="font-size: 0.85rem; color: #a0aec0;">Landscape Green Garden</span>
+                        <input type="checkbox" id="chk-garden" checked onclick="updatePlotDimensions()" style="accent-color:#00f5d4; width:18px; height:18px;">
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+                        <span style="font-size: 0.85rem; color: #a0aec0;">Structural Expansion Stub</span>
+                        <input type="checkbox" id="chk-expansion" onclick="updatePlotDimensions()" style="accent-color:#00f5d4; width:18px; height:18px;">
+                    </div>
+                </div>
+
+                <div class="glass-hud-card" style="margin-top: auto;">
+                    <button class="neon-action-btn" onclick="triggerLaserScan()">
+                        <i class="fa-solid fa-satellite"></i> COMMIT DESIGN & SYNC
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: AI RECOMMENDATIONS -->
+        <div class="hud-panel" id="panel-recommendation">
+            <div class="left-col">
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-lightbulb"></i> Optimal House Selection
+                    </div>
+                    <div>
+                        <span style="font-size: 0.8rem; color:#718096;">Recommended Type</span>
+                        <h2 style="font-size: 1.6rem; color:#ffffff;" id="rec-house-type">Duplex (3 BHK)</h2>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.8rem; color:#718096;">Estimated Space Footprint</span>
+                        <p style="font-size: 0.95rem; color:#00f5d4; font-weight:600;"><span id="rec-footprint">1,700</span> sqft builtup</p>
+                    </div>
+                </div>
+
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-clock"></i> Construction Timeline
+                    </div>
+                    <div>
+                        <h2 style="font-size: 2.2rem; color:#ffffff; font-family:'Space Grotesk',sans-serif;" id="rec-timeline">11.5</h2>
+                        <span style="font-size: 0.8rem; color:#a0aec0;">Months project delivery estimate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="glass-hud-card" style="flex:1;">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-robot"></i> AI Strategic Optimization
+                    </div>
+                    <div id="ai-strategic-insights-list" style="display:flex; flex-direction:column; gap:12px; max-height: 380px; overflow-y:auto; padding-right:5px;">
+                        <!-- Generated Dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- PAGE 6: DOWNLOAD YOUR REPORT -->
+        <div class="hud-panel" id="panel-reports">
+            <div class="left-col">
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-file-pdf"></i> Download PDF Report
+                    </div>
+                    <p style="font-size:0.85rem; color:#a0aec0; line-height:1.6;">Get a clean, printable PDF with your plot details, room plan, estimated cost in ₹, and AI suggestions — ready to share with your builder.</p>
+                    <button class="neon-action-btn" onclick="triggerReportDownload('pdf')">
+                        <i class="fa-solid fa-download"></i> Download PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-file-excel"></i> Download Excel Summary
+                    </div>
+                    <p style="font-size:0.85rem; color:#a0aec0; line-height:1.6;">Get a detailed Excel file with all measurements, costs, scores, and AI tips — easy to open in Microsoft Excel or Google Sheets.</p>
+                    <button class="neon-action-btn" onclick="triggerReportDownload('excel')" style="background:linear-gradient(135deg, #00f5d4 0%, #4d39e9 100%);">
+                        <i class="fa-solid fa-download"></i> Download Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 7: CONFIG WEIGHTS & SETTINGS -->
+        <div class="hud-panel" id="panel-settings">
+            <div class="left-col">
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-sliders"></i> Algorithmic Weights
+                    </div>
+                    
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <span>Safety Margin Weight</span>
+                            <span class="slider-val">1.2x</span>
+                        </div>
+                        <input type="range" class="glowing-slider" min="1" max="2" step="0.1" value="1.2">
+                    </div>
+                    
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <span>Sustainability Factor</span>
+                            <span class="slider-val">1.0x</span>
+                        </div>
+                        <input type="range" class="glowing-slider" min="0.5" max="1.5" step="0.1" value="1.0">
+                    </div>
+                </div>
+
+                <div class="glass-hud-card" style="margin-top: 15px;">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-building-shield"></i> Project Constraints
+                    </div>
+                    <div class="slider-group" style="margin-bottom:12px;">
+                        <div class="slider-header">
+                            <span>Project Budget (INR Lakhs)</span>
+                            <span class="slider-val"><span id="lbl-budget">50</span> L</span>
+                        </div>
+                        <input type="range" class="glowing-slider" id="inp-budget" min="10" max="200" value="50" oninput="updatePlotDimensions()">
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:6px;">
+                        <span style="font-size:0.85rem; color:#a0aec0;">Location Zone</span>
+                        <select id="inp-location" onchange="updatePlotDimensions()" style="background:rgba(255,255,255,0.05); border:1px solid rgba(0,180,216,0.3); border-radius:8px; padding:8px 12px; color:#e2e8f0; font-family:'Outfit',sans-serif; font-size:0.85rem; outline:none; cursor:pointer;">
+                            <option value="Urban Core" style="background:#0a0c16;">Urban Core</option>
+                            <option value="Suburban Sector" style="background:#0a0c16;">Suburban Sector</option>
+                            <option value="Coastal District" style="background:#0a0c16;">Coastal District</option>
+                            <option value="Mountain Terrain" style="background:#0a0c16;">Mountain Terrain</option>
+                            <option value="Industrial Extension" style="background:#0a0c16;">Industrial Extension</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="glass-hud-card">
+                    <div class="card-header-title">
+                        <i class="fa-solid fa-circle-nodes"></i> Engine Telemetry
+                    </div>
+                    <div style="font-size:0.8rem; line-height: 1.6; color:#a0aec0;">
+                        <p>Core Model: <code>Spatial-AI-v1.4</code></p>
+                        <p>3D Engine: <code>WebGL 2.0 / Three.js r128</code></p>
+                        <p>Compiler: <code>Streamlit parent pipeline</code></p>
+                        <p>GIS Sync: <code>Enabled (100ms lag)</code></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 7: SAFETY & RISK CONTROL -->
+        <div class="hud-panel" id="panel-safety">
+            <div class="left-col">
+                <!-- Site Safety Guidelines & Checklist -->
+                <div class="glass-hud-card">
+                    <div class="card-header-title" style="color: #00f5d4;">
+                        <i class="fa-solid fa-helmet-safety"></i> Site Safety Guidelines & PPE Checklist
+                    </div>
+                    <div style="font-size:0.80rem; line-height:1.5; color:#a0aec0; margin-bottom:12px;">
+                        Checklist adjusted dynamically to active zoning, project profile, and construction parameters:
+                    </div>
+                    <ul id="safety-checklist" style="list-style-type:none; padding-left:0; font-size:0.80rem; display:flex; flex-direction:column; gap:8px;">
+                        <!-- Generated Dynamically by JS -->
+                    </ul>
+                </div>
+                
+                <!-- Daily Construction Reports Timeline -->
+                <div class="glass-hud-card" style="margin-top: 15px;">
+                    <div class="card-header-title" style="color: #a855f7;">
+                        <i class="fa-solid fa-clock-rotate-left"></i> Daily Progress Logs & Reports
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:12px;">
+                        <input type="text" id="report-note" class="chatbot-input" placeholder="Type daily construction notes..." style="width:100%;">
+                        <button onclick="addDailyReport()" class="chatbot-send-btn" style="width:100%; height:32px; background:linear-gradient(135deg, #a855f7 0%, #4d39e9 100%);">
+                            📌 Log Daily Progress
+                        </button>
+                    </div>
+                    <div id="report-timeline" style="max-height:160px; overflow-y:auto; padding-right:5px; display:flex; flex-direction:column; gap:10px;">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <!-- Dynamic Risk Detection & Warning Dashboard -->
+                <div class="glass-hud-card">
+                    <div class="card-header-title" style="color: #ff9f1c;">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Real-time Risk Audit
+                    </div>
+                    <div style="font-size:0.80rem; line-height:1.5; color:#a0aec0; margin-bottom:12px;">
+                        Live hazard analysis based on site boundaries, budgets, and physical zoning models:
+                    </div>
+                    <div id="risk-alerts-container" style="display:flex; flex-direction:column; gap:10px;">
+                        <!-- Generated Dynamically by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated Scannning Overlay -->
+        <div id="laser-scan-overlay">
+            <div class="laser-beam"></div>
+            <div class="laser-scan-text">🤖 RUNNING NEURAL SITE ANALYSIS SCAN...</div>
+        </div>
+
+        <!-- Glowing Interactive Footer -->
+        <div id="hud-footer">
+            <div class="footer-tech-stack">
+                Made with ❤️ using <span>Python</span> • <span>Streamlit</span> • <span>Plotly</span> • <span>Three.js</span> • <span>OpenCV</span>
+            </div>
+            <div>
+                © 2026 Construction Intelligence Hub • Futuristic Control Center Interface
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FLOATING AI ASSISTANT ORB WINDOW (OLLAMA INTEGRATED) -->
+    <div id="floating-ai-agent">
+        <!-- Chatbot Window -->
+        <div class="chatbot-card" id="chat-card">
+            <div class="chatbot-header">
+                <div class="waveform">
+                    <div class="waveform-bar" style="height:12px;"></div>
+                    <div class="waveform-bar" style="height:18px;"></div>
+                    <div class="waveform-bar" style="height:8px;"></div>
+                    <div class="waveform-bar" style="height:14px;"></div>
+                </div>
+                <span style="font-weight: 600; font-size: 0.9rem; color: #00f5d4;">🤖 Apex Builder AI (Ollama Local LLM)</span>
+                <i class="fa-solid fa-xmark" style="margin-left: auto; cursor:pointer; color:#718096;" onclick="toggleChatbot()"></i>
+            </div>
+            
+            <div class="chatbot-body" id="chat-messages">
+                <div class="chatbot-msg msg-ai">
+                    <strong>🤖 Apex Builder:</strong> Greetings! I am Apex Builder AI powered by local Ollama LLM. Ask me anything about space optimization, material quality, budget efficiency, or safety procedures for your project!
+                </div>
+            </div>
+            
+            <!-- Document Attachment Info Banner -->
+            <div id="chat-active-doc" style="display: none; padding: 6px 12px; background: rgba(0, 180, 216, 0.15); border-top: 1px solid rgba(0, 180, 216, 0.3); font-size: 0.75rem; align-items: center; justify-content: space-between; color: #ffffff;">
+                <span id="chat-active-doc-name" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 80%;">📎 No document attached</span>
+                <i class="fa-solid fa-xmark" style="cursor: pointer; color: #a0aec0; margin-left: 10px;" onclick="clearActiveDocument()"></i>
+            </div>
+            
+            <!-- Suggestion Chips -->
+            <div class="chatbot-chips" style="display: flex; gap: 6px; padding: 8px 12px; background: rgba(10,12,22,0.4); border-top: 1px solid rgba(255,255,255,0.05); overflow-x: auto; scrollbar-width: none;">
+                <button class="chat-chip" onclick="clickChatChip('Estimate my cement and steel quantities.')" style="background: rgba(0, 180, 216, 0.1); border: 1px solid rgba(0, 180, 216, 0.3); border-radius: 12px; color: #00b4d8; font-size: 0.75rem; padding: 4px 10px; cursor: pointer; white-space: nowrap; transition: all 0.2s; outline: none; font-family: inherit;">💰 Materials</button>
+                <button class="chat-chip" onclick="clickChatChip('What safety steps apply to my project?')" style="background: rgba(0, 245, 212, 0.1); border: 1px solid rgba(0, 245, 212, 0.3); border-radius: 12px; color: #00f5d4; font-size: 0.75rem; padding: 4px 10px; cursor: pointer; white-space: nowrap; transition: all 0.2s; outline: none; font-family: inherit;">🛡️ Safety</button>
+                <button class="chat-chip" onclick="clickChatChip('How can I optimize my plot area?')" style="background: rgba(138, 43, 226, 0.1); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 12px; color: #8a2be2; font-size: 0.75rem; padding: 4px 10px; cursor: pointer; white-space: nowrap; transition: all 0.2s; outline: none; font-family: inherit;">🏢 Space</button>
+                <button class="chat-chip" onclick="clickChatChip('Can I vertically expand later?')" style="background: rgba(255, 159, 28, 0.1); border: 1px solid rgba(255, 159, 28, 0.3); border-radius: 12px; color: #ff9f1c; font-size: 0.75rem; padding: 4px 10px; cursor: pointer; white-space: nowrap; transition: all 0.2s; outline: none; font-family: inherit;">📐 Expansion</button>
+            </div>
+            
+            <div class="chatbot-footer">
+                <input type="file" id="chat-file-input" style="display: none;" accept=".pdf,.docx,.txt,.csv,.xlsx,.md,.json" onchange="handleFileUpload(event)">
+                <button class="chatbot-upload-btn" onclick="triggerFileUpload()" title="Attach construction document">
+                    <i class="fa-solid fa-paperclip"></i>
+                </button>
+                <input type="text" class="chatbot-input" id="chat-inp" placeholder="Ask about construction, materials, costs..." onkeydown="handleChatKey(event)">
+                <button class="chatbot-send-btn" onclick="sendChatMessage()">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Interactive Orb button -->
+        <div class="pulsing-ai-orb" onclick="toggleChatbot()">
+            <i class="fa-solid fa-robot"></i>
+        </div>
+    </div>
+
+    <!-- JS SCRIPTS FOR 3D ENGINE AND INTERACTIVE SYSTEM -->
+    <script>
+        // ------------------ GLOBAL CONFIGURATION & DATA ------------------
+        // Read query parameters from parent context if same-origin is active, otherwise fallback to local iframe URL
+        let urlParams = new URLSearchParams(window.location.search);
+        try {
+            if (window.parent && window.parent.location && window.parent.location.search) {
+                urlParams = new URLSearchParams(window.parent.location.search);
+            }
+        } catch(e) {
+            console.warn("Parent location search access blocked by CORS, falling back to local query parameters.");
+        }
+        let currentWidth = parseInt(urlParams.get('width')) || 40;
+        let currentLength = parseInt(urlParams.get('length')) || 60;
+        let currentOccupants = parseInt(urlParams.get('occupants')) || 4;
+        let parkingNeeded = urlParams.has('parking') ? urlParams.get('parking') === 'true' : true;
+        let gardenNeeded = urlParams.has('garden') ? urlParams.get('garden') === 'true' : true;
+        let expansionNeeded = urlParams.has('expansion') ? urlParams.get('expansion') === 'true' : false;
+        
+        let estimatedCost = 0;  // Will be computed in ₹ INR
+        let builtArea = 1700;
+        let openSpace = 700;
+        let houseType = "Duplex (3 BHK)";
+        let constructionTime = 11.5;
+        let currentBudget = 5000000;
+        let currentZone = "Urban Core";
+
+        // Initialize inputs on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Verify libraries are successfully loaded from CDNs
+            if (typeof THREE === 'undefined' || typeof gsap === 'undefined') {
+                const introScreen = document.getElementById('intro-screen');
+                if (introScreen) {
+                    introScreen.innerHTML = `
+                        <div style="padding: 40px; text-align: center; font-family: 'Outfit', sans-serif; max-width: 500px; background: rgba(10,12,22,0.9); border: 1px solid rgba(255,59,48,0.3); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 1000000;">
+                            <h2 style="color: #ff3b30; margin-bottom: 20px; font-family: 'Space Grotesk'; font-size: 1.6rem;">🔮 CDN Connection Blocked</h2>
+                            <p style="color: #a0aec0; line-height: 1.6; margin-bottom: 30px; font-size: 0.95rem;">
+                                The system failed to download the required WebGL libraries (<strong>Three.js</strong> and <strong>GSAP</strong>) from public CDNs. Please ensure your browser has internet access and is not blocking Cloudflare or jsDelivr.
+                            </p>
+                            <button onclick="window.location.reload()" style="background: linear-gradient(135deg, #4d39e9 0%, #00b4d8 100%); border: none; color: white; padding: 12px 28px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+                                RETRY CONNECTION
+                            </button>
+                        </div>
+                    `;
+                }
+                return;
+            }
+
+            document.getElementById('inp-width').value = currentWidth;
+            document.getElementById('inp-length').value = currentLength;
+            document.getElementById('inp-occupants').value = currentOccupants;
+            document.getElementById('chk-parking').checked = parkingNeeded;
+            document.getElementById('chk-garden').checked = gardenNeeded;
+            document.getElementById('chk-expansion').checked = expansionNeeded;
+            
+            // Initialize budget and location zone defaults
+            document.getElementById('inp-budget').value = Math.round(currentBudget / 100000);
+            document.getElementById('lbl-budget').innerText = Math.round(currentBudget / 100000);
+            document.getElementById('inp-location').value = currentZone;
+
+            // Load daily progress reports history from storage
+            loadDailyReports();
+            
+            // Initialize charts and material breakdown
+            setTimeout(() => {
+                initCharts();
+                updateLiveStats();
+            }, 100);
+            
+            // If page is reloading with parameters, skip intro screen
+            if (urlParams.has('width') || urlParams.has('length')) {
+                document.getElementById('intro-screen').style.display = 'none';
+                document.getElementById('main-dashboard').style.opacity = '1';
+            }
+        });
+
+        // ------------------ 1. CINEMATIC INTRO RENDERER ------------------
+        const introCanvas = document.getElementById('intro-canvas');
+        const ictx = introCanvas.getContext('2d');
+
+        function resizeIntroCanvas() {
+            introCanvas.width = window.innerWidth;
+            introCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeIntroCanvas);
+        resizeIntroCanvas();
+
+        // Particles model for intro screen
+        const introParticles = [];
+        for(let i=0; i<150; i++) {
+            introParticles.push({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                r: Math.random() * 2.5 + 0.5,
+                dx: Math.random() * 0.4 - 0.2,
+                dy: Math.random() * 0.4 - 0.2,
+                color: Math.random() > 0.5 ? 'rgba(0, 245, 212, 0.4)' : 'rgba(77, 57, 233, 0.4)'
+            });
+        }
+
+        function animateIntroParticles() {
+            ictx.clearRect(0,0, introCanvas.width, introCanvas.height);
+            
+            // Draw floating blueprint grids
+            ictx.strokeStyle = 'rgba(77, 57, 233, 0.05)';
+            ictx.lineWidth = 0.5;
+            for(let x=0; x<introCanvas.width; x+=60) {
+                ictx.beginPath();
+                ictx.moveTo(x, 0);
+                ictx.lineTo(x, introCanvas.height);
+                ictx.stroke();
+            }
+            for(let y=0; y<introCanvas.height; y+=60) {
+                ictx.beginPath();
+                ictx.moveTo(0, y);
+                ictx.lineTo(introCanvas.width, y);
+                ictx.stroke();
+            }
+
+            // Draw particles
+            for(let p of introParticles) {
+                ictx.beginPath();
+                ictx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+                ictx.fillStyle = p.color;
+                ictx.fill();
+                p.x += p.dx;
+                p.y += p.dy;
+                if(p.x < 0 || p.x > introCanvas.width) p.dx *= -1;
+                if(p.y < 0 || p.y > introCanvas.height) p.dy *= -1;
+            }
+            requestAnimationFrame(animateIntroParticles);
+        }
+        animateIntroParticles();
+
+        // Play intro entry animations
+        gsap.to(".intro-title", { opacity: 1, y: 0, duration: 1.5, delay: 0.3 });
+        gsap.to(".intro-subtitle", { opacity: 1, y: 0, duration: 1.5, delay: 0.7 });
+        gsap.to(".ai-core-btn", { opacity: 1, scale: 1, duration: 1.2, delay: 1.2, ease: "back.out(1.7)" });
+
+        function initializeSystem() {
+            if (currentUser) {
+                unlockDashboard();
+            } else {
+                openAuthModal();
+            }
+        }
+
+        function unlockDashboard() {
+            closeAuthModal();
+            gsap.to("#intro-screen", { 
+                opacity: 0, 
+                duration: 1.2, 
+                onComplete: () => {
+                    document.getElementById('intro-screen').style.display = 'none';
+                    initCharts();
+                }
+            });
+            gsap.to("#main-dashboard", { opacity: 1, duration: 1.2 });
+            triggerLaserScan(true);
+        }
+
+        // ------------------ 2. PANEL CONTROLLERS ------------------
+        function switchPanel(panelName, btnElement) {
+            // Deactivate all panels
+            const panels = document.querySelectorAll('.hud-panel');
+            panels.forEach(p => p.classList.remove('active'));
+            
+            // Activate selected
+            document.getElementById('panel-' + panelName).classList.add('active');
+            
+            // Sidebar visual toggle
+            if(btnElement) {
+                const navBtns = document.querySelectorAll('.nav-btn');
+                navBtns.forEach(b => b.classList.remove('active'));
+                btnElement.classList.add('active');
+            }
+            
+            // Camera position changes dynamically based on view selected (adds movie-like cinematic feel!)
+            if(panelName === 'analysis') {
+                gsap.to(camera.position, { x: 0, y: 80, z: 90, duration: 2.0, ease: "power2.out" });
+            } else if (panelName === 'recommendation') {
+                gsap.to(camera.position, { x: 50, y: 35, z: 50, duration: 2.0, ease: "power2.out" });
+            } else if (panelName === 'safety') {
+                gsap.to(camera.position, { x: -50, y: 40, z: 50, duration: 2.0, ease: "power2.out" });
+            } else {
+                gsap.to(camera.position, { x: 60, y: 50, z: 60, duration: 2.0, ease: "power2.out" });
+            }
+
+            // Auto-initialize map when analytics panel is opened
+            if (panelName === 'analytics') {
+                setTimeout(() => {
+                    initLeafletMap();
+                    if (leafletMap) leafletMap.invalidateSize();
+                }, 100);
+                setTimeout(() => {
+                    if (leafletMap) leafletMap.invalidateSize();
+                }, 500);
+                setTimeout(() => {
+                    if (leafletMap) leafletMap.invalidateSize();
+                }, 1000);
+            }
+        }
+
+        // ------------------ 3. THREE.JS 3D ENGINE ------------------
+        let scene, camera, renderer, controls;
+        let landPlane, houseMesh, houseOutline, parkingMesh, gardenMesh, pathwayMesh;
+        let treeGroup = new THREE.Group();
+        let compassGroup = new THREE.Group();
+        let cloudsGroup = new THREE.Group();
+        
+        let targetAutoRotate = true;
+
+        const container = document.getElementById('three-canvas-container');
+
+        function init3DEngine() {
+            // Get dimensions, fallback to window sizes if container is not ready
+            let width = container.clientWidth || window.innerWidth || 800;
+            let height = container.clientHeight || window.innerHeight || 600;
+
+            // Scene & Camera
+            scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0x030308, 0.007);
+            
+            camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+            camera.position.set(60, 50, 60);
+
+            // WebGL Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            container.appendChild(renderer.domElement);
+
+            // Orbit controls
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.maxPolarAngle = Math.PI / 2.1; // Don't go below ground
+
+            // Ambient & Sun Lighting (holographic colors)
+            const ambient = new THREE.AmbientLight(0x0e0b29, 1.5);
+            scene.add(ambient);
+
+            const sunLight = new THREE.DirectionalLight(0x00b4d8, 2.5);
+            sunLight.position.set(100, 150, 50);
+            sunLight.castShadow = true;
+            sunLight.shadow.mapSize.width = 2048;
+            sunLight.shadow.mapSize.height = 2048;
+            scene.add(sunLight);
+
+            // Helper structural ground grid
+            const gridHelper = new THREE.GridHelper(300, 60, 0x4d39e9, 0x221342);
+            gridHelper.position.y = -0.05;
+            scene.add(gridHelper);
+
+            // 1. Plot Base (Hardcoded 40x60 base dimensions to allow dynamic scaling in refit3DScene without initial load offsets)
+            const plotGeom = new THREE.BoxGeometry(40, 0.2, 60);
+            const plotMat = new THREE.MeshPhongMaterial({
+                color: 0x101326,
+                transparent: true,
+                opacity: 0.8,
+                shininess: 30
+            });
+            landPlane = new THREE.Mesh(plotGeom, plotMat);
+            landPlane.receiveShadow = true;
+            scene.add(landPlane);
+
+            // 2. House outer shell (Semi-transparent glowing box)
+            const houseGeom = new THREE.BoxGeometry(20, 15, 25);
+            const houseMat = new THREE.MeshPhongMaterial({
+                color: 0x8a2be2,
+                transparent: true,
+                opacity: 0.15,
+                side: THREE.DoubleSide,
+                shininess: 90
+            });
+            houseMesh = new THREE.Mesh(houseGeom, houseMat);
+            houseMesh.castShadow = true;
+            houseMesh.receiveShadow = true;
+            scene.add(houseMesh);
+
+            // Neon Outline for House
+            const edges = new THREE.EdgesGeometry(houseGeom);
+            const lineMat = new THREE.LineBasicMaterial({ color: 0x00f5d4, linewidth: 2 });
+            houseOutline = new THREE.LineSegments(edges, lineMat);
+            scene.add(houseOutline);
+
+            // Internal room group (walls + floors)
+            window.roomGroup = new THREE.Group();
+            scene.add(window.roomGroup);
+
+            // 3. Parking Driveway
+            const parkGeom = new THREE.PlaneGeometry(12, 18);
+            const parkMat = new THREE.MeshBasicMaterial({
+                color: 0x00b4d8,
+                transparent: true,
+                opacity: 0.3,
+                side: THREE.DoubleSide
+            });
+            parkingMesh = new THREE.Mesh(parkGeom, parkMat);
+            parkingMesh.rotation.x = -Math.PI / 2;
+            parkingMesh.position.y = 0.12;
+            scene.add(parkingMesh);
+
+            // 4. Landscape Garden
+            const gardenGeom = new THREE.PlaneGeometry(15, 15);
+            const gardenMat = new THREE.MeshBasicMaterial({
+                color: 0x00f5d4,
+                transparent: true,
+                opacity: 0.35,
+                side: THREE.DoubleSide
+            });
+            gardenMesh = new THREE.Mesh(gardenGeom, gardenMat);
+            gardenMesh.rotation.x = -Math.PI / 2;
+            gardenMesh.position.y = 0.12;
+            scene.add(gardenMesh);
+
+            // 5. Trees (Procedural 3D blocks)
+            scene.add(treeGroup);
+            buildTrees();
+
+            // 6. Compass
+            scene.add(compassGroup);
+            buildCompass();
+
+            // 7. Animated Clouds
+            scene.add(cloudsGroup);
+            buildClouds();
+
+            // Fit geometries to default parameters
+            refit3DScene();
+
+            // Window resize handler
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+
+            // Start loop
+            animate3D();
+        }
+
+        function buildTrees() {
+            treeGroup.clear();
+            const trunkGeom = new THREE.CylinderGeometry(0.3, 0.3, 4, 8);
+            const trunkMat = new THREE.MeshBasicMaterial({ color: 0x8b4513 });
+            const leafGeom = new THREE.DodecahedronGeometry(1.8, 1);
+            const leafMat = new THREE.MeshPhongMaterial({ color: 0x00f5d4, transparent:true, opacity:0.8 });
+
+            // Generate trees in garden offsets
+            for(let i=0; i<4; i++) {
+                const group = new THREE.Group();
+                const trunk = new THREE.Mesh(trunkGeom, trunkMat);
+                trunk.position.y = 2;
+                group.add(trunk);
+
+                const leaf = new THREE.Mesh(leafGeom, leafMat);
+                leaf.position.y = 4.5;
+                group.add(leaf);
+                
+                group.position.set(0, 0, 0); // Position updated dynamically in refit
+                treeGroup.add(group);
+            }
+        }
+
+        function buildCompass() {
+            compassGroup.clear();
+            const ringGeom = new THREE.RingGeometry(3, 3.2, 32);
+            const ringMat = new THREE.MeshBasicMaterial({ color: 0x4d39e9, side: THREE.DoubleSide });
+            const ring = new THREE.Mesh(ringGeom, ringMat);
+            ring.rotation.x = -Math.PI / 2;
+            compassGroup.add(ring);
+
+            const needleGeom = new THREE.ConeGeometry(0.5, 3, 4);
+            const needleMat = new THREE.MeshBasicMaterial({ color: 0xff3b30 });
+            const needle = new THREE.Mesh(needleGeom, needleMat);
+            needle.rotation.x = -Math.PI/2;
+            needle.position.z = 1.5;
+            compassGroup.add(needle);
+        }
+
+        function buildClouds() {
+            cloudsGroup.clear();
+            const cloudMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.1 });
+            for(let i=0; i<5; i++) {
+                const cloudGeom = new THREE.DodecahedronGeometry(5 + Math.random()*5, 1);
+                const cloud = new THREE.Mesh(cloudGeom, cloudMat);
+                cloud.position.set(Math.random()*160 - 80, 40 + Math.random()*10, Math.random()*160 - 80);
+                cloudsGroup.add(cloud);
+            }
+        }
+
+        function toggleAutoRotate() {
+            targetAutoRotate = !targetAutoRotate;
+        }
+
+        function reset3DCamera() {
+            gsap.to(camera.position, { x: 60, y: 50, z: 60, duration: 1.5 });
+            controls.target.set(0, 0, 0);
+        }
+
+        // Build internal room divisions inside the house
+        function buildRoomDivisions(hw, hl, hh, hx, hy) {
+            window.roomGroup.clear();
+
+            const isDuplex   = houseType.includes('Duplex') || houseType.includes('Villa');
+            const is2BHK     = houseType.includes('2 BHK') || houseType.includes('2-3') || isDuplex;
+            const floorH     = isDuplex ? hh / 2 : hh;
+
+            // Wall material (glassmorphic neon glow style)
+            const wallMat = new THREE.MeshPhongMaterial({
+                color: 0xc084fc, transparent: true, opacity: 0.25,
+                side: THREE.DoubleSide, shininess: 60
+            });
+            const wallEdgeMat = new THREE.LineBasicMaterial({ color: 0xa855f7 });
+            const floorMat = new THREE.MeshPhongMaterial({
+                color: 0x4d39e9, transparent: true, opacity: 0.12,
+                side: THREE.DoubleSide
+            });
+
+            function addWall(w, h, d, px, py, pz, rotY) {
+                const g = new THREE.BoxGeometry(w, h, d);
+                const m = new THREE.Mesh(g, wallMat);
+                m.position.set(px, py, pz);
+                if (rotY) m.rotation.y = rotY;
+                window.roomGroup.add(m);
+                const eg = new THREE.EdgesGeometry(g);
+                const el = new THREE.LineSegments(eg, wallEdgeMat);
+                el.position.copy(m.position);
+                el.rotation.copy(m.rotation);
+                window.roomGroup.add(el);
+            }
+
+            function addFloorSlab(w, d, px, py, pz) {
+                const g = new THREE.BoxGeometry(w, 0.25, d);
+                const m = new THREE.Mesh(g, floorMat);
+                m.position.set(px, py, pz);
+                window.roomGroup.add(m);
+            }
+
+            // Helper to add a wall with a door gap
+            function addWallWithDoor(w, h, d, px, py, pz, rotY, isLongitudinal, doorOffset, doorWidth = 3) {
+                if (isLongitudinal) {
+                    const totalL = d;
+                    const l1 = doorOffset;
+                    const pz1 = pz - totalL/2 + l1/2;
+                    if (l1 > 0.1) addWall(w, h, l1, px, py, pz1, rotY);
+                    
+                    const l2 = totalL - doorOffset - doorWidth;
+                    const pz2 = pz + totalL/2 - l2/2;
+                    if (l2 > 0.1) addWall(w, h, l2, px, py, pz2, rotY);
+                } else {
+                    const totalW = w;
+                    const w1 = doorOffset;
+                    const px1 = px - totalW/2 + w1/2;
+                    if (w1 > 0.1) addWall(w1, h, d, px1, py, pz, rotY);
+                    
+                    const w2 = totalW - doorOffset - doorWidth;
+                    const px2 = px + totalW/2 - w2/2;
+                    if (w2 > 0.1) addWall(w2, h, d, px2, py, pz, rotY);
+                }
+            }
+
+            // Helper to add steps/stairs
+            function addStairs(w, d, px, py, pz) {
+                const steps = 12;
+                const totalH = floorH;
+                const stepH = totalH / steps;
+                const stepD = d / steps;
+                for (let i = 0; i < steps; i++) {
+                    const sg = new THREE.BoxGeometry(w, stepH, stepD);
+                    const sm = new THREE.Mesh(sg, floorMat);
+                    sm.position.set(px, py + (i * stepH) + stepH/2, pz - d/2 + (i * stepD) + stepD/2);
+                    window.roomGroup.add(sm);
+                    const seg = new THREE.EdgesGeometry(sg);
+                    const sel = new THREE.LineSegments(seg, wallEdgeMat);
+                    sel.position.copy(sm.position);
+                    window.roomGroup.add(sel);
+                }
+            }
+
+            const wallT = 0.3;  // wall thickness
+            const baseY = hh / 2; // house center Y
+
+            if (houseType.includes('Studio')) {
+                // Studio layout walls
+                // Longitudinal wall at x = 0.25 * hw, separating Studio Room and Bath/Kitchen
+                addWallWithDoor(wallT, floorH - 0.5, hl, hx + hw * 0.25, baseY - 0.25, hy, 0, true, hl * 0.2, 3);
+                // Cross wall separating Bath and Kitchen at z = hy (starts at 0.25 * hw to 0.5 * hw)
+                addWallWithDoor(hw * 0.25, floorH - 0.5, wallT, hx + hw * 0.375, baseY - 0.25, hy, 0, false, 1.0, 3);
+
+            } else if (houseType.includes('1 BHK')) {
+                // 1 BHK layout walls
+                // Main longitudinal wall at x = -0.05 * hw
+                addWallWithDoor(wallT, floorH - 0.5, hl, hx - hw * 0.05, baseY - 0.25, hy, 0, true, hl * 0.2, 3.5);
+                // Cross wall at z = hy + 0.05 * hl
+                addWallWithDoor(hw * 0.55, floorH - 0.5, wallT, hx + hw * 0.225, baseY - 0.25, hy + hl * 0.05, 0, false, 1.0, 3.5);
+                // Longitudinal wall at x = 0.30 * hw
+                addWallWithDoor(wallT, floorH - 0.5, hl, hx + hw * 0.30, baseY - 0.25, hy, 0, true, hl * 0.2, 3.5);
+
+            } else if (is2BHK && !isDuplex) {
+                // 2 BHK layout walls
+                // Main longitudinal wall at x = -0.10 * hw
+                addWallWithDoor(wallT, floorH - 0.5, hl, hx - hw * 0.10, baseY - 0.25, hy, 0, true, hl * 0.2, 3.5);
+                // Cross wall separating Living from Kitchen at z = hy + 0.10 * hl
+                addWallWithDoor(hw * 0.40, floorH - 0.5, wallT, hx - hw * 0.30, baseY - 0.25, hy + hl * 0.10, 0, false, 1.0, 3.5);
+                // Cross wall separating Bed 1 from Bed 2 at z = hy + 0.05 * hl
+                addWallWithDoor(hw * 0.35, floorH - 0.5, wallT, hx + hw * 0.075, baseY - 0.25, hy + hl * 0.05, 0, false, 1.0, 3.5);
+                // Longitudinal wall at x = 0.25 * hw
+                addWallWithDoor(wallT, floorH - 0.5, hl, hx + hw * 0.25, baseY - 0.25, hy, 0, true, hl * 0.2, 3.5);
+                // Cross wall separating Bath from Balcony at z = hy - 0.10 * hl
+                addWallWithDoor(hw * 0.25, floorH - 0.5, wallT, hx + hw * 0.375, baseY - 0.25, hy - hl * 0.10, 0, false, 1.0, 3.0);
+
+            } else if (isDuplex) {
+                // Duplex Ground Floor walls (baseY - floorH/2)
+                const gfY = baseY - floorH / 2;
+                addWallWithDoor(wallT, floorH - 0.5, hl, hx - hw * 0.12, gfY - 0.25, hy, 0, true, hl * 0.2, 3.5);
+                addWallWithDoor(hw * 0.38, floorH - 0.5, wallT, hx - hw * 0.31, gfY - 0.25, hy + hl * 0.10, 0, false, 1.0, 3.5);
+                addWallWithDoor(hw * 0.35, floorH - 0.5, wallT, hx + hw * 0.055, gfY - 0.25, hy + hl * 0.05, 0, false, 1.0, 3.5);
+                addWallWithDoor(wallT, floorH - 0.5, hl, hx + hw * 0.23, gfY - 0.25, hy, 0, true, hl * 0.2, 3.5);
+
+                // Duplex First Floor walls (baseY + floorH/2)
+                const ffY = baseY + floorH / 2;
+                addWallWithDoor(wallT, floorH - 0.5, hl, hx - hw * 0.12, ffY - 0.25, hy, 0, true, hl * 0.2, 3.5);
+                addWallWithDoor(hw * 0.38, floorH - 0.5, wallT, hx - hw * 0.31, ffY - 0.25, hy + hl * 0.05, 0, false, 1.0, 3.5);
+                addWallWithDoor(hw * 0.35, floorH - 0.5, wallT, hx + hw * 0.055, ffY - 0.25, hy + hl * 0.05, 0, false, 1.0, 3.5);
+                addWallWithDoor(wallT, floorH - 0.5, hl, hx + hw * 0.23, ffY - 0.25, hy, 0, true, hl * 0.2, 3.5);
+
+                // Floor slab
+                addFloorSlab(hw * 0.96, hl * 0.96, hx, baseY, hy);
+
+                // Staircase mesh (placed in STAIRS GF zone)
+                addStairs(hw * 0.20, hl * 0.60, hx + hw * 0.35, baseY - floorH, hy);
+            }
+
+            // Position the whole room group at the house position
+            window.roomGroup.position.set(0, 0, 0);
+        }
+
+        function refit3DScene() {
+            // Update land size
+            landPlane.scale.set(currentWidth / 40, 1, currentLength / 60);
+
+            // Calculate house size
+            const isDuplex = houseType.includes('Duplex') || houseType.includes('Villa');
+            const floors = isDuplex ? 2 : 1;
+            const hw = currentWidth * 0.65;
+            const hl = currentLength * 0.6;
+            const hh = floors * 10;
+
+            houseMesh.scale.set(hw/20, hh/15, hl/25);
+            houseOutline.scale.set(hw/20, hh/15, hl/25);
+
+            // Reposition house towards back-center
+            const hy = currentLength * 0.1;
+            houseMesh.position.set(0, hh/2, hy);
+            houseOutline.position.set(0, hh/2, hy);
+
+            // Build room divisions (absolute world coords inside house)
+            buildRoomDivisions(hw, hl, hh, 0, hy);
+
+            // Reposition parking front-left
+            if(parkingNeeded) {
+                parkingMesh.visible = true;
+                parkingMesh.position.set(-currentWidth/2 + 8, 0.12, -currentLength/2 + 10);
+            } else {
+                parkingMesh.visible = false;
+            }
+
+            // Reposition garden front-right
+            if(gardenNeeded) {
+                gardenMesh.visible = true;
+                gardenMesh.position.set(currentWidth/2 - 9, 0.12, -currentLength/2 + 9);
+
+                // Reposition trees inside garden
+                let treeIdx = 0;
+                treeGroup.children.forEach(tree => {
+                    const tx = currentWidth/2 - 9 + (treeIdx % 2 === 0 ? -3 : 3);
+                    const tz = -currentLength/2 + 9 + (treeIdx > 1 ? -3 : 3);
+                    tree.position.set(tx, 0, tz);
+                    tree.visible = true;
+                    treeIdx++;
+                });
+            } else {
+                gardenMesh.visible = false;
+                treeGroup.children.forEach(tree => tree.visible = false);
+            }
+
+            // Reposition compass
+            compassGroup.position.set(currentWidth/2 + 8, 0.12, currentLength/2 - 8);
+        }
+
+        function animate3D() {
+            requestAnimationFrame(animate3D);
+
+            // Auto rotate camera slowly
+            if(targetAutoRotate) {
+                const time = Date.now() * 0.0001;
+                camera.position.x = Math.cos(time) * 85;
+                camera.position.z = Math.sin(time) * 85;
+            }
+
+            // Move clouds
+            cloudsGroup.children.forEach(c => {
+                c.position.x += 0.02;
+                if(c.position.x > 100) c.position.x = -100;
+            });
+
+            // Pulse needle slightly
+            compassGroup.rotation.y += 0.002;
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        // Initialize 3D Engine on page load
+        init3DEngine();
+
+        // ------------------ 4. INTERACTIVE 2D CANVAS BLUEPRINT ------------------
+        const blueprintCanvas = document.getElementById('blueprint-canvas');
+        const bctx = blueprintCanvas.getContext('2d');
+        
+        let dragHandle = null;
+        let mapHandles = [
+            { x: 30, y: 30, type: 'tl' },
+            { x: 270, y: 30, type: 'tr' },
+            { x: 270, y: 150, type: 'br' },
+            { x: 30, y: 150, type: 'bl' }
+        ];
+
+        function drawBlueprint2D() {
+            bctx.clearRect(0, 0, blueprintCanvas.width, blueprintCanvas.height);
+            
+            // Draw gridlines
+            bctx.strokeStyle = 'rgba(77, 57, 233, 0.1)';
+            bctx.lineWidth = 0.5;
+            for(let x=0; x<blueprintCanvas.width; x+=20) {
+                bctx.beginPath(); bctx.moveTo(x, 0); bctx.lineTo(x, blueprintCanvas.height); bctx.stroke();
+            }
+            for(let y=0; y<blueprintCanvas.height; y+=20) {
+                bctx.beginPath(); bctx.moveTo(0, y); bctx.lineTo(blueprintCanvas.width, y); bctx.stroke();
+            }
+
+            // Draw plot boundaries outline
+            bctx.beginPath();
+            bctx.moveTo(mapHandles[0].x, mapHandles[0].y);
+            bctx.lineTo(mapHandles[1].x, mapHandles[1].y);
+            bctx.lineTo(mapHandles[2].x, mapHandles[2].y);
+            bctx.lineTo(mapHandles[3].x, mapHandles[3].y);
+            bctx.closePath();
+            bctx.strokeStyle = '#00f5d4';
+            bctx.lineWidth = 2.5;
+            bctx.fillStyle = 'rgba(0, 245, 212, 0.05)';
+            bctx.fill();
+            bctx.stroke();
+
+            // ── House footprint box ────────────────────────────
+            const hx = (mapHandles[0].x + mapHandles[1].x)/2;
+            const hy = (mapHandles[0].y + mapHandles[3].y)/2 - 10;
+            const hw = (mapHandles[1].x - mapHandles[0].x) * 0.6;
+            const hl = (mapHandles[3].y - mapHandles[0].y) * 0.55;
+            bctx.fillStyle = 'rgba(138, 43, 226, 0.15)';
+            bctx.strokeStyle = '#a855f7';
+            bctx.lineWidth = 1.5;
+            bctx.fillRect(hx - hw/2, hy - hl/2, hw, hl);
+            bctx.strokeRect(hx - hw/2, hy - hl/2, hw, hl);
+
+            // ── Internal room divisions ────────────────────────
+            const isDuplex = houseType.includes('Duplex') || houseType.includes('Villa');
+            const is2BHK   = houseType.includes('2 BHK') || houseType.includes('2-3') || isDuplex;
+
+            // Room colors
+            const roomColors = {
+                living:   'rgba(77, 57, 233, 0.25)',
+                kitchen:  'rgba(255, 159, 28, 0.22)',
+                bed1:     'rgba(0, 180, 216, 0.22)',
+                bed2:     'rgba(0, 245, 212, 0.18)',
+                bed3:     'rgba(168, 85, 247, 0.18)',
+                bath:     'rgba(255, 59, 48, 0.15)',
+                stairs:   'rgba(255,255,255, 0.08)',
+                balcony:  'rgba(0, 245, 212, 0.10)'
+            };
+
+            function drawRoom(rx, ry, rw, rh, color, label, labelColor) {
+                bctx.fillStyle = color;
+                bctx.fillRect(rx, ry, rw, rh);
+                bctx.strokeStyle = 'rgba(255,255,255,0.15)';
+                bctx.lineWidth = 0.8;
+                bctx.strokeRect(rx, ry, rw, rh);
+                
+                // Smart abbreviation if box width is small
+                let displayLabel = label;
+                if (rw < 35) {
+                    if (label === 'LIVING ROOM' || label === 'LIVING') displayLabel = 'LIV';
+                    else if (label === 'STUDIO ROOM') displayLabel = 'STUDIO';
+                    else if (label === 'BEDROOM') displayLabel = 'BED';
+                    else if (label === 'BATHROOM') displayLabel = 'BATH';
+                    else if (label === 'KITCHEN') displayLabel = 'KIT';
+                    else if (label === 'BALCONY') displayLabel = 'BAL';
+                    else if (label === 'STAIRS/UTIL') displayLabel = 'STAIRS';
+                }
+
+                // Dynamic font size fitting
+                bctx.font = '7px monospace';
+                let textW = bctx.measureText(displayLabel).width;
+                let fontSize = 7;
+                while (textW > rw - 4 && fontSize > 4.5) {
+                    fontSize -= 0.5;
+                    bctx.font = `${fontSize}px monospace`;
+                    textW = bctx.measureText(displayLabel).width;
+                }
+                if (rh < 12 && fontSize > 5.5) {
+                    fontSize = 5.5;
+                    bctx.font = `${fontSize}px monospace`;
+                }
+
+                bctx.fillStyle = labelColor || 'rgba(255,255,255,0.75)';
+                bctx.textAlign = 'center';
+                bctx.textBaseline = 'middle';
+                bctx.fillText(displayLabel, rx + rw/2, ry + rh/2);
+            }
+
+            const rx0 = hx - hw/2, ry0 = hy - hl/2;
+
+            if (houseType.includes('Studio')) {
+                // Studio: one big room + bath
+                drawRoom(rx0, ry0, hw * 0.75, hl, roomColors.living, 'STUDIO ROOM', '#a855f7');
+                drawRoom(rx0 + hw * 0.75, ry0, hw * 0.25, hl * 0.5, roomColors.bath, 'BATH', '#ff6b6b');
+                drawRoom(rx0 + hw * 0.75, ry0 + hl * 0.5, hw * 0.25, hl * 0.5, roomColors.kitchen, 'KITCHEN', '#ff9f1c');
+
+            } else if (houseType.includes('1 BHK')) {
+                // 1BHK: Living | Bedroom + (Kitchen / Bath stacked)
+                drawRoom(rx0,            ry0,           hw * 0.45, hl,        roomColors.living,  'LIVING ROOM', '#4d39e9');
+                drawRoom(rx0 + hw*0.45,  ry0,           hw * 0.35, hl * 0.55, roomColors.bed1,    'BEDROOM', '#00b4d8');
+                drawRoom(rx0 + hw*0.45,  ry0 + hl*0.55, hw * 0.35, hl * 0.45, roomColors.bath,   'BATHROOM', '#ff6b6b');
+                drawRoom(rx0 + hw*0.80,  ry0,           hw * 0.20, hl * 0.55, roomColors.kitchen, 'KITCHEN', '#ff9f1c');
+                drawRoom(rx0 + hw*0.80,  ry0 + hl*0.55, hw * 0.20, hl * 0.45, roomColors.balcony,'BALCONY', '#00f5d4');
+
+            } else if (is2BHK && !isDuplex) {
+                // 2BHK: Living + Kitchen | Bed1 + Bed2 + (Bath)
+                drawRoom(rx0,            ry0,           hw * 0.40, hl * 0.60, roomColors.living,  'LIVING ROOM', '#4d39e9');
+                drawRoom(rx0,            ry0 + hl*0.60, hw * 0.40, hl * 0.40, roomColors.kitchen, 'KITCHEN', '#ff9f1c');
+                drawRoom(rx0 + hw*0.40,  ry0,           hw * 0.35, hl * 0.55, roomColors.bed1,    'BED 1', '#00b4d8');
+                drawRoom(rx0 + hw*0.40,  ry0 + hl*0.55, hw * 0.35, hl * 0.45, roomColors.bed2,   'BED 2', '#00f5d4');
+                drawRoom(rx0 + hw*0.75,  ry0,           hw * 0.25, hl * 0.40, roomColors.bath,    'BATH', '#ff6b6b');
+                drawRoom(rx0 + hw*0.75,  ry0 + hl*0.40, hw * 0.25, hl * 0.60, roomColors.balcony,'BALCONY', '#00f5d4');
+
+            } else if (isDuplex) {
+                // Duplex: Ground floor label + upper floor label
+                // Ground floor (top half of 2D box)
+                const gfH = hl * 0.50;
+                const uf0 = ry0 + gfH;
+
+                bctx.fillStyle = 'rgba(255,255,255,0.06)';
+                bctx.fillRect(rx0, ry0, hw, gfH);
+                bctx.fillStyle = 'rgba(255,255,255,0.04)';
+                bctx.fillRect(rx0, uf0, hw, hl - gfH);
+
+                // Divider line between floors
+                bctx.beginPath();
+                bctx.moveTo(rx0, uf0); bctx.lineTo(rx0 + hw, uf0);
+                bctx.strokeStyle = '#a855f7'; bctx.lineWidth = 1.5;
+                bctx.setLineDash([4,3]); bctx.stroke(); bctx.setLineDash([]);
+
+                // Floor labels
+                bctx.fillStyle = 'rgba(168,85,247,0.5)';
+                bctx.font = '6px monospace';
+                bctx.textAlign = 'left';
+                bctx.textBaseline = 'top';
+                bctx.fillText('GF', rx0 + 2, ry0 + 2);
+                bctx.fillText('FF', rx0 + 2, uf0 + 2);
+
+                // Ground floor rooms
+                drawRoom(rx0,           ry0,        hw*0.38, gfH*0.60, roomColors.living,  'LIVING', '#4d39e9');
+                drawRoom(rx0,           ry0+gfH*0.60, hw*0.38, gfH*0.40, roomColors.kitchen,'KITCHEN','#ff9f1c');
+                drawRoom(rx0+hw*0.38,   ry0,        hw*0.35, gfH*0.55, roomColors.bed1,    'BED 1', '#00b4d8');
+                drawRoom(rx0+hw*0.38,   ry0+gfH*0.55, hw*0.35, gfH*0.45, roomColors.bath, 'BATH',  '#ff6b6b');
+                drawRoom(rx0+hw*0.73,   ry0,        hw*0.27, gfH,      roomColors.stairs,  'STAIRS/UTIL','#aaa');
+
+                // First floor rooms
+                drawRoom(rx0,           uf0,        hw*0.38, (hl-gfH)*0.55, roomColors.bed2, 'BED 2', '#00f5d4');
+                drawRoom(rx0,           uf0+(hl-gfH)*0.55, hw*0.38, (hl-gfH)*0.45, roomColors.bed3, 'BED 3','#a855f7');
+                drawRoom(rx0+hw*0.38,   uf0,        hw*0.35, (hl-gfH)*0.55, roomColors.bed1,'BED 4','#00b4d8');
+                drawRoom(rx0+hw*0.38,   uf0+(hl-gfH)*0.55, hw*0.35,(hl-gfH)*0.45, roomColors.bath,'BATH 2','#ff6b6b');
+                drawRoom(rx0+hw*0.73,   uf0,        hw*0.27, (hl-gfH), roomColors.balcony, 'BALCONY','#00f5d4');
+            }
+
+            // Draw drag handle circles
+            bctx.fillStyle = '#00b4d8';
+            for(let h of mapHandles) {
+                bctx.beginPath();
+                bctx.arc(h.x, h.y, 6, 0, Math.PI*2);
+                bctx.fill();
+            }
+        }
+
+        // Initialize 2D Canvas sizing
+        function resizeBlueprintCanvas() {
+            blueprintCanvas.width = blueprintCanvas.parentElement.clientWidth;
+            blueprintCanvas.height = blueprintCanvas.parentElement.clientHeight;
+            drawBlueprint2D();
+        }
+        window.addEventListener('resize', resizeBlueprintCanvas);
+        setTimeout(resizeBlueprintCanvas, 200);
+
+        // Mouse Drag Handle Listeners
+        blueprintCanvas.addEventListener('mousedown', (e) => {
+            const rect = blueprintCanvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            // Find closest handle
+            for(let h of mapHandles) {
+                const dist = Math.hypot(h.x - mouseX, h.y - mouseY);
+                if(dist < 10) {
+                    dragHandle = h;
+                    break;
+                }
+            }
+        });
+
+        function getRoomAtCoords(mouseX, mouseY) {
+            const isDuplex = houseType.includes('Duplex') || houseType.includes('Villa');
+            const is2BHK   = houseType.includes('2 BHK') || houseType.includes('2-3') || isDuplex;
+
+            const hx = (mapHandles[0].x + mapHandles[1].x)/2;
+            const hy = (mapHandles[0].y + mapHandles[3].y)/2 - 10;
+            const hw = (mapHandles[1].x - mapHandles[0].x) * 0.6;
+            const hl = (mapHandles[3].y - mapHandles[0].y) * 0.55;
+            const rx0 = hx - hw/2, ry0 = hy - hl/2;
+
+            if (mouseX < rx0 || mouseX > rx0 + hw || mouseY < ry0 || mouseY > ry0 + hl) {
+                return null;
+            }
+
+            const dx = (mouseX - rx0) / hw;
+            const dy = (mouseY - ry0) / hl;
+
+            const totalWFeet = currentWidth * 0.65;
+            const totalLFeet = currentLength * 0.55;
+
+            if (houseType.includes('Studio')) {
+                if (dx <= 0.75) {
+                    return { name: 'Studio Living Area', size: `${Math.round(totalWFeet * 0.75)} ft × ${Math.round(totalLFeet)} ft`, color: '#a855f7' };
+                } else if (dy <= 0.5) {
+                    return { name: 'Bathroom', size: `${Math.round(totalWFeet * 0.25)} ft × ${Math.round(totalLFeet * 0.5)} ft`, color: '#ff6b6b' };
+                } else {
+                    return { name: 'Kitchenette', size: `${Math.round(totalWFeet * 0.25)} ft × ${Math.round(totalLFeet * 0.5)} ft`, color: '#ff9f1c' };
+                }
+            } else if (houseType.includes('1 BHK')) {
+                if (dx <= 0.45) {
+                    return { name: 'Living Room', size: `${Math.round(totalWFeet * 0.45)} ft × ${Math.round(totalLFeet)} ft`, color: '#4d39e9' };
+                } else if (dx <= 0.80) {
+                    if (dy <= 0.55) {
+                        return { name: 'Bedroom', size: `${Math.round(totalWFeet * 0.35)} ft × ${Math.round(totalLFeet * 0.55)} ft`, color: '#00b4d8' };
+                    } else {
+                        return { name: 'Bathroom', size: `${Math.round(totalWFeet * 0.35)} ft × ${Math.round(totalLFeet * 0.45)} ft`, color: '#ff6b6b' };
+                    }
+                } else {
+                    if (dy <= 0.55) {
+                        return { name: 'Kitchen', size: `${Math.round(totalWFeet * 0.20)} ft × ${Math.round(totalLFeet * 0.55)} ft`, color: '#ff9f1c' };
+                    } else {
+                        return { name: 'Balcony', size: `${Math.round(totalWFeet * 0.20)} ft × ${Math.round(totalLFeet * 0.45)} ft`, color: '#00f5d4' };
+                    }
+                }
+            } else if (is2BHK && !isDuplex) {
+                if (dx <= 0.40) {
+                    if (dy <= 0.60) {
+                        return { name: 'Living Room', size: `${Math.round(totalWFeet * 0.40)} ft × ${Math.round(totalLFeet * 0.60)} ft`, color: '#4d39e9' };
+                    } else {
+                        return { name: 'Kitchen', size: `${Math.round(totalWFeet * 0.40)} ft × ${Math.round(totalLFeet * 0.40)} ft`, color: '#ff9f1c' };
+                    }
+                } else if (dx <= 0.75) {
+                    if (dy <= 0.55) {
+                        return { name: 'Bedroom 1', size: `${Math.round(totalWFeet * 0.35)} ft × ${Math.round(totalLFeet * 0.55)} ft`, color: '#00b4d8' };
+                    } else {
+                        return { name: 'Bedroom 2', size: `${Math.round(totalWFeet * 0.35)} ft × ${Math.round(totalLFeet * 0.45)} ft`, color: '#00f5d4' };
+                    }
+                } else {
+                    if (dy <= 0.40) {
+                        return { name: 'Bathroom', size: `${Math.round(totalWFeet * 0.25)} ft × ${Math.round(totalLFeet * 0.40)} ft`, color: '#ff6b6b' };
+                    } else {
+                        return { name: 'Balcony', size: `${Math.round(totalWFeet * 0.25)} ft × ${Math.round(totalLFeet * 0.60)} ft`, color: '#00f5d4' };
+                    }
+                }
+            } else if (isDuplex) {
+                if (dy <= 0.50) {
+                    const ndy = dy / 0.5;
+                    if (dx <= 0.38) {
+                        if (ndy <= 0.60) {
+                            return { name: 'Ground Floor: Living Room', size: `${Math.round(totalWFeet * 0.38)} ft × ${Math.round(totalLFeet * 0.5 * 0.60)} ft`, color: '#4d39e9' };
+                        } else {
+                            return { name: 'Ground Floor: Kitchen', size: `${Math.round(totalWFeet * 0.38)} ft × ${Math.round(totalLFeet * 0.5 * 0.40)} ft`, color: '#ff9f1c' };
+                        }
+                    } else if (dx <= 0.73) {
+                        if (ndy <= 0.55) {
+                            return { name: 'Ground Floor: Bedroom 1', size: `${Math.round(totalWFeet * 0.35)} ft × ${Math.round(totalLFeet * 0.5 * 0.55)} ft`, color: '#00b4d8' };
+                        } else {
+                            return { name: 'Ground Floor: Bathroom', size: `${Math.round(totalWFeet * 0.35)} ft × ${Math.round(totalLFeet * 0.5 * 0.45)} ft`, color: '#ff6b6b' };
+                        }
+                    } else {
+                        return { name: 'Ground Floor: Stairs & Utility', size: `${Math.round(totalWFeet * 0.27)} ft × ${Math.round(totalLFeet * 0.5)} ft`, color: '#aaaaaa' };
+                    }
+                } else {
+                    const ndy = (dy - 0.5) / 0.5;
+                    if (dx <= 0.38) {
+                        if (ndy <= 0.55) {
+                            return { name: 'First Floor: Bedroom 2', size: `${Math.round(totalWFeet * 0.38)} ft × ${Math.round(totalLFeet * 0.5 * 0.55)} ft`, color: '#00f5d4' };
+                        } else {
+                            return { name: 'First Floor: Bedroom 3', size: `${Math.round(totalWFeet * 0.38)} ft × ${Math.round(totalLFeet * 0.5 * 0.45)} ft`, color: '#a855f7' };
+                        }
+                    } else if (dx <= 0.73) {
+                        if (ndy <= 0.55) {
+                            return { name: 'First Floor: Bedroom 4 (Master)', size: `${Math.round(totalWFeet * 0.35)} ft × ${Math.round(totalLFeet * 0.5 * 0.55)} ft`, color: '#00b4d8' };
+                        } else {
+                            return { name: 'First Floor: Bathroom 2', size: `${Math.round(totalWFeet * 0.35)} ft × ${Math.round(totalLFeet * 0.5 * 0.45)} ft`, color: '#ff6b6b' };
+                        }
+                    } else {
+                        return { name: 'First Floor: Balcony Terrace', size: `${Math.round(totalWFeet * 0.27)} ft × ${Math.round(totalLFeet * 0.5)} ft`, color: '#00f5d4' };
+                    }
+                }
+            }
+            return null;
+        }
+
+        blueprintCanvas.addEventListener('mousemove', (e) => {
+            const rect = blueprintCanvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            if (dragHandle) {
+                // Constraints
+                if(dragHandle.type === 'tl') {
+                    dragHandle.x = Math.max(10, Math.min(mapHandles[1].x - 40, mouseX));
+                    dragHandle.y = Math.max(10, Math.min(mapHandles[3].y - 40, mouseY));
+                    mapHandles[3].x = dragHandle.x;
+                    mapHandles[1].y = dragHandle.y;
+                } else if (dragHandle.type === 'tr') {
+                    dragHandle.x = Math.max(mapHandles[0].x + 40, Math.min(blueprintCanvas.width - 10, mouseX));
+                    dragHandle.y = Math.max(10, Math.min(mapHandles[2].y - 40, mouseY));
+                    mapHandles[2].x = dragHandle.x;
+                    mapHandles[0].y = dragHandle.y;
+                } else if (dragHandle.type === 'br') {
+                    dragHandle.x = Math.max(mapHandles[3].x + 40, Math.min(blueprintCanvas.width - 10, mouseX));
+                    dragHandle.y = Math.max(mapHandles[1].y + 40, Math.min(blueprintCanvas.height - 10, mouseY));
+                    mapHandles[1].x = dragHandle.x;
+                    mapHandles[3].y = dragHandle.y;
+                } else if (dragHandle.type === 'bl') {
+                    dragHandle.x = Math.max(10, Math.min(mapHandles[2].x - 40, mouseX));
+                    dragHandle.y = Math.max(mapHandles[0].y + 40, Math.min(blueprintCanvas.height - 10, mouseY));
+                    mapHandles[0].x = dragHandle.x;
+                    mapHandles[2].y = dragHandle.y;
+                }
+
+                drawBlueprint2D();
+                
+                // Map coordinate pixels (range 30-270) to feet dimensions (range 20-150 / 200)
+                const mapW = mapHandles[1].x - mapHandles[0].x;
+                const mapL = mapHandles[3].y - mapHandles[0].y;
+                
+                currentWidth = Math.round(mapW * 0.5);
+                currentLength = Math.round(mapL * 0.5);
+                
+                // Update input sliders
+                document.getElementById('inp-width').value = currentWidth;
+                document.getElementById('inp-length').value = currentLength;
+                
+                updateLiveStats();
+
+                document.getElementById('blueprint-tooltip').style.display = 'none';
+            } else {
+                const room = getRoomAtCoords(mouseX, mouseY);
+                const tooltip = document.getElementById('blueprint-tooltip');
+                if (room) {
+                    let left = e.clientX + 15;
+                    let top = e.clientY + 15;
+                    const tooltipWidth = 160;
+                    const tooltipHeight = 60;
+                    if (left + tooltipWidth > window.innerWidth) {
+                        left = e.clientX - tooltipWidth - 15;
+                    }
+                    if (top + tooltipHeight > window.innerHeight) {
+                        top = e.clientY - tooltipHeight - 15;
+                    }
+                    tooltip.style.left = left + 'px';
+                    tooltip.style.top = top + 'px';
+                    tooltip.style.display = 'block';
+                    tooltip.style.borderColor = room.color;
+                    tooltip.innerHTML = `<div style="font-weight:600; font-size:0.85rem; color:${room.color};">${room.name}</div>
+                                         <div style="font-size:0.75rem; color:#cbd5e0; margin-top:2px;">Size: ${room.size}</div>`;
+                } else {
+                    tooltip.style.display = 'none';
+                }
+            }
+        });
+
+        blueprintCanvas.addEventListener('mouseleave', () => {
+            document.getElementById('blueprint-tooltip').style.display = 'none';
+        });
+
+        window.addEventListener('mouseup', () => {
+            dragHandle = null;
+        });
+
+        // ------------------ 5. HUD INPUT & CALCULATIONS ------------------
+        function updatePlotDimensions() {
+            currentWidth = parseInt(document.getElementById('inp-width').value);
+            currentLength = parseInt(document.getElementById('inp-length').value);
+            currentOccupants = parseInt(document.getElementById('inp-occupants').value);
+            
+            parkingNeeded = document.getElementById('chk-parking').checked;
+            gardenNeeded = document.getElementById('chk-garden').checked;
+            expansionNeeded = document.getElementById('chk-expansion').checked;
+            
+            // Read budget (Lakhs to absolute INR)
+            const budgetLakhs = parseInt(document.getElementById('inp-budget').value);
+            currentBudget = budgetLakhs * 100000;
+            document.getElementById('lbl-budget').innerText = budgetLakhs;
+
+            // Read location zone
+            currentZone = document.getElementById('inp-location').value;
+            
+            // Sync map coordinates visually
+            const mapW = currentWidth / 0.5;
+            const mapL = currentLength / 0.5;
+            
+            mapHandles[1].x = mapHandles[0].x + mapW;
+            mapHandles[2].x = mapHandles[0].x + mapW;
+            mapHandles[3].y = mapHandles[0].y + mapL;
+            mapHandles[2].y = mapHandles[0].y + mapL;
+
+            drawBlueprint2D();
+            updateLiveStats();
+        }
+
+        // Instant calculations update (No lag!)
+        function updateLiveStats() {
+            const totalArea = currentWidth * currentLength;
+
+            let recommendedRatio = 0.70;
+            if(gardenNeeded) recommendedRatio -= 0.12;
+            if(parkingNeeded) recommendedRatio -= 0.08;
+            if(expansionNeeded) recommendedRatio -= 0.05;
+            recommendedRatio = Math.max(0.40, Math.min(0.85, recommendedRatio));
+
+            builtArea = Math.round(totalArea * recommendedRatio);
+            openSpace = totalArea - builtArea;
+
+            // ── Area-aware house type (same thresholds as Python backend) ────
+            const effectiveGround = totalArea * 0.60; // realistic 60% FAR
+            const MIN_1BHK   = 500;
+            const MIN_2BHK   = 700;
+            const MIN_DUPLEX = 900;
+            const MIN_VILLA  = 1500;
+
+            let feasibilityWarning = null;
+
+            if (effectiveGround < MIN_1BHK) {
+                houseType = "Studio / 1-Room Unit";
+                if (currentOccupants > 2) {
+                    feasibilityWarning = `⚠️ Plot area (${totalArea} sqft) is too small for ${currentOccupants} occupants. Practical maximum is a Studio / 1-Room unit. Increase plot size to ≥ 850 sqft for a 1 BHK.`;
+                }
+            } else if (effectiveGround < MIN_2BHK) {
+                houseType = "Single Bedroom (1 BHK)";
+                if (currentOccupants > 2) {
+                    feasibilityWarning = `⚠️ Plot (${totalArea} sqft) supports only a 1 BHK for ${currentOccupants} occupants. Increase plot to ≥ 1,200 sqft for a 2 BHK.`;
+                }
+            } else if (effectiveGround < MIN_DUPLEX) {
+                if (currentOccupants <= 4) {
+                    houseType = "Double Bedroom (2 BHK)";
+                } else {
+                    houseType = "Double Bedroom (2 BHK)";
+                    feasibilityWarning = `⚠️ Plot (${totalArea} sqft) can only support a 2 BHK. For ${currentOccupants} occupants, a minimum plot of 1,500 sqft is needed for a Duplex.`;
+                }
+            } else if (effectiveGround < MIN_VILLA) {
+                if (currentOccupants <= 2) {
+                    houseType = "Single Bedroom (1 BHK)";
+                } else if (currentOccupants <= 6) {
+                    houseType = "Duplex (2-3 BHK)";
+                } else {
+                    houseType = "Duplex (3-4 BHK)";
+                    feasibilityWarning = `⚠️ For ${currentOccupants} occupants an Apartment Villa is ideal, but requires ≥2,500 sqft. A Duplex (3-4 BHK) is the best fit for your current plot.`;
+                }
+            } else {
+                if (currentOccupants <= 2) houseType = "Single Bedroom (1 BHK)";
+                else if (currentOccupants <= 4) houseType = "Duplex (2-3 BHK)";
+                else if (currentOccupants <= 6) houseType = "Duplex (3-4 BHK)";
+                else houseType = "Apartment Style / Villa";
+            }
+
+            // ── Cost in INR @ ₹3,500/sqft with realistic minimum floors ─────
+            const costPerSqft = 3500;
+            const rawCost = builtArea * costPerSqft;
+            const MIN_COST = {
+                "Studio / 1-Room Unit":     700000,
+                "Single Bedroom (1 BHK)":  1500000,
+                "Double Bedroom (2 BHK)":  2500000,
+                "Duplex (2-3 BHK)":        4500000,
+                "Duplex (3-4 BHK)":        6500000,
+                "Apartment Style / Villa": 10000000
+            };
+            estimatedCost = Math.max(rawCost, MIN_COST[houseType] || 1500000);
+
+            constructionTime = Math.round((6.0 + (builtArea / 500) * 1.5) * 10) / 10;
+
+            // ── DOM updates ─────────────────────────────────────
+            document.getElementById('lbl-width').innerText = currentWidth;
+            document.getElementById('lbl-length').innerText = currentLength;
+            document.getElementById('lbl-occupants').innerText = currentOccupants;
+
+            document.getElementById('tag-house-type').innerText = houseType;
+            document.getElementById('tag-area').innerText = totalArea.toLocaleString() + " sqft";
+            const costInLakhs = (estimatedCost / 100000).toFixed(1);
+            document.getElementById('tag-cost').innerText = "₹" + costInLakhs + " L";
+
+            // AI Rec outputs
+            document.getElementById('rec-house-type').innerText = houseType;
+            document.getElementById('rec-footprint').innerText = builtArea.toLocaleString();
+            document.getElementById('rec-timeline').innerText = constructionTime;
+
+            // Dashboard outputs
+            document.getElementById('dash-confidence').innerText = (90 + (totalArea % 8)).toFixed(1) + "%";
+            document.getElementById('ring-eff-val').innerText = Math.round(recommendedRatio * 100) + "%";
+
+
+
+            // Resource planning values calculations
+            const cementBags = Math.round(builtArea * 0.45);
+            const steelTonnes = (builtArea * 4.5 / 1000).toFixed(2);
+            const sandBrass = (builtArea * 1.25 / 100).toFixed(1);
+            const stockBuffer = 15 + (builtArea % 16);
+            const skilledMasons = Math.max(2, Math.round(builtArea * 0.003));
+            const helperLabors = Math.max(4, Math.round(builtArea * 0.008));
+
+            document.getElementById('res-cement').innerText = cementBags.toLocaleString() + " Bags";
+            document.getElementById('res-steel').innerText = steelTonnes + " Tonnes";
+            document.getElementById('res-sand').innerText = sandBrass + " Brass";
+            document.getElementById('res-stock').innerText = stockBuffer + " Days";
+            document.getElementById('res-masons').innerText = skilledMasons + " / day";
+            document.getElementById('res-helpers').innerText = helperLabors + " / day";
+
+            refit3DScene();
+            buildAIInsightsList(feasibilityWarning);
+            updateMaterialBreakdown();
+            updateSafetyAndRisks();
+        }
+
+
+        function buildAIInsightsList(feasibilityWarning) {
+            const list = document.getElementById('ai-strategic-insights-list');
+            list.innerHTML = '';
+
+            const totalArea = currentWidth * currentLength;
+            const costInLakhs = (estimatedCost / 100000).toFixed(1);
+            const costPerSqft = 3500;
+            const openRatio = Math.round((openSpace / totalArea) * 100);
+
+            // ── Feasibility warning (shown first, in red) ─────────────
+            if (feasibilityWarning) {
+                const warn = document.createElement('div');
+                warn.style.cssText = `background:rgba(255,59,48,0.08); border:1px solid rgba(255,59,48,0.4); border-left:4px solid #ff3b30; padding:12px 14px; border-radius:6px; font-size:0.85rem; color:#ff6b6b; line-height:1.5; display:flex; gap:10px; align-items:flex-start; margin-bottom:4px;`;
+                warn.innerHTML = `<span style="font-size:1.1rem;flex-shrink:0;">🚫</span><span>${feasibilityWarning}</span>`;
+                list.appendChild(warn);
+            }
+
+            // Smart material-based tip
+            const materialTip = expansionNeeded
+                ? "Fe-500 grade TMT steel rebars recommended for load-bearing columns — supports future vertical extension."
+                : "Fe-415 TMT bars with M20 concrete mix optimal for single-load foundation. Saves ~8% cost.";
+
+            // Energy efficiency tip
+            const energyTip = gardenNeeded
+                ? `Green buffer zone of ${Math.round(openSpace * 0.4).toLocaleString()} sqft reduces building heat by 2.5°C, cutting AC load by ~18%.`
+                : "No garden requested. Consider light-colored exterior paint (SRI > 70) to offset thermal absorption.";
+
+            // Solar alignment tip
+            const solarTip = currentLength > currentWidth
+                ? "Longer plot axis is North-South — ideal for south-facing solar panel placement. Expected 22% energy offset."
+                : "Wider plot allows east-west solar exposure. Recommend roof overhangs on west side for shading.";
+
+            const insights = [
+                {
+                    color: "#4d39e9",
+                    icon: "🏠",
+                    text: `Recommended ${houseType} for ${currentOccupants} occupant(s). Built-up area of ${builtArea.toLocaleString()} sqft on this ${totalArea.toLocaleString()} sqft plot.`
+                },
+                {
+                    color: "#00f5d4",
+                    icon: "💰",
+                    text: `Estimated construction cost: ₹${costInLakhs} Lakhs (@ ₹${costPerSqft.toLocaleString()}/sqft). Premium fittings and smart automation add ~15–20% over base cost.`
+                },
+                {
+                    color: "#00b4d8",
+                    icon: "🌿",
+                    text: energyTip
+                },
+                {
+                    color: "#ff9f1c",
+                    icon: "⚡",
+                    text: solarTip
+                },
+                {
+                    color: "#a855f7",
+                    icon: "🔩",
+                    text: materialTip
+                },
+                {
+                    color: "#00f5d4",
+                    icon: "🅿️",
+                    text: parkingNeeded
+                        ? `Dedicated parking (≈180 sqft) mapped at entrance. EV charging conduit pre-wiring recommended — adds only ₹18,000 at construction stage.`
+                        : "Parking omitted — maximises built-up area. Plot setback zones satisfy municipal FAR norms."
+                },
+                {
+                    color: "#4d39e9",
+                    icon: "⏱️",
+                    text: `Projected timeline: ${constructionTime} months. Milestone payments recommended: 30% mobilisation / 40% structure / 30% finishing.`
+                },
+                {
+                    color: "#ff9f1c",
+                    icon: "💨",
+                    text: `${openRatio}% open space (${openSpace.toLocaleString()} sqft) achieves ${openRatio > 35 ? 'excellent' : openRatio > 25 ? 'good' : 'standard'} cross-ventilation — reduces AC reliance.`
+                }
+            ];
+
+            insights.forEach(({ color, icon, text }) => {
+                const item = document.createElement('div');
+                item.style.cssText = `background:rgba(255,255,255,0.03); border-left:3px solid ${color}; padding:12px 14px; border-radius:6px; font-size:0.85rem; color:#e2e8f0; line-height:1.5; display:flex; gap:10px; align-items:flex-start;`;
+                item.innerHTML = `<span style="font-size:1.1rem;flex-shrink:0;">${icon}</span><span>${text}</span>`;
+                list.appendChild(item);
+            });
+        }
+
+        // Initial setup run
+        updateLiveStats();
+
+        // ------------------ 6. AI LASER SCANNING SIMULATOR ------------------
+        function triggerLaserScan(isQuiet = false) {
+            const overlay = document.getElementById('laser-scan-overlay');
+            overlay.style.visibility = 'visible';
+            overlay.style.opacity = '1';
+
+            // Beam sweep using GSAP
+            gsap.fromTo(".laser-beam", 
+                { top: "0%" }, 
+                { top: "100%", duration: 2.0, repeat: 1, yoyo: true, ease: "power1.inOut" }
+            );
+
+            // Temporarily tilt camera for scanning visual effect
+            gsap.to(camera.position, { x: 0, y: 90, z: 20, duration: 1.5 });
+
+            setTimeout(() => {
+                gsap.to(overlay, { 
+                    opacity: 0, 
+                    duration: 0.5, 
+                    onComplete: () => {
+                        overlay.style.visibility = 'hidden';
+                        // Rerun camera vector reset
+                        reset3DCamera();
+                        if(!isQuiet) {
+                            const params = `?width=${currentWidth}&length=${currentLength}&occupants=${currentOccupants}&parking=${parkingNeeded}&garden=${gardenNeeded}&expansion=${expansionNeeded}`;
+                            // Update parent address bar without reloading
+                            try {
+                                if (window.parent && window.parent.history) {
+                                    window.parent.history.replaceState(null, null, params);
+                                }
+                            } catch(e) {
+                                console.warn("Failed to update parent address bar query parameters", e);
+                            }
+                            // Reload the iframe to align values and trigger layout calculations
+                            window.location.search = params;
+                        }
+                    } 
+                });
+            }, 3000);
+        }
+
+        // ------------------ 7. CONTEXT CHATBOT SYSTEM (OLLAMA INTEGRATED) ------------------
+        var companionApiPort = 8502;
+        var controlCenterChatHistory = [
+            { role: 'assistant', content: "Greetings! I am Apex Builder AI, your dedicated construction planning superintendent. Ask me anything about space optimization, material quality, budget efficiency, or safety procedures for your project!" }
+        ];
+        var safetyAndRisksDebounceTimeout = null;
+
+        function toggleChatbot() {
+            const card = document.getElementById('chat-card');
+            if (card) {
+                card.classList.toggle('open');
+                if (card.classList.contains('open')) {
+                    const inp = document.getElementById('chat-inp');
+                    if (inp) inp.focus();
+                }
+            }
+        }
+
+        function handleChatKey(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                sendChatMessage();
+            }
+        }
+
+        function clickChatChip(text) {
+            const inp = document.getElementById('chat-inp');
+            if (inp) {
+                inp.value = text;
+                sendChatMessage();
+            }
+        }
+
+        function isConstructionQuery(query) {
+            const q = query.toLowerCase().trim();
+            
+            // Allow greetings & introductory questions
+            const greetings = ["hi", "hello", "hey", "greetings", "good morning", "good evening", "who are you", "what can you do", "help"];
+            for (let g of greetings) {
+                if (q === g || q.startsWith(g + " ") || q.startsWith(g + "!") || q.startsWith(g + "?")) return true;
+            }
+
+            // Explicit construction domain keywords
+            const keywords = [
+                "build", "building", "construct", "construction", "house", "villa", "duplex",
+                "apartment", "flat", "plot", "land", "area", "sqft", "sq ft", "square feet",
+                "dimension", "width", "length", "foundation", "slab", "beam", "column",
+                "cement", "sand", "steel", "rebar", "brick", "block", "concrete", "mortar",
+                "material", "quantity", "cost", "budget", "price", "estimate", "estimation",
+                "room", "bedroom", "kitchen", "bathroom", "living", "floor", "roof", "ceiling",
+                "wall", "zoning", "permit", "code", "safety", "hazard", "engineer", "architect",
+                "design", "footprint", "space", "expansion", "parking", "garden", "setback",
+                "contractor", "labor", "excavation", "plumbing", "electrical", "wiring", "tile",
+                "paint", "plaster", "drainage", "waterproof", "load", "structural", "soil",
+                "site", "project", "elevation", "blueprint", "cad", "bim", "remodel", "renovate",
+                "staircase", "balcony", "terrace", "lintel", "shuttering", "aggregate",
+                "contract", "spec", "drawing", "floorplan", "layout"
+            ];
+
+            for (let word of keywords) {
+                if (q.includes(word)) return true;
+            }
+
+            return false;
+        }
+
+        function sendChatMessage() {
+            const inp = document.getElementById('chat-inp');
+            if (!inp) return;
+            const queryText = inp.value.trim();
+            if (!queryText) return;
+
+            // Render User Message
+            addChatMessage(queryText, 'user');
+            inp.value = '';
+
+            // Check Strict Domain Guardrail
+            if (!isConstructionQuery(queryText)) {
+                setTimeout(() => {
+                    addChatMessage("I'm sorry, I don't have information about that. I'm a chatbot built only to help with construction-related topics. Please ask me something about construction, building, materials, costs, or safety guidelines.", 'ai');
+                }, 300);
+                return;
+            }
+
+            // Add loading placeholder message
+            const body = document.getElementById('chat-messages');
+            const loadingMsg = document.createElement('div');
+            loadingMsg.className = `chatbot-msg msg-ai`;
+            loadingMsg.innerHTML = "⏳ <em>Apex Builder is thinking...</em>";
+            body.appendChild(loadingMsg);
+            body.scrollTop = body.scrollHeight;
+
+            const payload = {
+                query: queryText,
+                project_data: {
+                    constructionType: "Smart/Futuristic",
+                    materialQuality: "Premium",
+                    parking: parkingNeeded,
+                    garden: gardenNeeded,
+                    expansion: expansionNeeded,
+                    budget: currentBudget,
+                    location: currentZone,
+                    houseType: houseType,
+                    estimatedCost: estimatedCost,
+                    safetyScore: 95
+                },
+                history: controlCenterChatHistory,
+                stream: true
+            };
+
+            // Create streaming response bubble element
+            const msg = document.createElement('div');
+            msg.className = `chatbot-msg msg-ai`;
+            msg.innerHTML = `<strong>🤖 Apex Builder: </strong><span class="text-content" style="white-space: pre-wrap;"></span>`;
+
+            // Query local companion API server
+            fetch(`http://127.0.0.1:${companionApiPort}/chat`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(async response => {
+                loadingMsg.remove();
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                
+                body.appendChild(msg);
+                body.scrollTop = body.scrollHeight;
+                const span = msg.querySelector('.text-content');
+                
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder("utf-8");
+                let buffer = "";
+                let hasWrittenAny = false;
+                
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+                    
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split("\n");
+                    buffer = lines.pop();
+                    
+                    for (const line of lines) {
+                        const trimmedLine = line.trim();
+                        if (trimmedLine.startsWith("data: ")) {
+                            try {
+                                const jsonStr = trimmedLine.substring(6).trim();
+                                const parsed = JSON.parse(jsonStr);
+                                if (parsed.chunk) {
+                                    span.textContent += parsed.chunk;
+                                    body.scrollTop = body.scrollHeight;
+                                    hasWrittenAny = true;
+                                }
+                            } catch (e) {
+                                console.error("SSE JSON parse error:", e, trimmedLine);
+                            }
+                        }
+                    }
+                }
+                
+                const finalText = span.textContent.trim();
+                if (!finalText && !hasWrittenAny) {
+                    msg.remove();
+                    addChatMessage("⚠️ Received empty response from local Ollama model.", 'ai');
+                } else {
+                    controlCenterChatHistory.push({
+                        role: 'assistant',
+                        content: finalText
+                    });
+                    if (controlCenterChatHistory.length > 8) {
+                        controlCenterChatHistory = controlCenterChatHistory.slice(-8);
+                    }
+                }
+            })
+            .catch(err => {
+                loadingMsg.remove();
+                if (msg.parentNode) {
+                    msg.remove();
+                }
+                console.warn("Local Ollama API offline, generating construction AI response:", err);
+                const fallbackText = generateConstructionAIFallback(queryText);
+                addChatMessage(fallbackText, 'ai');
+            });
+        }
+
+        function generateConstructionAIFallback(query) {
+            const q = query.toLowerCase();
+            if (q.includes("material") || q.includes("cement") || q.includes("steel") || q.includes("sand") || q.includes("brick")) {
+                const cementBags = Math.round(builtArea * 0.4);
+                const steelTonnes = (builtArea * 0.0035).toFixed(1);
+                const sandBrass = Math.round(builtArea * 0.05);
+                const bricks = Math.round(builtArea * 1.8);
+                return `📦 Material Estimates for ${houseType} (${builtArea} sqft builtup):\n• Cement: ${cementBags} Bags\n• Steel Rebars: ${steelTonnes} Tonnes\n• Sand/Aggregate: ${sandBrass} Brass\n• AAC Bricks: ${bricks} Blocks`;
+            } else if (q.includes("cost") || q.includes("budget") || q.includes("price") || q.includes("estimate")) {
+                return `💰 Cost Telemetry: Estimated construction cost is ₹${(estimatedCost / 100000).toFixed(1)} Lakhs (@ ₹3,500/sqft built-up area) for a ${houseType} structure in the ${currentZone} zone.`;
+            } else if (q.includes("safety") || q.includes("code") || q.includes("permit")) {
+                return `🛡️ Safety Protocol: Class 1 Hardhats, Steel-toe Boots, and Harnesses mandatory. Ensure a 1.2x soil safety margin for structural foundations in ${currentZone}.`;
+            } else {
+                return `🏗️ Apex Builder AI: For a ${houseType} on your ${currentWidth}x${currentLength} ft plot (${currentWidth * currentLength} sqft), we recommend allocating ${builtArea} sqft built-up area and leaving ${openSpace} sqft for open landscape and setback buffers.`;
+            }
+        }
+
+        function addChatMessage(text, role) {
+            const body = document.getElementById('chat-messages');
+            if (!body) return;
+            const msg = document.createElement('div');
+            msg.className = `chatbot-msg msg-${role}`;
+            
+            const prefix = role === 'ai' ? '🤖 Apex Builder: ' : '👤 You: ';
+            msg.innerHTML = `<strong>${prefix}</strong><span style="white-space: pre-wrap;">${text}</span>`;
+            
+            body.appendChild(msg);
+            body.scrollTop = body.scrollHeight;
+            
+            controlCenterChatHistory.push({
+                role: role === 'ai' ? 'assistant' : 'user',
+                content: text
+            });
+            if (controlCenterChatHistory.length > 8) {
+                controlCenterChatHistory = controlCenterChatHistory.slice(-8);
+            }
+        }
+
+        function triggerFileUpload() {
+            const inp = document.getElementById('chat-file-input');
+            if (inp) inp.click();
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Data = e.target.result.split(',')[1];
+                showToast(`⏳ Indexing document "${file.name}"...`);
+
+                fetch(`http://127.0.0.1:${companionApiPort}/upload`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ filename: file.name, file_data: base64Data })
+                })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('chat-active-doc').style.display = 'flex';
+                        document.getElementById('chat-active-doc-name').innerText = file.name;
+                        showToast(`✅ Document "${file.name}" indexed!`);
+                        addChatMessage(`📄 Document "${file.name}" uploaded and indexed successfully! Summary: ${data.summary || 'Ready for architectural queries.'}`, 'ai');
+                    } else {
+                        showToast(`❌ Document indexing failed: ${data.error}`);
+                    }
+                })
+                .catch(err => {
+                    console.warn("Upload failed:", err);
+                    showToast(`📎 Document "${file.name}" attached.`);
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearActiveDocument() {
+            document.getElementById('chat-file-input').value = '';
+            document.getElementById('chat-active-doc').style.display = 'none';
+            document.getElementById('chat-active-doc-name').innerText = '';
+
+            fetch(`http://127.0.0.1:${companionApiPort}/clear_doc`)
+                .then(r => r.json())
+                .then(data => {
+                    addChatMessage(`🗑️ Document context removed.`, 'ai');
+                })
+                .catch(err => {
+                    console.error("Error clearing document:", err);
+                });
+        }
+
+
+        // ------------------ SAFETY, RISK & DAILY REPORTS TIMELINE ------------------
+        function updateSafetyAndRisks() {
+            if (safetyAndRisksDebounceTimeout) {
+                clearTimeout(safetyAndRisksDebounceTimeout);
+            }
+            
+            // Set loading state in containers immediately to indicate processing
+            const checklist = document.getElementById('safety-checklist');
+            if (checklist) {
+                checklist.innerHTML = `
+                    <div style="text-align:center; padding:15px; color:#00f5d4; font-size:0.8rem;">
+                        <i class="fa-solid fa-circle-notch fa-spin"></i> Recalculating safety checklist...
+                    </div>
+                `;
+            }
+            const risksContainer = document.getElementById('risk-alerts-container');
+            if (risksContainer) {
+                risksContainer.innerHTML = `
+                    <div style="text-align:center; padding:15px; color:#ff9f1c; font-size:0.8rem;">
+                        <i class="fa-solid fa-circle-notch fa-spin"></i> Scanning for design hazards...
+                    </div>
+                `;
+            }
+
+            safetyAndRisksDebounceTimeout = setTimeout(() => {
+                const zone = document.getElementById('inp-location') ? document.getElementById('inp-location').value : 'Urban Core';
+                const payload = {
+                    location: zone,
+                    width: currentWidth,
+                    length: currentLength,
+                    houseType: houseType,
+                    builtArea: builtArea,
+                    budget: currentBudget,
+                    expansion: expansionNeeded
+                };
+
+                // Fetch Safety Precautions
+                fetch(`http://127.0.0.1:${companionApiPort}/safety`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                })
+                .then(r => {
+                    if (!r.ok) throw new Error("HTTP error " + r.status);
+                    return r.json();
+                })
+                .then(data => {
+                    if (checklist) {
+                        checklist.innerHTML = '';
+                        if (data.safety && data.safety.length > 0) {
+                            data.safety.forEach(item => {
+                                const li = document.createElement('li');
+                                li.style.cssText = `background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:8px; padding:8px 12px; margin-bottom:6px; color:#e2e8f0; display:flex; gap:10px; align-items:center;`;
+                                li.innerHTML = `<span><input type="checkbox" checked style="accent-color:#00f5d4; cursor:pointer;"></span><span>${item}</span>`;
+                                checklist.appendChild(li);
+                            });
+                        } else {
+                            checklist.innerHTML = `<div style="text-align:center; padding:15px; color:#a0aec0;">⚠️ No precautions returned.</div>`;
+                        }
+                    }
+                })
+                .catch(err => {
+                    if (checklist) {
+                        checklist.innerHTML = `<div style="text-align:center; padding:15px; color:#ff6b6b; font-size:0.8rem;">⚠️ The local AI couldn't generate safety checks.</div>`;
+                    }
+                });
+
+                // Fetch Risks
+                fetch(`http://127.0.0.1:${companionApiPort}/risks`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                })
+                .then(r => {
+                    if (!r.ok) throw new Error("HTTP error " + r.status);
+                    return r.json();
+                })
+                .then(data => {
+                    if (risksContainer) {
+                        risksContainer.innerHTML = '';
+                        if (data.risks && data.risks.length > 0) {
+                            data.risks.forEach(r => {
+                                const div = document.createElement('div');
+                                let borderStyle = 'border-left:4px solid #ff9f1c; border:1px solid rgba(255,159,28,0.3); border-left-width:4px;';
+                                let textStyle = 'color:#ffb74d;';
+                                let bgStyle = 'background:rgba(255,159,28,0.06);';
+                                let icon = '⚠️';
+
+                                const titleLower = r.title.toLowerCase();
+                                if (titleLower.includes('budget') || titleLower.includes('deficit') || titleLower.includes('cost') || titleLower.includes('overrun')) {
+                                    borderStyle = 'border-left:4px solid #ff3b30; border:1px solid rgba(255,59,48,0.3); border-left-width:4px;';
+                                    textStyle = 'color:#ff6b6b;';
+                                    bgStyle = 'background:rgba(255,59,48,0.06);';
+                                    icon = '🚨';
+                                } else if (titleLower.includes('humidity') || titleLower.includes('saline') || titleLower.includes('weather') || titleLower.includes('corrosion')) {
+                                    borderStyle = 'border-left:4px solid #00b4d8; border:1px solid rgba(0,180,216,0.3); border-left-width:4px;';
+                                    textStyle = 'color:#4fc3f7;';
+                                    bgStyle = 'background:rgba(0,180,216,0.06);';
+                                    icon = 'ℹ️';
+                                } else if (titleLower.includes('stability') || titleLower.includes('load') || titleLower.includes('success') || titleLower.includes('safe')) {
+                                    borderStyle = 'border-left:4px solid #00f5d4; border:1px solid rgba(0,245,212,0.3); border-left-width:4px;';
+                                    textStyle = 'color:#81c784;';
+                                    bgStyle = 'background:rgba(0,245,212,0.06);';
+                                    icon = '✅';
+                                }
+
+                                div.style.cssText = `${bgStyle} ${borderStyle} padding:12px; border-radius:6px; font-size:0.8rem; line-height:1.4; display:flex; gap:10px; align-items:flex-start; margin-bottom: 8px;`;
+                                div.innerHTML = `<span style="font-size:1.1rem; flex-shrink:0;">${icon}</span><div><div style="font-weight:600; margin-bottom:4px; ${textStyle}">${r.title}</div><div style="color:#a0aec0;">${r.reason}</div></div>`;
+                                risksContainer.appendChild(div);
+                            });
+                        } else {
+                            risksContainer.innerHTML = `<div style="text-align:center; padding:30px 10px; color:#718096; font-size:0.85rem;">🔮 No critical design hazards identified.</div>`;
+                        }
+                    }
+                })
+                .catch(err => {
+                    if (risksContainer) {
+                        risksContainer.innerHTML = `<div style="text-align:center; padding:15px; color:#ff6b6b; font-size:0.8rem;">⚠️ The local AI couldn't generate a risk audit.</div>`;
+                    }
+                });
+            }, 600); // 600ms debounce
+        }
+
+        function loadDailyReports() {
+            const timeline = document.getElementById('report-timeline');
+            if (!timeline) return;
+            timeline.innerHTML = '';
+            
+            let reports = [];
+            try {
+                reports = JSON.parse(localStorage.getItem('daily_progress_reports')) || [];
+            } catch(e) {
+                reports = [];
+            }
+            
+            if (reports.length === 0) {
+                const empty = document.createElement('div');
+                empty.style.cssText = `text-align:center; padding:20px; color:#718096; font-size:0.8rem;`;
+                empty.innerText = "No logs recorded yet. Add one above!";
+                timeline.appendChild(empty);
+                return;
+            }
+            
+            // Sort descending by timestamp
+            reports.slice().reverse().forEach(r => {
+                const div = document.createElement('div');
+                div.style.cssText = `border-left: 2px solid #a855f7; padding-left: 12px; position: relative; margin-bottom:12px;`;
+                div.innerHTML = `
+                    <div style="font-size:0.7rem; color:#a855f7; font-weight:600; margin-bottom:2px;">🕒 ${r.timestamp}</div>
+                    <div style="font-size:0.8rem; color:#e2e8f0; line-height:1.4;">${r.text}</div>
+                `;
+                timeline.appendChild(div);
+            });
+        }
+
+        function addDailyReport() {
+            const inp = document.getElementById('report-note');
+            const text = inp.value.trim();
+            if (!text) return;
+            
+            let reports = [];
+            try {
+                reports = JSON.parse(localStorage.getItem('daily_progress_reports')) || [];
+            } catch(e) {
+                reports = [];
+            }
+            
+            const newReport = {
+                timestamp: new Date().toLocaleString(),
+                text: text
+            };
+            reports.push(newReport);
+            localStorage.setItem('daily_progress_reports', JSON.stringify(reports));
+            
+            inp.value = '';
+            loadDailyReports();
+        }
+
+        // ------------------ 8. HOLOGRAPHIC CHARTS & RADAR RENDERERS ------------------
+        function updateMaterialBreakdown() {
+            const cementBags = Math.round(builtArea * 0.45);
+            const steelTonnes = (builtArea * 4.5 / 1000).toFixed(2);
+            const sandBrass = (builtArea * 1.25 / 100).toFixed(1);
+            const brickPcs = Math.round(builtArea * 7.5);
+
+            const elCement = document.getElementById('mat-val-cement');
+            const elSteel = document.getElementById('mat-val-steel');
+            const elSand = document.getElementById('mat-val-sand');
+            const elBricks = document.getElementById('mat-val-bricks');
+            const elFinish = document.getElementById('mat-val-finish');
+
+            if (elCement) elCement.innerText = cementBags.toLocaleString() + " Bags";
+            if (elSteel) elSteel.innerText = steelTonnes + " Tonnes";
+            if (elSand) elSand.innerText = sandBrass + " Brass";
+            if (elBricks) elBricks.innerText = brickPcs.toLocaleString() + " Blocks";
+            if (elFinish) elFinish.innerText = builtArea > 2000 ? "Premium Finish" : "Standard Finish";
+        }
+
+        // ------------------ 8. HOLOGRAPHIC CHARTS & RADAR RENDERERS ------------------
+        function initCharts() {
+            // Update material breakdown textual values & progress bars
+            updateMaterialBreakdown();
+
+            // 1. Radar Canvas Drawing
+            const rCanvas = document.getElementById('material-radar-canvas');
+            if (!rCanvas) return;
+            const rctx = rCanvas.getContext('2d');
+            rCanvas.width = rCanvas.parentElement.clientWidth || 280;
+            rCanvas.height = rCanvas.parentElement.clientHeight || 145;
+            
+            const cx = rCanvas.width / 2;
+            const cy = rCanvas.height / 2;
+            const rMax = Math.min(cx, cy) - 22;
+            
+            const materials = ['Concrete', 'Steel', 'Sand', 'Brick', 'Glass', 'Finishing'];
+            const values = [0.85, 0.75, 0.65, 0.80, 0.55, 0.70];
+
+            // Clear canvas
+            rctx.clearRect(0, 0, rCanvas.width, rCanvas.height);
+
+            // Draw radar web grid
+            rctx.strokeStyle = 'rgba(0, 180, 216, 0.25)';
+            rctx.lineWidth = 1;
+            for(let level = 0.25; level <= 1.0; level += 0.25) {
+                rctx.beginPath();
+                for(let i=0; i<6; i++) {
+                    const angle = (i * Math.PI / 3) - Math.PI/2;
+                    const x = cx + Math.cos(angle) * rMax * level;
+                    const y = cy + Math.sin(angle) * rMax * level;
+                    if(i === 0) rctx.moveTo(x, y);
+                    else rctx.lineTo(x, y);
+                }
+                rctx.closePath();
+                rctx.stroke();
+            }
+
+            // Draw Web rays and clear material labels
+            for(let i=0; i<6; i++) {
+                const angle = (i * Math.PI / 3) - Math.PI/2;
+                rctx.strokeStyle = 'rgba(0, 180, 216, 0.25)';
+                rctx.beginPath();
+                rctx.moveTo(cx, cy);
+                rctx.lineTo(cx + Math.cos(angle) * rMax, cy + Math.sin(angle) * rMax);
+                rctx.stroke();
+                
+                // Labels text styling
+                rctx.fillStyle = '#00f5d4';
+                rctx.font = 'bold 9px "Space Grotesk", sans-serif';
+                rctx.textAlign = 'center';
+                const tx = cx + Math.cos(angle) * (rMax + 14);
+                const ty = cy + Math.sin(angle) * (rMax + 14) + 3;
+                rctx.fillText(materials[i], tx, ty);
+            }
+
+            // Draw glowing values polygon
+            rctx.strokeStyle = '#00f5d4';
+            rctx.fillStyle = 'rgba(0, 245, 212, 0.25)';
+            rctx.lineWidth = 2;
+            rctx.beginPath();
+            for(let i=0; i<6; i++) {
+                const angle = (i * Math.PI / 3) - Math.PI/2;
+                const x = cx + Math.cos(angle) * rMax * values[i];
+                const y = cy + Math.sin(angle) * rMax * values[i];
+                if(i === 0) rctx.moveTo(x, y);
+                else rctx.lineTo(x, y);
+            }
+            rctx.closePath();
+            rctx.fill();
+            rctx.stroke();
+
+            // Draw glowing data point dots
+            for(let i=0; i<6; i++) {
+                const angle = (i * Math.PI / 3) - Math.PI/2;
+                const x = cx + Math.cos(angle) * rMax * values[i];
+                const y = cy + Math.sin(angle) * rMax * values[i];
+                rctx.fillStyle = '#ffffff';
+                rctx.beginPath();
+                rctx.arc(x, y, 3, 0, Math.PI * 2);
+                rctx.fill();
+            }
+
+            // 2. Space Util Pie Canvas Drawing
+            const pCanvas = document.getElementById('space-pie-canvas');
+            if (pCanvas) {
+                const pctx = pCanvas.getContext('2d');
+                pCanvas.width = pCanvas.parentElement.clientWidth || 280;
+                pCanvas.height = pCanvas.parentElement.clientHeight || 150;
+                
+                const pcx = pCanvas.width / 2;
+                const pcy = pCanvas.height / 2;
+                const pr = Math.min(pcx, pcy) - 20;
+
+                const slices = [
+                    { color: '#4d39e9', val: 0.60, name: 'Built' },
+                    { color: '#00f5d4', val: 0.20, name: 'Garden' },
+                    { color: '#00b4d8', val: 0.10, name: 'Park' },
+                    { color: 'rgba(255,255,255,0.05)', val: 0.10, name: 'Setbacks' }
+                ];
+
+                let startAngle = -Math.PI / 2;
+                slices.forEach(slice => {
+                    const sliceAngle = slice.val * Math.PI * 2;
+                    pctx.beginPath();
+                    pctx.arc(pcx, pcy, pr, startAngle, startAngle + sliceAngle);
+                    pctx.arc(pcx, pcy, pr - 12, startAngle + sliceAngle, startAngle, true);
+                    pctx.closePath();
+                    pctx.fillStyle = slice.color;
+                    pctx.fill();
+                    startAngle += sliceAngle;
+                });
+
+                // Center Text inside donut
+                pctx.fillStyle = '#ffffff';
+                pctx.font = '12px Space Grotesk';
+                pctx.textAlign = 'center';
+                pctx.fillText("SPACE Ratios", pcx, pcy + 4);
+            }
+
+            // 3. Floor Utilization line Canvas Drawing
+            const lCanvas = document.getElementById('floor-line-canvas');
+            if (lCanvas) {
+                const lctx = lCanvas.getContext('2d');
+                lCanvas.width = lCanvas.parentElement.clientWidth || 280;
+                lCanvas.height = lCanvas.parentElement.clientHeight || 120;
+
+                const points = [
+                    { x: 30, y: lCanvas.height - 20 },
+                    { x: lCanvas.width / 2, y: lCanvas.height / 2 },
+                    { x: lCanvas.width - 30, y: 30 }
+                ];
+
+                lctx.strokeStyle = '#00f5d4';
+                lctx.lineWidth = 3;
+                lctx.beginPath();
+                lctx.moveTo(points[0].x, points[0].y);
+                lctx.lineTo(points[1].x, points[1].y);
+                lctx.lineTo(points[2].x, points[2].y);
+                lctx.stroke();
+
+                // Draw area gradient under line
+                lctx.fillStyle = 'rgba(0, 245, 212, 0.05)';
+                lctx.beginPath();
+                lctx.moveTo(points[0].x, points[0].y);
+                lctx.lineTo(points[1].x, points[1].y);
+                // Points markers
+                lctx.fillStyle = '#ffffff';
+                points.forEach(pt => {
+                    lctx.beginPath();
+                    lctx.arc(pt.x, pt.y, 4, 0, Math.PI*2);
+                    lctx.fill();
+                });
+            }
+        }
+
+        // ------------------ 9. PDF / EXCEL DOWNLOAD ------------------
+        function triggerReportDownload(type) {
+            showToast(`⏳ Generating ${type.toUpperCase()} report...`);
+            const downloadUrl = `http://127.0.0.1:${companionApiPort}/download?type=${type}&width=${currentWidth}&length=${currentLength}&occupants=${currentOccupants}&parking=${parkingNeeded}&garden=${gardenNeeded}&expansion=${expansionNeeded}&budget=${currentBudget}&location=${encodeURIComponent(currentZone)}`;
+            
+            fetch(downloadUrl)
+                .then(r => {
+                    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                    return r.blob();
+                })
+                .then(blob => {
+                    const ext = (type === 'pdf') ? 'pdf' : 'xlsx';
+                    const filename = `Construction_Project_Report.${ext}`;
+                    
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.style.display = 'none';
+                    link.href = blobUrl;
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    
+                    setTimeout(() => {
+                        window.URL.revokeObjectURL(blobUrl);
+                        document.body.removeChild(link);
+                    }, 500);
+                    showToast(`✅ ${type.toUpperCase()} Report downloaded successfully!`);
+                })
+                .catch(err => {
+                    console.warn("Server download failed, generating client fallback report:", err);
+                    generateClientFallbackDownload(type);
+                });
+        }
+
+        function generateClientFallbackDownload(type) {
+            const dateStr = new Date().toLocaleDateString();
+            const estCostLakhs = (estimatedCost / 100000).toFixed(1);
+            
+            if (type === 'excel') {
+                const csvRows = [
+                    ["CONSTRUCTION INTELLIGENCE HUB - PROJECT REPORT"],
+                    ["Generated Date", dateStr],
+                    [""],
+                    ["PARAMETER", "VALUE"],
+                    ["House Type", houseType],
+                    ["Plot Length", `${currentLength} ft`],
+                    ["Plot Width", `${currentWidth} ft`],
+                    ["Total Plot Area", `${currentWidth * currentLength} sq ft`],
+                    ["Built-up Footprint", `${builtArea} sq ft`],
+                    ["Open Space Left", `${openSpace} sq ft`],
+                    ["Family Occupants", currentOccupants],
+                    ["Parking Space", parkingNeeded ? "Included" : "None"],
+                    ["Garden Space", gardenNeeded ? "Included" : "None"],
+                    ["Future Expansion", expansionNeeded ? "Planned" : "No"],
+                    ["Location Zone", currentZone],
+                    ["Budget Cap", `Rs. ${(currentBudget / 100000).toFixed(1)} Lakhs`],
+                    ["Estimated Construction Cost", `Rs. ${estCostLakhs} Lakhs`],
+                    ["Delivery Timeline", "11.5 Months"],
+                    [""],
+                    ["MATERIAL ESTIMATES", "QUANTITY / UNITS"],
+                    ["Cement Bags", `${Math.round(builtArea * 0.4)} Bags`],
+                    ["Steel Rebars", `${(builtArea * 0.0035).toFixed(1)} Tonnes`],
+                    ["River / Manufactured Sand", `${Math.round(builtArea * 0.05)} Brass`],
+                    ["Red Bricks / AAC Blocks", `${Math.round(builtArea * 1.8)} Blocks`],
+                    ["Finishing Materials", "Premium Tiles & Paint"],
+                    [""],
+                    ["SAFETY & AI COMPLIANCE RULES"],
+                    ["1. Standard Helmets & Safety Harnesses Mandatory"],
+                    ["2. Structural Soil Load Verification Required"],
+                    ["3. Rainwater Harvesting Drain Inlets Placed"]
+                ];
+
+                const csvContent = csvRows.map(e => e.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(",")).join("\n");
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const blobUrl = window.URL.createObjectURL(blob);
+                
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                link.download = `Construction_Project_Ledger.csv`;
+                document.body.appendChild(link);
+                link.click();
+                
+                setTimeout(() => {
+                    window.URL.revokeObjectURL(blobUrl);
+                    document.body.removeChild(link);
+                }, 500);
+                showToast("✅ Excel Ledger downloaded!");
+            } else {
+                const printWin = window.open('', '_blank');
+                if (!printWin) {
+                    showToast("❌ Please allow popups to print/download PDF.");
+                    return;
+                }
+                const htmlDoc = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Construction Project Report - ${houseType}</title>
+                    <style>
+                        body { font-family: 'Helvetica Neue', Arial, sans-serif; padding: 40px; color: #1a202c; background: #fff; }
+                        h1 { color: #1a2b49; border-bottom: 2px solid #00f5d4; padding-bottom: 8px; margin-bottom: 4px; }
+                        .subtitle { color: #4d39e9; font-style: italic; margin-bottom: 24px; font-size: 0.9rem; }
+                        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                        th, td { padding: 10px 12px; border: 1px solid #e2e8f0; text-align: left; font-size: 0.9rem; }
+                        th { background: #1a2b49; color: #fff; }
+                        tr:nth-child(even) { background: #f8fafc; }
+                        .badge { background: #00f5d4; color: #000; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
+                        .footer { margin-top: 40px; font-size: 0.8rem; color: #718096; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 12px; }
+                    </style>
+                </head>
+                <body>
+                    <h1>🏗️ Construction Intelligence Hub</h1>
+                    <div class="subtitle">Architectural Specification & Cost Ledger Report • ${dateStr}</div>
+
+                    <table>
+                        <tr><th>Specification Parameter</th><th>Active Project Details</th></tr>
+                        <tr><td>Structure Type</td><td><strong>${houseType}</strong></td></tr>
+                        <tr><td>Plot Dimensions</td><td>${currentWidth} ft x ${currentLength} ft (${currentWidth * currentLength} sqft)</td></tr>
+                        <tr><td>Recommended Built Area</td><td><strong>${builtArea} sqft</strong></td></tr>
+                        <tr><td>Open Landscape Space</td><td>${openSpace} sqft</td></tr>
+                        <tr><td>Estimated Total Cost</td><td><span class="badge">₹${estCostLakhs} Lakhs</span></td></tr>
+                        <tr><td>Estimated Delivery Time</td><td>11.5 Months</td></tr>
+                        <tr><td>Location Zone</td><td>${currentZone}</td></tr>
+                        <tr><td>Family Capacity</td><td>${currentOccupants} Persons</td></tr>
+                    </table>
+
+                    <h2 style="color:#1a2b49; margin-top:30px;">📦 Estimated Material Breakdown</h2>
+                    <table>
+                        <tr><th>Material Item</th><th>Quantity / Unit</th></tr>
+                        <tr><td>Cement Bags</td><td>${Math.round(builtArea * 0.4)} Bags</td></tr>
+                        <tr><td>Structural Steel Rebars</td><td>${(builtArea * 0.0035).toFixed(1)} Tonnes</td></tr>
+                        <tr><td>Sand / Aggregate</td><td>${Math.round(builtArea * 0.05)} Brass</td></tr>
+                        <tr><td>AAC Bricks / Blocks</td><td>${Math.round(builtArea * 1.8)} Blocks</td></tr>
+                    </table>
+
+                    <div class="footer">Generated automatically by Construction Intelligence Hub • Clean Printable PDF Format</div>
+                    <script>
+                        window.onload = function() {
+                            window.print();
+                        }
+                    <\/script>
+                </body>
+                </html>
+                `;
+                printWin.document.write(htmlDoc);
+                printWin.document.close();
+                showToast("✅ PDF Report generated!");
+            }
+        }
+
+        // ------------------ 10. LEAFLET MAP SETUP ------------------
+        let leafletMap = null;
+        let plotMarker = null;
+
+        function initLeafletMap() {
+            if (typeof L === 'undefined') {
+                document.getElementById('map-status').innerText = '❌ Map engine not available. Please verify network access to unpkg.com.';
+                return;
+            }
+            if (leafletMap) return;
+            try {
+                leafletMap = L.map('location-map', { zoomControl: true }).setView([20.5937, 78.9629], 5);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 19
+                }).addTo(leafletMap);
+                leafletMap.on('click', function(e) {
+                    placeMapMarker(e.latlng.lat, e.latlng.lng, 'Selected plot boundaries');
+                });
+            } catch (err) {
+                console.error("Map init error:", err);
+                document.getElementById('map-status').innerText = '❌ Failed to draw map container grid.';
+            }
+        }
+
+        function placeMapMarker(lat, lng, label) {
+            if (leafletMap) {
+                if (plotMarker) leafletMap.removeLayer(plotMarker);
+                // Use a modern cyan circle marker instead of a default blue pin asset to prevent 404 file errors and look futuristic
+                plotMarker = L.circleMarker([lat, lng], {
+                    color: '#00f5d4',
+                    fillColor: '#00b4d8',
+                    fillOpacity: 0.8,
+                    weight: 2,
+                    radius: 8
+                }).addTo(leafletMap);
+                plotMarker.bindPopup(`<b>📍 ${label}</b><br>Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)}`).openPopup();
+                leafletMap.setView([lat, lng], 15);
+                document.getElementById('map-status').innerText = `📍 Location pinned: ${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+            }
+        }
+
+        function searchMapLocation() {
+            const query = document.getElementById('map-search-input').value.trim();
+            if (!query) return;
+            document.getElementById('map-status').innerText = '🔍 Searching...';
+            fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`)
+                .then(r => r.json())
+                .then(results => {
+                    if (results && results.length > 0) {
+                        const r = results[0];
+                        placeMapMarker(parseFloat(r.lat), parseFloat(r.lon), r.display_name);
+                    } else {
+                        document.getElementById('map-status').innerText = '❌ Location not found. Try a different name.';
+                    }
+                })
+                .catch(() => {
+                    document.getElementById('map-status').innerText = '❌ Search failed. Please check your internet connection.';
+                });
+        }
+
+        function useMyLocation() {
+            if (!navigator.geolocation) {
+                document.getElementById('map-status').innerText = '❌ Your browser does not support location access.';
+                return;
+            }
+            document.getElementById('map-status').innerText = '📡 Getting your location...';
+            navigator.geolocation.getCurrentPosition(
+                pos => placeMapMarker(pos.coords.latitude, pos.coords.longitude, 'Your Current Location'),
+                () => { document.getElementById('map-status').innerText = '❌ Location access was denied. Please allow it in your browser settings.'; }
+            );
+        }
+
+
+
+        // ------------------ 11. AUTHENTICATION & SAVE PROJECT SYSTEM ------------------
+        var currentUser = null;
+        var activeAuthTab = 'login';
+
+        function openAuthModal() {
+            const overlay = document.getElementById('auth-modal-overlay');
+            if (overlay) {
+                overlay.style.visibility = 'visible';
+                overlay.style.opacity = '1';
+            }
+        }
+
+        function closeAuthModal() {
+            const overlay = document.getElementById('auth-modal-overlay');
+            if (overlay) {
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+            }
+        }
+
+        function switchAuthTab(tab) {
+            activeAuthTab = tab;
+            const btnLogin = document.getElementById('tab-btn-login');
+            const btnSignup = document.getElementById('tab-btn-signup');
+            const emailGrp = document.getElementById('auth-email-group');
+            const confirmGrp = document.getElementById('auth-confirm-group');
+            const title = document.getElementById('auth-title');
+            const subtitle = document.getElementById('auth-subtitle');
+            const submitBtn = document.getElementById('auth-submit-btn');
+
+            if (tab === 'login') {
+                btnLogin.style.background = '#4d39e9';
+                btnLogin.style.color = 'white';
+                btnSignup.style.background = 'transparent';
+                btnSignup.style.color = '#a0aec0';
+                
+                emailGrp.style.display = 'none';
+                confirmGrp.style.display = 'none';
+                
+                title.innerText = 'Welcome Back';
+                subtitle.innerText = 'Sign in to save projects and access AI Digital Twins';
+                submitBtn.innerHTML = '⚡ SIGN IN & UNLOCK HUB';
+            } else {
+                btnSignup.style.background = '#4d39e9';
+                btnSignup.style.color = 'white';
+                btnLogin.style.background = 'transparent';
+                btnLogin.style.color = '#a0aec0';
+                
+                emailGrp.style.display = 'block';
+                confirmGrp.style.display = 'block';
+                
+                title.innerText = 'Create Account';
+                subtitle.innerText = 'Register your architect profile to persist workspace models';
+                submitBtn.innerHTML = '🚀 REGISTER & ACCESS HUB';
+            }
+        }
+
+        function showAuthAlert(msg, isSuccess = false) {
+            const alertBox = document.getElementById('auth-alert');
+            if (!alertBox) return;
+            alertBox.style.display = 'block';
+            if (isSuccess) {
+                alertBox.style.background = 'rgba(0, 245, 212, 0.12)';
+                alertBox.style.border = '1px solid rgba(0, 245, 212, 0.4)';
+                alertBox.style.color = '#00f5d4';
+            } else {
+                alertBox.style.background = 'rgba(255, 59, 48, 0.12)';
+                alertBox.style.border = '1px solid rgba(255, 59, 48, 0.4)';
+                alertBox.style.color = '#ff6b6b';
+            }
+            alertBox.innerText = msg;
+        }
+
+        function updateUserSessionDisplay(username) {
+            const hName = document.getElementById('header-user-name');
+            if (hName) hName.innerText = username || 'Guest Architect';
+            const fName = document.getElementById('user-session-name');
+            if (fName) fName.innerText = username || 'Guest Architect';
+        }
+
+        function handleAuthSubmit(event) {
+            event.preventDefault();
+            const username = document.getElementById('auth-username').value.trim();
+            const password = document.getElementById('auth-password').value.trim();
+            const email = document.getElementById('auth-email').value.trim();
+            const confirmPassword = document.getElementById('auth-confirm-password').value.trim();
+
+            if (!username || !password) {
+                showAuthAlert("Please fill out all required fields.");
+                return;
+            }
+
+            const submitBtn = document.getElementById('auth-submit-btn');
+            submitBtn.innerText = "⏳ Processing Security Key...";
+
+            const endpoint = activeAuthTab === 'login' ? '/auth/login' : '/auth/signup';
+            const payload = activeAuthTab === 'login' 
+                ? { username: username, password: password }
+                : { username: username, email: email, password: password, confirm_password: confirmPassword };
+
+            fetch(`http://127.0.0.1:${companionApiPort}${endpoint}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(r => r.json())
+            .then(data => {
+                submitBtn.innerHTML = activeAuthTab === 'login' ? '⚡ SIGN IN & UNLOCK HUB' : '🚀 REGISTER & ACCESS HUB';
+                if (data.success && data.user) {
+                    currentUser = data.user;
+                    localStorage.setItem('hub_current_user', JSON.stringify(data.user));
+                    
+                    updateUserSessionDisplay(currentUser.username || username);
+                    showAuthAlert(`✅ ${activeAuthTab === 'login' ? 'Authenticated' : 'Registered'} as ${currentUser.username}! Unlocking workspace...`, true);
+                    showToast(`Welcome back, ${currentUser.username}!`);
+                    
+                    setTimeout(() => {
+                        unlockDashboard();
+                    }, 800);
+                } else {
+                    showAuthAlert(data.error || "Authentication failed. Check credentials.");
+                }
+            })
+            .catch(err => {
+                console.warn("Auth HTTP failed, using fallback guest session:", err);
+                submitBtn.innerHTML = activeAuthTab === 'login' ? '⚡ SIGN IN & UNLOCK HUB' : '🚀 REGISTER & ACCESS HUB';
+                currentUser = { user_id: 1, username: username || "LiveUser" };
+                updateUserSessionDisplay(currentUser.username);
+                showToast(`Session active as ${currentUser.username}`);
+                unlockDashboard();
+            });
+        }
+
+        function loginAsGuest() {
+            currentUser = { user_id: 0, username: 'Guest Architect' };
+            updateUserSessionDisplay('Guest Architect');
+            showToast("Entered in Quick Guest Mode");
+            unlockDashboard();
+        }
+
+        function handleLogout() {
+            currentUser = null;
+            localStorage.removeItem('hub_current_user');
+            updateUserSessionDisplay('Guest Architect');
+            showToast("Signed out of session.");
+
+            // Fade out dashboard and return to intro screen
+            gsap.to("#main-dashboard", {
+                opacity: 0,
+                duration: 0.8,
+                onComplete: () => {
+                    const intro = document.getElementById('intro-screen');
+                    if (intro) {
+                        intro.style.display = 'flex';
+                        intro.style.opacity = '1';
+                    }
+                }
+            });
+        }
+
+        function openSaveProjectModal() {
+            const overlay = document.getElementById('save-modal-overlay');
+            if (!overlay) return;
+
+            const defaultName = `${houseType} - ${currentWidth}x${currentLength} ft`;
+            document.getElementById('save-proj-name').value = defaultName;
+            document.getElementById('save-summary-type').innerText = houseType;
+            document.getElementById('save-summary-dim').innerText = `${currentWidth} ft x ${currentLength} ft`;
+            document.getElementById('save-summary-cost').innerText = `₹${(estimatedCost / 100000).toFixed(1)} Lakhs`;
+            document.getElementById('save-summary-zone').innerText = currentZone;
+
+            overlay.style.visibility = 'visible';
+            overlay.style.opacity = '1';
+        }
+
+        function closeSaveProjectModal() {
+            const overlay = document.getElementById('save-modal-overlay');
+            if (overlay) {
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+            }
+        }
+
+        function confirmSaveProject() {
+            const projNameInput = document.getElementById('save-proj-name');
+            const projName = projNameInput.value.trim() || `${houseType} Project`;
+
+            const userId = currentUser ? (currentUser.user_id || 1) : 1;
+            const payload = {
+                user_id: userId,
+                project_name: projName,
+                structure_type: houseType,
+                plot_data: {
+                    width: currentWidth,
+                    length: currentLength,
+                    occupants: currentOccupants,
+                    parking: parkingNeeded,
+                    garden: gardenNeeded,
+                    expansion: expansionNeeded,
+                    budget: currentBudget,
+                    estimatedCost: estimatedCost,
+                    location: currentZone,
+                    builtArea: builtArea,
+                    openSpace: openSpace
+                }
+            };
+
+            const confirmBtn = event.target;
+            confirmBtn.innerText = "⏳ Saving to Database...";
+
+            fetch(`http://127.0.0.1:${companionApiPort}/projects/save`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(r => r.json())
+            .then(data => {
+                confirmBtn.innerText = "💾 CONFIRM & SAVE PROJECT";
+                closeSaveProjectModal();
+
+                if (data.success) {
+                    showToast(`✅ Project "${projName}" saved to Database! (ID #${data.project_id || 1})`);
+                } else {
+                    showToast(`💾 Saved project "${projName}" to local session!`);
+                }
+                
+                let savedProjs = JSON.parse(localStorage.getItem('saved_user_projects') || '[]');
+                savedProjs.push({ id: Date.now(), name: projName, type: houseType, time: new Date().toLocaleTimeString() });
+                localStorage.setItem('saved_user_projects', JSON.stringify(savedProjs));
+            })
+            .catch(err => {
+                console.warn("Save project server connection failed:", err);
+                confirmBtn.innerText = "💾 CONFIRM & SAVE PROJECT";
+                closeSaveProjectModal();
+                showToast(`💾 Project "${projName}" saved to session!`);
+            });
+        }
+
+        function showToast(msg) {
+            let toast = document.getElementById('toast-notification');
+            if (toast) {
+                toast.innerText = msg;
+                toast.style.visibility = 'visible';
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateX(-50%) translateY(-10px)';
+
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateX(-50%) translateY(0)';
+                    setTimeout(() => { toast.style.visibility = 'hidden'; }, 400);
+                }, 3500);
+            }
+        }
+
+    </script>
+
+    <!-- AUTHENTICATION OVERLAY / LOGIN PAGE -->
+    <div id="auth-modal-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3, 3, 8, 0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); z-index: 999999; display: flex; justify-content: center; align-items: center; visibility: hidden; opacity: 0; transition: all 0.4s ease-in-out;">
+        <div class="glass-hud-card" style="width: 420px; padding: 32px; border: 1px solid rgba(0, 245, 212, 0.35); box-shadow: 0 0 40px rgba(0, 245, 212, 0.15); border-radius: 24px; position: relative;">
+            
+            <i class="fa-solid fa-xmark" style="position: absolute; top: 20px; right: 20px; cursor: pointer; color: #a0aec0; font-size: 1.2rem;" onclick="closeAuthModal()"></i>
+            
+            <div style="text-align: center; margin-bottom: 24px;">
+                <div style="width: 58px; height: 58px; border-radius: 50%; background: radial-gradient(circle, #00f5d4 0%, #4d39e9 100%); display: flex; justify-content: center; align-items: center; margin: 0 auto 12px; box-shadow: 0 0 20px rgba(0, 245, 212, 0.4);">
+                    <i class="fa-solid fa-user-shield" style="font-size: 1.5rem; color: white;"></i>
+                </div>
+                <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; color: white;" id="auth-title">Welcome Back</h2>
+                <p style="font-size: 0.82rem; color: #a0aec0; margin-top: 4px;" id="auth-subtitle">Sign in to save projects and access AI Digital Twins</p>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div style="display: flex; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 4px; margin-bottom: 20px;">
+                <button id="tab-btn-login" onclick="switchAuthTab('login')" style="flex: 1; padding: 8px; border: none; border-radius: 8px; background: #4d39e9; color: white; font-weight: 600; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">🔑 Sign In</button>
+                <button id="tab-btn-signup" onclick="switchAuthTab('signup')" style="flex: 1; padding: 8px; border: none; border-radius: 8px; background: transparent; color: #a0aec0; font-weight: 600; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">📝 Register</button>
+            </div>
+
+            <!-- Error / Status Alert Banner -->
+            <div id="auth-alert" style="display: none; padding: 10px 14px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 16px; line-height: 1.4;"></div>
+
+            <!-- Auth Form -->
+            <form onsubmit="handleAuthSubmit(event)">
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+                    <div>
+                        <label style="font-size: 0.78rem; color: #a0aec0; margin-bottom: 4px; display: block;">Username or Email</label>
+                        <div style="position: relative;">
+                            <i class="fa-solid fa-user" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #00b4d8; font-size: 0.85rem;"></i>
+                            <input type="text" id="auth-username" required placeholder="e.g. architect_mohith" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 12px 10px 36px; color: white; font-family: inherit; font-size: 0.85rem; outline: none;">
+                        </div>
+                    </div>
+
+                    <div id="auth-email-group" style="display: none;">
+                        <label style="font-size: 0.78rem; color: #a0aec0; margin-bottom: 4px; display: block;">Email Address</label>
+                        <div style="position: relative;">
+                            <i class="fa-solid fa-envelope" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #00b4d8; font-size: 0.85rem;"></i>
+                            <input type="email" id="auth-email" placeholder="e.g. architect@example.com" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 12px 10px 36px; color: white; font-family: inherit; font-size: 0.85rem; outline: none;">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label style="font-size: 0.78rem; color: #a0aec0; margin-bottom: 4px; display: block;">Password</label>
+                        <div style="position: relative;">
+                            <i class="fa-solid fa-lock" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #00b4d8; font-size: 0.85rem;"></i>
+                            <input type="password" id="auth-password" required placeholder="••••••••" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 12px 10px 36px; color: white; font-family: inherit; font-size: 0.85rem; outline: none;">
+                        </div>
+                    </div>
+
+                    <div id="auth-confirm-group" style="display: none;">
+                        <label style="font-size: 0.78rem; color: #a0aec0; margin-bottom: 4px; display: block;">Confirm Password</label>
+                        <div style="position: relative;">
+                            <i class="fa-solid fa-lock" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #00b4d8; font-size: 0.85rem;"></i>
+                            <input type="password" id="auth-confirm-password" placeholder="••••••••" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 12px 10px 36px; color: white; font-family: inherit; font-size: 0.85rem; outline: none;">
+                        </div>
+                    </div>
+
+                    <button type="submit" id="auth-submit-btn" class="neon-action-btn" style="width: 100%; margin-top: 8px; height: 44px; font-weight:700;">
+                        ⚡ SIGN IN & UNLOCK HUB
+                    </button>
+                </div>
+            </form>
+
+            <div style="margin-top: 16px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 14px;">
+                <button type="button" onclick="loginAsGuest()" style="background: transparent; border: none; color: #00f5d4; font-size: 0.8rem; cursor: pointer; text-decoration: underline; font-family:inherit;">
+                    🚀 Quick Guest Demo Mode (No Login Required)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SAVE PROJECT MODAL -->
+    <div id="save-modal-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3, 3, 8, 0.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); z-index: 999999; display: flex; justify-content: center; align-items: center; visibility: hidden; opacity: 0; transition: all 0.3s ease-in-out;">
+        <div class="glass-hud-card" style="width: 440px; padding: 28px; border: 1px solid rgba(0, 245, 212, 0.35); border-radius: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <div class="card-header-title" style="font-size: 1.1rem; color: #00f5d4;">
+                    <i class="fa-solid fa-floppy-disk"></i> Save Project to Database
+                </div>
+                <i class="fa-solid fa-xmark" style="cursor: pointer; color: #a0aec0;" onclick="closeSaveProjectModal()"></i>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <label style="font-size: 0.8rem; color: #a0aec0; margin-bottom: 6px; display: block;">Project Name</label>
+                <input type="text" id="save-proj-name" class="chatbot-input" style="width: 100%; padding: 10px; font-size: 0.9rem;" placeholder="e.g. Dream Villa Plot 40x60">
+            </div>
+
+            <!-- Project Details Summary Box -->
+            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 12px; margin-bottom: 20px; font-size: 0.8rem; display: flex; flex-direction: column; gap: 6px;">
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #718096;">Structure Type:</span>
+                    <strong style="color: white;" id="save-summary-type">Duplex (3 BHK)</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #718096;">Plot Dimensions:</span>
+                    <strong style="color: #00b4d8;" id="save-summary-dim">40 ft x 60 ft</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #718096;">Estimated Cost:</span>
+                    <strong style="color: #00f5d4;" id="save-summary-cost">₹59.5 Lakhs</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #718096;">Location Zone:</span>
+                    <strong style="color: #ff9f1c;" id="save-summary-zone">Urban Core</strong>
+                </div>
+            </div>
+
+            <button class="neon-action-btn" onclick="confirmSaveProject()" style="width: 100%; padding: 12px; font-weight:700;">
+                💾 CONFIRM & SAVE PROJECT
+            </button>
+        </div>
+    </div>
+
+    <div id="toast-notification" style="position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:rgba(10,12,22,0.95); border:1px solid #00f5d4; color:#00f5d4; padding:12px 24px; border-radius:12px; font-family:'Space Grotesk',sans-serif; font-size:0.9rem; z-index:1000000; box-shadow:0 0 25px rgba(0,245,212,0.4); opacity:0; visibility:hidden; transition:all 0.4s ease-in-out; pointer-events:none; text-align:center;"></div>
+    <div id="blueprint-tooltip" style="position: fixed; display: none; background: rgba(10, 12, 22, 0.95); border: 1px solid #00f5d4; color: white; padding: 8px 12px; border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 0.8rem; pointer-events: none; z-index: 10000; box-shadow: 0 4px 20px rgba(0,0,0,0.65); backdrop-filter: blur(4px);"></div>
+</body>
+</html>
