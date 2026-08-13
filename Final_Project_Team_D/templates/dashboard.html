@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Intelligence Hub - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 24px;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .user-info {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-connected {
+            background: #90EE90;
+            color: #1a5c1a;
+        }
+
+        .status-offline {
+            background: #FFB6C6;
+            color: #8b0000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .chatbot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chatbot-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+        }
+
+        .chatbot-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .chatbot-header h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .chatbot-header p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #fafafa;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .message.bot .message-avatar {
+            background: #e0e0e0;
+        }
+
+        .message.user .message-avatar {
+            background: #667eea;
+            color: white;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.bot .message-content {
+            background: white;
+            border: 1px solid #e0e0e0;
+            color: #333;
+        }
+
+        .message.user .message-content {
+            background: #667eea;
+            color: white;
+        }
+
+        .message.error .message-content {
+            background: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
+        }
+
+        .message.off-topic .message-content {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .chat-input-area {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .chat-input-area button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .chat-input-area button:hover {
+            transform: translateY(-2px);
+        }
+
+        .chat-input-area button:active {
+            transform: translateY(0);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #e0e0e0;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .chatbot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏗️ Construction Intelligence Hub</h1>
+        <div class="header-right">
+            <div class="user-info">
+                Welcome, <strong>{{ username }}</strong> | 
+                <span class="status-badge {% if ollama_connected %}status-connected{% else %}status-offline{% endif %}">
+                    {% if ollama_connected %}✓ Ollama Connected{% else %}✗ Ollama Offline{% endif %}
+                </span>
+            </div>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="chatbot-grid">
+            <!-- General Chatbot -->
+            <div class="chatbot-card">
+                <div class="chatbot-header">
+                    <h2>💬 General Assistant</h2>
+                    <p>Ask me anything - I answer all topics</p>
+                </div>
+                <div class="chat-messages" id="general-messages">
+                    <div class="message bot">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            Hi! I'm the General Assistant. Ask me anything - no restrictions! I can help with any topic.
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="general-input" placeholder="Ask anything...">
+                    <button onclick="sendMessage('general')">Send</button>
+                </div>
+            </div>
+
+            <!-- Construction Chatbot -->
+            <div class="chatbot-card">
+                <div class="chatbot-header">
+                    <h2>🏗️ Construction Expert</h2>
+                    <p>Only answers construction-related questions</p>
+                </div>
+                <div class="chat-messages" id="construction-messages">
+                    <div class="message bot">
+                        <div class="message-avatar">🏗️</div>
+                        <div class="message-content">
+                            Hi! I'm the Construction Expert. I only answer questions about OSHA, safety, codes, schedules, materials, and construction management.
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="construction-input" placeholder="Ask about construction...">
+                    <button onclick="sendMessage('construction')">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage(chatType) {
+            const inputId = chatType + '-input';
+            const messagesId = chatType + '-messages';
+            const input = document.getElementById(inputId);
+            const messagesContainer = document.getElementById(messagesId);
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'message user';
+            userMessageDiv.innerHTML = `
+                <div class="message-avatar">🙋</div>
+                <div class="message-content">${escapeHtml(message)}</div>
+            `;
+            messagesContainer.appendChild(userMessageDiv);
+            input.value = '';
+
+            // Add loading indicator
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'message bot';
+            loadingDiv.id = 'loading-' + chatType;
+            loadingDiv.innerHTML = `
+                <div class="message-avatar">🤖</div>
+                <div class="message-content"><div class="loading"></div></div>
+            `;
+            messagesContainer.appendChild(loadingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Send to server
+            fetch(`/api/chat/${chatType}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Remove loading indicator
+                const loading = document.getElementById('loading-' + chatType);
+                if (loading) loading.remove();
+
+                // Add bot response
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.className = 'message bot';
+                
+                if (data.is_off_topic) {
+                    botMessageDiv.className += ' off-topic';
+                }
+
+                botMessageDiv.innerHTML = `
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">${escapeHtml(data.message)}</div>
+                `;
+                messagesContainer.appendChild(botMessageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            })
+            .catch(error => {
+                // Remove loading indicator
+                const loading = document.getElementById('loading-' + chatType);
+                if (loading) loading.remove();
+
+                // Add error message
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'message error';
+                errorDiv.innerHTML = `
+                    <div class="message-avatar">❌</div>
+                    <div class="message-content">Error: ${escapeHtml(error.message)}</div>
+                `;
+                messagesContainer.appendChild(errorDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Allow Enter key to send message
+        document.getElementById('general-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage('general');
+        });
+
+        document.getElementById('construction-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage('construction');
+        });
+    </script>
+</body>
+</html>
