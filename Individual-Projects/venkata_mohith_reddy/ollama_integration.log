@@ -1,0 +1,618 @@
+[2026-07-18 21:17:07] Error in chat stream write: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-18 21:17:07] Chat POST handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 18:45:25] Chat POST handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 19:36:01] DEBUG: Starting stream query for model 'llama3.2' with 2 messages...
+[2026-07-20 19:36:07] DEBUG: Stream finished successfully in 6.09s across 19 chunks.
+[2026-07-20 19:42:15] DEBUG: Starting stream query for model 'llama3.2' with 2 messages...
+[2026-07-20 19:42:30] DEBUG: Stream finished successfully in 14.60s across 47 chunks.
+[2026-07-20 20:12:05] DEBUG: Starting stream query for model 'llama3.2' with 2 messages...
+[2026-07-20 20:12:06] DEBUG: Stream finished successfully in 1.58s across 15 chunks.
+[2026-07-20 20:12:06] DEBUG: Starting stream query for model 'llama3.2' with 2 messages...
+[2026-07-20 20:12:08] DEBUG: Stream finished successfully in 1.90s across 7 chunks.
+[2026-07-20 20:20:27] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-20 20:20:47] DEBUG: Starting stream query for model 'llama3.2' with 6 messages...
+[2026-07-20 20:21:07] DEBUG: Starting stream query for model 'llama3.2' with 7 messages...
+[2026-07-20 20:21:09] DEBUG: Starting stream query for model 'llama3.2' with 8 messages...
+[2026-07-20 20:21:35] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-20 20:21:36] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-20 20:22:05] DEBUG: Stream finished successfully in 98.21s across 57 chunks.
+[2026-07-20 20:22:14] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-20 20:22:37] ERROR: Attempt 1 failed in send_prompt_stream: timed out
+[2026-07-20 20:22:39] ERROR: Attempt 1 failed in send_prompt_stream: timed out
+[2026-07-20 20:22:52] ERROR: Error in chat stream write: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 20:22:54] ERROR: Error in chat stream write: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 20:23:10] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-20 20:23:10] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-20 20:23:10] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 20:23:13] ERROR: Error in chat stream write: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 20:23:19] ERROR: Error in chat stream write: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 20:23:21] ERROR: Error in chat stream write: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 20:23:29] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-20 20:24:46] DEBUG: Stream finished successfully in 77.46s across 34 chunks.
+[2026-07-20 20:25:07] DEBUG: Starting stream query for model 'llama3.2' with 7 messages...
+[2026-07-20 20:25:38] DEBUG: Stream finished successfully in 30.78s across 88 chunks.
+[2026-07-20 20:28:03] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-20 20:29:04] DEBUG: Stream finished successfully in 60.71s across 113 chunks.
+[2026-07-20 20:30:34] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-20 20:32:03] DEBUG: Stream finished successfully in 89.14s across 100 chunks.
+[2026-07-20 21:25:34] ERROR: Safety generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-20 21:25:46] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-20 21:26:34] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-20 21:26:50] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 21:26:56] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-20 21:27:15] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-20 21:27:16] ERROR: Attempt 1 failed in send_prompt_stream: timed out
+[2026-07-20 21:27:28] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 21:27:42] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 21:27:50] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 21:28:01] DEBUG: Stream finished successfully in 134.65s across 51 chunks.
+[2026-07-20 21:30:04] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-20 21:30:47] DEBUG: Stream finished successfully in 43.11s across 46 chunks.
+[2026-07-20 21:31:29] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-20 21:53:13] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+on was aborted by the software in your host machine
+[2026-07-20 21:53:42] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-20 21:53:46] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-20 21:53:50] ERROR: Error in chat stream write: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 21:54:09] DEBUG: Starting stream query for model 'llama3.2' with 6 messages...
+[2026-07-20 21:54:39] DEBUG: Stream finished successfully in 57.76s across 40 chunks.
+[2026-07-20 21:54:53] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-20 21:55:00] DEBUG: Stream finished successfully in 51.57s across 65 chunks.
+[2026-07-20 21:57:09] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-20 21:58:05] DEBUG: Starting stream query for model 'llama3.2' with 6 messages...
+[2026-07-20 21:58:53] DEBUG: Stream finished successfully in 104.48s across 71 chunks.
+[2026-07-20 21:59:21] DEBUG: Stream finished successfully in 76.38s across 100 chunks.
+[2026-07-20 21:59:22] DEBUG: Starting stream query for model 'llama3.2' with 8 messages...
+[2026-07-20 21:59:38] DEBUG: Stream finished successfully in 16.38s across 34 chunks.
+[2026-07-20 22:00:12] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-20 22:01:02] DEBUG: Stream finished successfully in 50.05s across 100 chunks.
+[2026-07-20 22:01:37] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-20 22:02:22] DEBUG: Stream finished successfully in 44.54s across 105 chunks.
+[2026-07-20 22:02:32] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-20 22:03:16] DEBUG: Stream finished successfully in 43.83s across 77 chunks.
+[2026-07-20 22:04:05] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-20 22:05:43] ERROR: Error in chat stream write: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 20:08:48] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-21 20:10:08] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 20:10:18] ERROR: Attempt 1 failed in send_prompt_stream: timed out
+[2026-07-21 20:11:11] DEBUG: Stream finished successfully in 143.39s across 34 chunks.
+[2026-07-21 20:14:08] DEBUG: Starting stream query for model 'llama3.2' with 7 messages...
+[2026-07-21 20:14:44] DEBUG: Stream finished successfully in 36.01s across 61 chunks.
+[2026-07-21 20:40:55] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 20:40:56] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 20:40:56] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 20:42:45] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 20:42:45] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 20:42:45] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 20:42:45] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 20:42:48] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 20:42:49] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 20:42:45] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 20:42:49] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 20:42:49] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 20:42:51] ERROR: Attempt 2 failed in send_prompt: Post "http://127.0.0.1:53774/tokenize": EOF (status code: 500)
+[2026-07-21 20:42:51] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 20:42:52] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: Post "http://127.0.0.1:53774/tokenize": EOF (status code: 500))
+[2026-07-21 20:43:19] ERROR: Safety generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-21 20:43:19] ERROR: Risks generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-21 20:43:31] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-21 20:44:05] DEBUG: Stream finished successfully in 34.20s across 57 chunks.
+[2026-07-21 20:45:44] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 20:46:42] DEBUG: Starting stream query for model 'llama3.2' with 7 messages...
+[2026-07-21 20:47:14] DEBUG: Stream finished successfully in 31.68s across 113 chunks.
+[2026-07-21 21:05:42] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:06:13] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:06:13] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:06:14] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:06:47] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:07:04] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-21 21:07:05] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:07:05] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:07:07] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:07:11] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:07:12] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:07:13] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:07:13] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:07:16] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:07:17] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:07:17] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:07:34] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:07:46] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:07:46] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:07:46] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:07:47] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:07:47] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:07:47] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:07:47] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:07:47] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:07:47] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:08:00] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:08:34] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:08:35] ERROR: Attempt 1 failed in send_prompt_stream: timed out
+[2026-07-21 21:08:39] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:08:39] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:08:39] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:08:41] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:08:42] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:08:42] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:08:46] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:08:46] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:08:46] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:08:46] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:08:46] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:08:46] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:08:48] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:08:49] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:08:49] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:08:49] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:09:05] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:09:21] DEBUG: Stream finished successfully in 136.32s across 58 chunks.
+[2026-07-21 21:12:37] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:12:38] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:12:38] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:12:43] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:12:43] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:13:13] ERROR: Risks generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-21 21:13:13] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:13:14] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:14:11] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:14:11] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:14:12] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:14:14] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:14:14] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:14:14] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+by the software in your host machine
+[2026-07-21 21:14:15] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:14:17] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:14:17] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-21 21:14:17] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-21 21:14:18] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:14:18] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:14:52] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:14:52] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:15:18] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:15:19] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:15:22] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:15:23] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:15:26] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:15:29] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:15:40] ERROR: Safety generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-21 21:15:41] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:15:41] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:15:47] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:15:50] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-21 21:15:51] ERROR: Safety generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-21 21:15:51] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-21 21:15:51] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-22 20:21:23] ERROR: Safety generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-22 20:21:23] ERROR: Risks generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-22 20:21:37] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-22 20:21:51] ERROR: send_prompt_stream failed: Model unavailable - Ollama service offline on http://localhost:11434. timed out
+[2026-07-22 20:23:25] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-22 20:23:30] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-22 20:23:30] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-07-22 20:23:35] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-22 20:23:35] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-22 20:28:25] DEBUG: Starting stream query for model 'llama3.2' with 7 messages...
+[2026-07-22 20:29:55] ERROR: Attempt 1 failed in send_prompt_stream: timed out
+[2026-07-22 20:31:48] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-22 20:32:32] DEBUG: Starting stream query for model 'llama3.2' with 6 messages...
+[2026-07-22 20:33:06] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-22 20:33:06] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-22 20:33:18] ERROR: Attempt 1 failed in send_prompt_stream: timed out
+[2026-07-22 20:35:55] ERROR: Safety generator failed: Ollama service offline on http://localhost:11434. [WinError 10061] No connection could be made because the target machine actively refused it
+[2026-07-22 20:35:56] ERROR: Risks generator failed: Ollama service offline on http://localhost:11434. [WinError 10061] No connection could be made because the target machine actively refused it
+[2026-07-22 20:37:11] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-22 20:38:29] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-22 20:38:41] ERROR: Attempt 1 failed in send_prompt_stream: timed out
+[2026-07-22 20:39:38] DEBUG: Stream finished successfully in 146.59s across 96 chunks.
+[2026-07-22 20:40:18] DEBUG: Starting stream query for model 'llama3.2' with 7 messages...
+[2026-07-22 20:41:48] ERROR: Attempt 1 failed in send_prompt_stream: timed out
+[2026-07-22 20:42:32] DEBUG: Stream finished successfully in 134.57s across 154 chunks.
+[2026-07-22 20:46:02] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-22 20:47:02] DEBUG: Stream finished successfully in 60.65s across 119 chunks.
+[2026-07-22 20:48:31] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-22 20:50:01] ERROR: Attempt 1 failed in send_prompt: timed out
+d out
+[2026-07-22 20:51:37] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-22 20:52:27] DEBUG: Stream finished successfully in 236.33s across 93 chunks.
+[2026-07-22 20:52:41] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-22 20:54:07] DEBUG: Stream finished successfully in 86.44s across 261 chunks.
+[2026-07-22 20:57:31] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-22 20:58:58] DEBUG: Stream finished successfully in 86.44s across 37 chunks.
+[2026-07-22 21:04:56] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-22 21:07:10] ERROR: Safety generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-22 21:07:10] ERROR: Risks generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-22 21:07:10] ERROR: Risks generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-22 21:07:23] ERROR: Safety generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-22 21:07:24] ERROR: Safety generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-07-22 21:08:27] DEBUG: Stream finished successfully in 211.40s across 260 chunks.
+[2026-07-22 21:09:52] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-22 21:09:52] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-22 21:09:52] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-22 21:10:10] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-22 21:10:44] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-22 21:12:05] DEBUG: Stream finished successfully in 81.12s across 135 chunks.
+[2026-07-22 21:20:35] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-22 21:22:00] DEBUG: Stream finished successfully in 85.51s across 44 chunks.
+[2026-07-29 12:56:33] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 12:56:49] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-29 12:57:04] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 12:57:19] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-07-29 12:58:47] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 12:58:47] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 12:58:53] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 12:58:53] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 12:59:27] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 12:59:27] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 12:59:33] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 12:59:33] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:02:11] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:02:11] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:02:11] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:02:11] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:02:27] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-29 13:03:01] DEBUG: Stream finished successfully in 34.18s across 31 chunks.
+[2026-07-29 13:03:26] DEBUG: Starting stream query for model 'llama3.2' with 7 messages...
+[2026-07-29 13:03:57] DEBUG: Stream finished successfully in 30.81s across 81 chunks.
+[2026-07-29 13:11:04] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:11:04] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:11:04] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:11:04] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:11:06] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:11:06] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:11:06] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:11:06] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:11:06] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:11:06] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:11:06] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:11:24] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-29 13:11:26] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:11:26] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:11:27] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:11:27] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:12:10] DEBUG: Stream finished successfully in 45.45s across 47 chunks.
+[2026-07-29 13:13:21] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:13:21] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:13:21] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:13:48] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:13:48] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:13:48] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:13:48] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:13:50] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:13:50] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:13:50] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:13:50] DEBUG: Risks generation timed out or failed. Return[2026-07-29 13:13:50] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:13:50] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:14:05] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:14:05] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:14:05] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:14:06] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-29 13:14:06] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-29 13:14:10] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:14:10] ERROR: Attempt 1 failed in send_prompt: timed out
+ning dynamic safety fallback.
+[2026-07-29 13:14:10] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-29 13:14:10] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-29 13:14:10] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:14:10] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:14:11] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-29 13:14:11] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-29 13:14:11] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-29 13:14:11] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-29 13:14:16] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:14:16] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:14:21] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:14:21] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 13:14:21] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:14:21] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 13:14:22] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-29 13:14:47] DEBUG: Stream finished successfully in 24.51s across 29 chunks.
+[2026-07-29 13:15:14] DEBUG: Starting stream query for model 'llama3.2' with 7 messages...
+[2026-07-29 13:15:44] DEBUG: Stream finished successfully in 29.64s across 56 chunks.
+[2026-07-29 13:25:12] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:25:17] ERROR: Download API failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-29 13:25:26] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:25:26] ERROR: Download API failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-29 13:25:27] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 13:49:50] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-29 13:51:09] DEBUG: Stream finished successfully in 79.40s across 38 chunks.
+[2026-07-29 13:51:31] DEBUG: Starting stream query for model 'llama3.2' with 7 messages...
+[2026-07-29 13:52:18] DEBUG: Stream finished successfully in 46.44s across 95 chunks.
+[2026-07-29 13:52:54] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-29 13:54:46] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-29 13:54:58] DEBUG: Stream finished successfully in 124.19s across 266 chunks.
+[2026-07-29 13:55:23] DEBUG: Stream finished successfully in 36.95s across 29 chunks.
+[2026-07-29 14:03:22] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-29 14:06:26] DEBUG: Stream finished successfully in 183.73s across 279 chunks.
+[2026-07-29 19:13:06] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 19:13:06] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 19:13:06] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 19:13:06] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 19:13:07] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-29 19:13:07] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-29 19:13:07] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-29 19:13:24] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-29 19:14:48] DEBUG: Stream finished successfully in 84.28s across 38 chunks.
+[2026-07-29 19:15:00] DEBUG: Starting stream query for model 'llama3.2' with 7 messages...
+[2026-07-29 19:15:57] DEBUG: Stream finished successfully in 56.55s across 97 chunks.
+[2026-07-29 19:16:12] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-29 19:16:42] DEBUG: Stream finished successfully in 30.05s across 38 chunks.
+[2026-07-29 19:17:35] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-29 19:20:29] DEBUG: Stream finished successfully in 173.85s across 300 chunks.
+[2026-07-29 19:31:48] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-29 19:36:05] DEBUG: Stream finished successfully in 257.04s across 300 chunks.
+[2026-07-29 20:05:25] DEBUG: Starting stream query for model 'llama3.2' with 9 messages...
+[2026-07-29 20:06:36] DEBUG: Stream finished successfully in 70.29s across 38 chunks.
+[2026-07-30 21:39:09] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:09] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:39:11] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:11] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:39:13] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:14] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:39:14] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:15] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:39:17] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:17] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:39:18] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:18] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:39:34] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:34] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:39:36] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:36] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:39:37] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:37] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:39:38] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:38] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:39:51] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:51] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:39:52] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:52] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:39:58] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:58] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:39:59] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:39:59] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:40:21] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:40:21] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:40:21] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:40:21] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-30 21:40:21] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:40:21] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-30 21:40:27] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:40:27] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:40:27] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:40:27] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:40:27] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:40:27] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:40:28] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-30 21:40:28] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:40:28] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:40:28] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-30 21:40:32] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:40:32] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:40:32] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-30 21:40:35] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:40:35] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:40:36] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:40:36] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:40:36] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-30 21:40:36] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:40:36] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:43:11] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:43:15] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:43:20] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 21:43:24] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 21:43:24] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 21:43:37] ERROR: Download API failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-07-30 21:43:44] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-07-30 22:18:33] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:18:33] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:18:33] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:18:33] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:18:34] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:18:34] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:18:34] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:18:34] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:18:35] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:18:35] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:18:35] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:18:35] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:18:40] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:18:40] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:18:41] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:18:41] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:24:24] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:24] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:24:24] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:24] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:24:25] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:25] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:25] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:24:25] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:25] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:24:25] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:24:26] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:24:41] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:41] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:24:42] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:42] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:24:42] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:42] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:24:47] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:47] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:24:49] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:49] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:24:50] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:50] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:24:57] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:24:57] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:25:04] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:25:04] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:25:05] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:25:05] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:25:06] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:25:06] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:25:08] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:25:08] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:25:36] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:25:36] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:25:37] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:25:37] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:25:38] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:25:38] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:25:39] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:25:39] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:25:40] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:25:41] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:25:41] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:28:09] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:28:09] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-07-30 22:28:09] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:28:09] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-07-30 22:28:38] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:28:39] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-07-30 22:28:52] ERROR: Download API failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-01 20:52:16] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-08-01 20:53:24] DEBUG: Stream finished successfully in 67.51s across 38 chunks.
+[2026-08-01 20:54:30] DEBUG: Starting stream query for model 'llama3.2' with 7 messages...
+[2026-08-01 20:55:01] DEBUG: Stream finished successfully in 31.64s across 73 chunks.
+[2026-08-01 21:05:57] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:05:57] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:05:57] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:05:59] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:05:59] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:05:59] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:06:00] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:05:59] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:06:01] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:06:00] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:06:08] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:06:16] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:06:17] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:06:18] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:06:19] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:06:24] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-01 21:06:39] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:06:40] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:06:41] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-01 21:06:44] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:06:45] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:06:45] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-01 21:06:47] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:06:47] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:06:57] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:06:57] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:06:57] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-01 21:06:59] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:07:12] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:07:15] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:07:15] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:07:16] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:07:16] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:07:16] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-01 21:07:38] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-08-01 21:09:12] DEBUG: Stream finished successfully in 93.94s across 66 chunks.
+[2026-08-01 21:14:49] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:14:49] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:14:49] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:14:49] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:14:49] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:14:49] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:14:49] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:14:49] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:14:50] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:14:59] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:14:59] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:15:00] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:15:00] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:14:59] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:15:01] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:15:01] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:15:01] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:15:17] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:15:17] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:15:18] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:15:18] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:15:19] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:15:19] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:15:19] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:15:19] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:15:29] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:15:30] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:15:30] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:15:30] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:18:47] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-08-01 21:18:53] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:18:53] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-01 21:18:53] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-01 21:18:53] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-01 21:20:16] DEBUG: Stream finished successfully in 88.24s across 56 chunks.
+[2026-08-05 21:09:28] ERROR: Safety generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-08-05 21:09:28] ERROR: Risks generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-08-05 21:09:53] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:10:11] ERROR: Safety generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-08-05 21:10:17] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:10:17] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:11:27] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-08-05 21:11:27] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-08-05 21:11:50] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-08-05 21:11:50] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-08-05 21:11:53] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:12:01] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:13:09] DEBUG: Starting stream query for model 'llama3.2' with 2 messages...
+[2026-08-05 21:13:36] DEBUG: Starting stream query for model 'llama3.2' with 2 messages...
+[2026-08-05 21:13:42] DEBUG: Stream finished successfully in 33.05s across 40 chunks.
+[2026-08-05 21:13:44] DEBUG: Stream finished successfully in 8.14s across 7 chunks.
+[2026-08-05 21:17:18] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-05 21:17:27] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-05 21:21:43] ERROR: Risks generator failed: Ollama service offline on http://localhost:11434. timed out
+[2026-08-05 21:22:11] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:22:11] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:22:12] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:23:45] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-08-05 21:23:45] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-08-05 21:29:25] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:29:25] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:29:25] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:34:06] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:34:06] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:34:06] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:35:40] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-08-05 21:35:40] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-08-05 21:37:17] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:37:30] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:41:44] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:41:44] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:41:44] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:41:44] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:42:23] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-05 21:42:38] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-05 21:42:59] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-05 21:43:16] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-05 21:43:24] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:43:26] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:43:26] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:51:37] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:57:38] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:57:38] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-05 21:57:50] DEBUG: Starting stream query for model 'llama3.2' with 5 messages...
+[2026-08-05 21:59:33] ERROR: Attempt 1 failed in send_prompt_stream: timed out
+[2026-08-05 21:59:33] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-08-05 21:59:33] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-08-05 21:59:34] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-08-05 21:59:34] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-08-05 21:59:34] ERROR: Attempt 2 failed in send_prompt: timed out
+[2026-08-05 21:59:34] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-08-05 21:59:34] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-05 21:59:34] ERROR: Risks generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+[2026-08-05 21:59:34] ERROR: Safety generator failed: ⚠️ Couldn't reach local AI. (Error: timed out)
+ by the software in your host machine
+[2026-08-05 21:59:35] ERROR: Risks handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-05 21:59:35] ERROR: Safety handler failed: [WinError 10053] An established connection was aborted by the software in your host machine
+[2026-08-13 19:42:46] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-13 19:42:46] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.
+[2026-08-13 19:42:46] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-13 19:42:46] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-13 19:42:46] DEBUG: Safety generation timed out or failed. Returning dynamic safety fallback.
+[2026-08-13 19:42:46] ERROR: Attempt 1 failed in send_prompt: timed out
+[2026-08-13 19:42:46] DEBUG: Risks generation timed out or failed. Returning dynamic risks fallback.

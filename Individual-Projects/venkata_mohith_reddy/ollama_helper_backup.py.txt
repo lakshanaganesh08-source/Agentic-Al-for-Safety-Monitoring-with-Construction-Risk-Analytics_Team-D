@@ -1,0 +1,692 @@
+import ollama
+import time
+import requests
+
+# Connection timeout constant
+CONNECTION_TIMEOUT = 3.0
+
+def check_connection() -> tuple[bool, str]:
+    """
+    Checks if the local Ollama service is running on the default port.
+    Returns (is_connected, error_message).
+    """
+    try:
+        # Use a lightweight HTTP request with a short timeout to prevent application hangs
+        r = requests.get("http://localhost:11434/", timeout=CONNECTION_TIMEOUT)
+        if r.status_code == 200:
+            return True, ""
+        return False, "Ollama service returned an unexpected status code."
+    except requests.exceptions.ConnectionError:
+        return False, (
+            "Ollama is not running locally. Please start the Ollama service "
+            "by running 'ollama serve' in your terminal or opening the Ollama app."
+        )
+    except Exception as e:
+        return False, f"Connection to Ollama failed: {str(e)}"
+
+_model_verified = False
+
+def check_model(model_name: str = 'llama3.2', force: bool = False) -> tuple[bool, str]:
+    """
+    Checks if the specified model is downloaded and available in local Ollama.
+    Returns (is_available, error_message).
+    """
+    global _model_verified
+    if _model_verified and not force:
+        return True, ""
+        
+    # Verify connection first
+    connected, conn_err = check_connection()
+    if not connected:
+        return False, conn_err
+        
+    try:
+        models = ollama.list()
+        # Handle both ListResponse objects and dictionaries dynamically
+        models_list = []
+        if hasattr(models, 'models'):
+            models_list = models.models
+        elif isinstance(models, dict):
+            models_list = models.get('models', [])
+            
+        for m in models_list:
+            # Extract name/model using attribute check or dict check
+            name = ""
+            if hasattr(m, 'model'):
+                name = m.model
+            elif hasattr(m, 'name'):
+                name = m.name
+            elif isinstance(m, dict):
+                name = m.get('model') or m.get('name') or ""
+                
+            if model_name in name:
+                _model_verified = True
+                return True, ""
+        return False, (
+            f"The model '{model_name}' was not found in your local Ollama. "
+            f"Please download it by running 'ollama pull {model_name}' in your terminal."
+        )
+    except Exception as e:
+        return False, f"Failed to verify local Ollama models: {str(e)}"
+
+def send_prompt(
+    prompt: str, 
+    model_name: str = 'llama3.2', 
+    temperature: float = 0.3, 
+    num_predict: int = 250, 
+    num_ctx: int = 2048, 
+    repeat_penalty: float = 1.2, 
+    json_format: bool = False
+) -> tuple[str, str]:
+    """
+    Sends a structured prompt to the local Ollama model and returns the response.
+    Optimized for local inference with retry and validation logic.
+    """
+    # Verify model is available before launching the chat
+    available, model_err = check_model(model_name)
+    if not available:
+        return "", model_err
+        
+    import json
+    import time
+    
+    for attempt in range(2):
+        try:
+            chat_args = {
+                "model": model_name,
+                "messages": [
+                    {
+                        'role': 'user',
+                        'content': prompt
+                    }
+                ],
+                "options": {
+                    'temperature': temperature,
+                    'num_predict': num_predict,
+                    'num_ctx': num_ctx,
+                    'repeat_penalty': repeat_penalty,
+                    'num_thread': 4,
+                    'timeout': 120.0
+                },
+                "keep_alive": "30m"
+            }
+            if json_format:
+                chat_args["format"] = "json"
+                
+            response = ollama.chat(**chat_args)
+            content = response['message']['content']
+            
+            if not content or not content.strip():
+                raise ValueError("Empty response received from Ollama.")
+                
+            if json_format:
+                # Validate JSON structure
+                try:
+                    json.loads(content)
+                except json.JSONDecodeError:
+                    raise ValueError("Response is not valid JSON.")
+                    
+            return content, ""
+            
+        except Exception as e:
+            global _model_verified
+            _model_verified = False
+            if attempt == 0:
+                time.sleep(0.5) # small wait before retry
+                continue
+            return "", f"The local AI couldn't generate a response — try again. (Details: {str(e)})"
+
+def get_recommendation(inputs: dict) -> tuple[str, str]:
+    """
+    Reads user specifications, builds a professional engineering prompt,
+    queries Ollama, and returns a formatted architectural analysis.
+    Optimized to request extremely concise bulleted results.
+    """
+    prompt = f"""
+You are a senior civil engineer. 
+Analyze the following construction specs and generate a highly concise design overview.
+CRITICAL: Keep descriptions brief (1-2 sentences per header). The entire response must be under 150 words total.
+
+### Land Details:
+- Total Land Area: {{inputs.get('total_area')}} sq ft
+- Plot Dimensions: {{inputs.get('width')}} ft wide x {{inputs.get('length')}} ft long
+- Location: {{inputs.get('location')}}
+
+### Project Specifications:
+- Number of Residents: {{inputs.get('family_size')}}
+- Target Floor Profile: {{inputs.get('floor_pref')}}
+- Base Style: {{inputs.get('construction_type')}}
+- Material Tier: {{inputs.get('material_quality')}}
+- Parking Space: {{"Required" if inputs.get('parking_needed') else "None"}}
+- Landscape Garden: {{"Required" if inputs.get('garden_needed') else "None"}}
+- Expansion Option: {{"Enabled" if inputs.get('future_expansion') else "Disabled"}}
+
+YOU MUST FORMAT YOUR OUTPUT EXACTLY WITH THE FOLLOWING SECTION HEADERS:
+
+### Recommendation
+[Optimal house layout and facing]
+
+### Reasoning
+[Engineering reason based on boundaries and family size]
+
+### Advantages
+[Key space and cost advantages]
+
+### Possible Limitations
+[Outline any bylaws constraints or challenges]
+
+### Construction Suggestions
+[Setbacks and foundation type]
+
+### Additional Observations
+[Eco-friendly or ventilation flow observation]
+"""
+    return send_prompt(prompt)
+
+import hashlib
+import os
+
+def get_recommendation_cached(inputs: dict) -> tuple[str, str]:
+    """
+    Checks if a recommendation for the given inputs is cached on disk.
+    If not, queries Ollama, caches it, and returns the response.
+    """
+    # Create stable sorted key from inputs
+    key_dict = {
+        "total_area": inputs.get("total_area"),
+        "length": inputs.get("length"),
+        "width": inputs.get("width"),
+        "location": inputs.get("location"),
+        "floor_pref": inputs.get("floor_pref"),
+        "family_size": inputs.get("family_size"),
+        "construction_type": inputs.get("construction_type"),
+        "material_quality": inputs.get("material_quality"),
+        "parking_needed": inputs.get("parking_needed"),
+        "garden_needed": inputs.get("garden_needed"),
+        "future_expansion": inputs.get("future_expansion")
+    }
+    try:
+        serialized = json.dumps(key_dict, sort_keys=True)
+        cache_hash = hashlib.md5(serialized.encode('utf-8')).hexdigest()
+        cache_dir = "templates/cache"
+        os.makedirs(cache_dir, exist_ok=True)
+        cache_path = os.path.join(cache_dir, f"{{cache_hash}}.txt")
+        
+        # Read from cache if it exists
+        if os.path.exists(cache_path):
+            with open(cache_path, 'r', encoding='utf-8') as f:
+                return f.read(), ""
+    except Exception as e:
+        # Fallback to standard flow if caching operations fail
+        pass
+
+    # Call Ollama if not cached
+    resp, err = get_recommendation(inputs)
+    
+    if not err and resp:
+        try:
+            with open(cache_path, 'w', encoding='utf-8') as f:
+                f.write(resp)
+        except Exception:
+            pass
+            
+    return resp, err
+
+def send_prompt_stream(
+    prompt: str, 
+    model_name: str = 'llama3.2',
+    temperature: float = 0.6,
+    num_predict: int = 200,
+    num_ctx: int = 2048,
+    repeat_penalty: float = 1.2
+):
+    """
+    Sends a prompt to local Ollama and yields text chunks as they arrive.
+    Optimized for streaming in real-time with connection retries.
+    """
+    # Verify model is available before launching the chat
+    available, model_err = check_model(model_name)
+    if not available:
+        yield f"⚠️ Local LLM Offline: {{model_err}}"
+        return
+        
+    import time
+    
+    for attempt in range(2):
+        try:
+            response_stream = ollama.chat(
+                model=model_name,
+                messages=[
+                    {
+                        'role': 'user',
+                        'content': prompt
+                    }
+                ],
+                options={
+                    'temperature': temperature,
+                    'num_predict': num_predict,
+                    'num_ctx': num_ctx,
+                    'repeat_penalty': repeat_penalty,
+                    'num_thread': 4,
+                    'timeout': 120.0
+                },
+                keep_alive="30m",
+                stream=True
+            )
+            for chunk in response_stream:
+                content = chunk.get('message', {}).get('content', '')
+                if content:
+                    yield content
+            return  # successfully finished stream
+        except Exception as e:
+            global _model_verified
+            _model_verified = False
+            if attempt == 0:
+                time.sleep(0.5)
+                continue
+            yield f"⚠️ The local AI couldn't generate a response — try again. (Details: {{str(e)}})"
+
+def get_chat_response_stream(query: str, context: dict = None, doc_context: str = None, history: list = None):
+    """
+    Yields chunks of a context-aware chat response dynamically.
+    Automatically retrieves document context from active global document if present.
+    """
+    global _active_doc_chunks
+    if _active_doc_chunks and not doc_context:
+        from utils.document_parser import retrieve_relevant_chunks
+        doc_context = retrieve_relevant_chunks(query, _active_doc_chunks, top_n=2)
+        
+    from utils.prompts import PROMPT_CHATBOT
+    
+    # Start with the custom system prompt
+    prompt_sections = [PROMPT_CHATBOT]
+    
+    # Append project context if available
+    if context:
+        raw = context.get('raw_inputs', {})
+        
+        est_cost = context.get('estimated_cost')
+        budget_val = raw.get('budget')
+        try:
+            est_cost_formatted = f"{{int(float(est_cost)):,}}" if est_cost is not None else "0"
+        except Exception:
+            est_cost_formatted = str(est_cost) if est_cost is not None else "0"
+            
+        try:
+            budget_formatted = f"{{int(float(budget_val)):,}}" if budget_val is not None else "0"
+        except Exception:
+            budget_formatted = str(budget_val) if budget_val is not None else "0"
+
+        project_context = f"""### Active Project Specifications:
+- Recommendation Layout: {{context.get('suitable_type')}}
+- Plot Dimensions: {{raw.get('width', 'N/A')}} ft x {{raw.get('length', 'N/A')}} ft (Total Area: {{raw.get('total_area', 'N/A')}} sq ft)
+- Construction Style: {{raw.get('construction_type', 'N/A')}}
+- Material Quality Tier: {{raw.get('material_quality', 'N/A')}}
+- Estimated Build Cost: ₹{{est_cost_formatted}}
+- Project Budget: ₹{{budget_formatted}}
+- Safety Index Score: {{context.get('safety_score', 'N/A')}}%
+- Parking Space: {{"Required" if raw.get('parking_needed') else "Not Needed"}}
+- Green Garden: {{"Required" if raw.get('garden_needed') else "Not Needed"}}
+- Future Vertical Expansion: {{"Enabled" if raw.get('future_expansion') else "Disabled"}}
+- Location Zone: {{raw.get('location', 'Urban Core')}}
+"""
+        prompt_sections.append(project_context)
+        
+    # Append document context if present
+    if doc_context:
+        doc_info = f"""### Uploaded Document Excerpts (Use ONLY this to answer if relevant):
+{{doc_context}}
+"""
+        prompt_sections.append(doc_info)
+        
+    # Append conversation history if available
+    if history:
+        history_str = "### Previous Conversation Turns:\n"
+        for turn in history[-4:]:
+            role = "User" if turn.get("role") == "user" else "Assistant"
+            history_str += f"{{role}}: {{turn.get('content')}}\n"
+        prompt_sections.append(history_str)
+        
+    # Add current question
+    prompt_sections.append(f"Current User Question: {{query}}\nAI Response:")
+    
+    prompt = "\n\n".join(prompt_sections)
+    return send_prompt_stream(prompt, temperature=0.65, num_predict=200)
+
+def get_chat_response(query: str, context: dict = None, doc_context: str = None, history: list = None) -> tuple[str, str]:
+    """
+    Generates a full response for non-streaming consumers by joining stream chunks.
+    """
+    global _active_doc_chunks
+    if _active_doc_chunks and not doc_context:
+        from utils.document_parser import retrieve_relevant_chunks
+        doc_context = retrieve_relevant_chunks(query, _active_doc_chunks, top_n=2)
+
+    try:
+        chunks = []
+        for chunk in get_chat_response_stream(query, context, doc_context, history):
+            chunks.append(chunk)
+        full_text = "".join(chunks)
+        # Check if it returned an error message as the first chunk
+        if full_text.startswith("⚠️"):
+            return "", full_text
+        return full_text, ""
+    except Exception as e:
+        return "", f"Error joining chat chunks: {str(e)}"
+
+# --- Background HTTP API Server for HTML Iframe Integration ---
+import threading
+import json
+import urllib.parse
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+
+# Track active dynamic document chunks uploaded from client chatbot
+_active_doc_chunks = None
+_active_doc_name = None
+
+class ChatAPIRequestHandler(SimpleHTTPRequestHandler):
+    """
+    Implements a simple REST handler mapping GET/OPTIONS query parameter 
+    requests to the local Ollama LLM endpoint.
+    """
+    def log_message(self, format, *args):
+        # Silence server request prints to prevent Streamlit log cluttering
+        pass
+
+    def do_OPTIONS(self):
+        # CORS preflight options
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.end_headers()
+
+    def do_GET(self):
+        parsed_url = urllib.parse.urlparse(self.path)
+        if parsed_url.path == '/chat':
+            query_params = urllib.parse.parse_qs(parsed_url.query)
+            query = query_params.get('q', [''])[0]
+            
+            # Fetch local Ollama response via standard helper
+            response, err = get_chat_response(query)
+            if err:
+                response = f"⚠️ Local LLM Offline: {err}"
+                
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            
+            # Write structured JSON response
+            self.wfile.write(json.dumps({"response": response}).encode('utf-8'))
+            
+        elif parsed_url.path == '/clear_doc':
+            global _active_doc_chunks, _active_doc_name
+            _active_doc_chunks = None
+            _active_doc_name = None
+            
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": True}).encode('utf-8'))
+        else:
+            self.send_response(404)
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+
+    def do_POST(self):
+        global _active_doc_chunks, _active_doc_name
+        parsed_url = urllib.parse.urlparse(self.path)
+        if parsed_url.path == '/upload':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                data = json.loads(post_data.decode('utf-8'))
+                
+                filename = data.get('filename')
+                file_data_b64 = data.get('file_data')
+                
+                import base64
+                file_bytes = base64.b64decode(file_data_b64)
+                
+                # Extract text using document_parser helper
+                from utils.document_parser import extract_text_from_file, chunk_text
+                text = extract_text_from_file(filename, file_bytes)
+                chunks = chunk_text(text)
+                
+                _active_doc_chunks = chunks
+                _active_doc_name = filename
+                
+                # Generate summary dynamically using local Llama 3.2 model with system prompt
+                summary = ""
+                if text.strip():
+                    from utils.prompts import PROMPT_DOCUMENT
+                    summary_prompt = f"{PROMPT_DOCUMENT}\n\nDocument Name: {filename}\nContent:\n{text[:4000]}"
+                    summary, err = send_prompt(summary_prompt, temperature=0.3, num_predict=250)
+                    if err:
+                        summary = f"Indexed successfully ({len(chunks)} chunks). Could not query model for summary: {err}"
+                else:
+                    summary = "The document was empty."
+                
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                
+                self.wfile.write(json.dumps({
+                    "success": True,
+                    "filename": filename,
+                    "chunks_count": len(chunks),
+                    "summary": summary
+                }).encode('utf-8'))
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode('utf-8'))
+                
+        elif parsed_url.path == '/chat':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                data = json.loads(post_data.decode('utf-8'))
+                
+                query = data.get('query', '')
+                project_data = data.get('project_data', None)
+                history = data.get('history', None)
+                
+                context = None
+                if project_data:
+                    context = {
+                        "suitable_type": project_data.get("houseType"),
+                        "estimated_cost": project_data.get("estimatedCost"),
+                        "safety_score": project_data.get("safetyScore", 95),
+                        "raw_inputs": {
+                            "width": project_data.get("width"),
+                            "length": project_data.get("length"),
+                            "total_area": project_data.get("width", 0) * project_data.get("length", 0),
+                            "construction_type": project_data.get("constructionType"),
+                            "material_quality": project_data.get("materialQuality"),
+                            "parking_needed": project_data.get("parking"),
+                            "garden_needed": project_data.get("garden"),
+                            "future_expansion": project_data.get("expansion"),
+                            "budget": project_data.get("budget"),
+                            "location": project_data.get("location")
+                        }
+                    }
+                
+                doc_context = None
+                if _active_doc_chunks:
+                    from utils.document_parser import retrieve_relevant_chunks
+                    doc_context = retrieve_relevant_chunks(query, _active_doc_chunks, top_n=2)
+                    
+                stream_requested = data.get('stream', False) or self.headers.get('Accept') == 'text/event-stream'
+                
+                if stream_requested:
+                    self.send_response(200)
+                    self.send_header('Content-Type', 'text/event-stream')
+                    self.send_header('Cache-Control', 'no-cache')
+                    self.send_header('Connection', 'keep-alive')
+                    self.send_header('Access-Control-Allow-Origin', '*')
+                    self.end_headers()
+                    
+                    try:
+                        for chunk in get_chat_response_stream(query, context, doc_context, history):
+                            self.wfile.write(f"data: {json.dumps({'chunk': chunk})}\n\n".encode('utf-8'))
+                            self.wfile.flush()
+                    except Exception as e:
+                        self.wfile.write(f"data: {json.dumps({'chunk': f'⚠️ Error: {str(e)}'})}\n\n".encode('utf-8'))
+                        self.wfile.flush()
+                else:
+                    response, err = get_chat_response(query, context, doc_context, history)
+                    if err:
+                        response = f"⚠️ Local LLM Offline: {err}"
+                        
+                    self.send_response(200)
+                    self.send_header('Content-Type', 'application/json')
+                    self.send_header('Access-Control-Allow-Origin', '*')
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"response": response}).encode('utf-8'))
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": str(e)}).encode('utf-8'))
+                
+        elif parsed_url.path == '/safety':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                data = json.loads(post_data.decode('utf-8'))
+                
+                from utils.prompts import PROMPT_SAFETY
+                prompt = PROMPT_SAFETY.format(
+                    location=data.get('location', 'Urban Core'),
+                    width=data.get('width', 40),
+                    length=data.get('length', 60),
+                    house_type=data.get('houseType', 'Duplex'),
+                    built_area=data.get('builtArea', 1700),
+                    budget=data.get('budget', 5000000),
+                    expansion="Enabled" if data.get('expansion') else "Disabled"
+                )
+                
+                response_text, err = send_prompt(
+                    prompt=prompt,
+                    temperature=0.3,
+                    num_predict=350,
+                    json_format=True
+                )
+                
+                if err:
+                    self.send_response(500)
+                    self.send_header('Content-Type', 'application/json')
+                    self.send_header('Access-Control-Allow-Origin', '*')
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"error": err}).encode('utf-8'))
+                    return
+                    
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(response_text.encode('utf-8'))
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": str(e)}).encode('utf-8'))
+                
+        elif parsed_url.path == '/risks':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                data = json.loads(post_data.decode('utf-8'))
+                
+                from utils.prompts import PROMPT_RISKS
+                prompt = PROMPT_RISKS.format(
+                    location=data.get('location', 'Urban Core'),
+                    width=data.get('width', 40),
+                    length=data.get('length', 60),
+                    house_type=data.get('houseType', 'Duplex'),
+                    built_area=data.get('builtArea', 1700),
+                    budget=data.get('budget', 5000000),
+                    expansion="Enabled" if data.get('expansion') else "Disabled"
+                )
+                
+                response_text, err = send_prompt(
+                    prompt=prompt,
+                    temperature=0.3,
+                    num_predict=350,
+                    json_format=True
+                )
+                
+                if err:
+                    self.send_response(500)
+                    self.send_header('Content-Type', 'application/json')
+                    self.send_header('Access-Control-Allow-Origin', '*')
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"error": err}).encode('utf-8'))
+                    return
+                    
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(response_text.encode('utf-8'))
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": str(e)}).encode('utf-8'))
+        else:
+            self.send_response(404)
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+
+# Track running server instance to avoid duplicate binds on hot-reloads
+_api_server_instance = None
+_server_lock = threading.Lock()
+_active_port = 8502
+
+def get_active_port():
+    global _active_port
+    return _active_port
+
+def start_background_server():
+    """
+    Launches a dedicated daemon thread serving LLM prompts on localhost:8502
+    to connect the client-side JavaScript chatbot to the Ollama backend.
+    """
+    global _api_server_instance
+    with _server_lock:
+        if _api_server_instance is not None:
+            return  # Server already active and serving
+            
+        def run():
+            global _api_server_instance, _active_port
+            # Attempt to bind to standard companion port
+            for port in [8502, 8503, 8504]:
+                try:
+                    server = ThreadingHTTPServer(('localhost', port), ChatAPIRequestHandler)
+                    _api_server_instance = server
+                    _active_port = port
+                    
+                    # Write bound port to config file so client can fetch dynamically
+                    try:
+                        with open('templates/port.json', 'w') as f:
+                            json.dump({"port": port}, f)
+                    except Exception as e:
+                        pass
+                        
+                    server.serve_forever()
+                    break
+                except Exception:
+                    continue
+                    
+        t = threading.Thread(target=run, daemon=True)
+        t.start()
